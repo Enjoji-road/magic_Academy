@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>魔法学校｜土魔法学 試験</title>
+<style>
+:root{--bg:#121e25;--panel:#1d3036;--line:#486166;--ink:#f4ede0;--muted:#bbc9c6;--accent:#e7c884;--board:#284047;--shadow:rgba(0,0,0,.38)}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;color:var(--ink);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;background:radial-gradient(ellipse at 10% 0%,#2b3b3e 0%,transparent 42%),linear-gradient(145deg,#15232b,#101d25);min-height:100vh}
+button{font:inherit;cursor:pointer;touch-action:manipulation}button:focus-visible{outline:3px solid #f8dca0;outline-offset:3px}
+main{width:min(940px,100%);margin:0 auto;padding:24px 16px 38px}.label{font-size:12px;color:var(--accent);letter-spacing:.18em}.title{font-size:clamp(27px,5.5vw,42px);font-family:serif;letter-spacing:.06em;margin:7px 0}.subtitle{font-size:14px;color:var(--muted);line-height:1.65;margin:0 0 22px}
+.paper{border:1px solid #c49e66;background:linear-gradient(145deg,#f3e6cc,#d9c6a2);color:#3f392e;padding:16px 18px;border-radius:8px;box-shadow:0 10px 30px #0003;line-height:1.8}.paper .paper-label{font-size:12px;font-weight:bold;letter-spacing:.12em;color:#65583d}.paper p{margin:6px 0 0}.paper b{color:#584126}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(290px,.85fr);gap:18px;margin-top:20px}.box{border:1px solid var(--line);background:rgba(31,48,55,.82);border-radius:12px;padding:16px;box-shadow:0 10px 30px var(--shadow)}.box h2{font-size:15px;margin:0 0 12px;color:#f2ddad}.tiny{font-size:12px;color:var(--muted);line-height:1.6}
+.altar{position:relative;background:linear-gradient(#35474a,#20373e);padding:22px 20px 12px;border:3px ridge #77918b;border-radius:13px;margin:8px auto 0;max-width:400px}.altar::before{content:'✶';position:absolute;left:9px;top:6px;color:#c6af78;font-size:17px}.altar::after{content:'✶';position:absolute;right:9px;top:6px;color:#c6af78;font-size:17px}
+#board{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;width:100%;aspect-ratio:1;max-width:350px;margin:auto;padding:8px;border:2px solid #96aaa0;background:#101f24;border-radius:6px}.cell{width:100%;height:100%;border:1px solid #5c7373;background:linear-gradient(145deg,#3d5553,#253b42);border-radius:3px;display:flex;justify-content:center;align-items:center;color:#f8e3a2;font-size:clamp(20px,4vw,29px);position:relative;min-width:0;min-height:0}.cell:active{transform:scale(.97)}.cell.occupied{color:#f8f1df;box-shadow:inset 0 0 0 2px #ffffff32;cursor:pointer}.cell.occupied .glyph{font-size:clamp(16px,4vw,24px);font-weight:bold;text-shadow:0 1px 2px #0007}.cell.occupied .minilabel{position:absolute;top:2px;left:4px;font-size:10px;opacity:.8}.cell.preview{outline:2px solid #e8d7a7}
+.altar-bottom{padding:10px 2px 2px;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:72px}.carving-caption{font-size:11px;opacity:.8;letter-spacing:.13em}.ornament{height:55px;min-width:100px;padding:4px 9px;display:flex;align-items:center;gap:8px;justify-content:center;background:linear-gradient(120deg,#43595b,#667475,#43595b);border:2px solid #a0a28d;border-radius:5px;color:#f0e4bd}.ornament .rune{font-size:26px}.ornament .bricks{display:flex;flex-direction:column;gap:2px}.ornament .brick{height:17px;width:25px;background:#7b8782;border:1px solid #c2bfaa;border-radius:3px}.ornament.selected{outline:3px solid var(--accent)}.ornament.removed{opacity:.4}.ornament-note{font-size:11px;line-height:1.5;color:#c8d0c8;text-align:right}
+.rack{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.piece{background:#293e45;border:2px solid #506972;border-radius:8px;color:var(--ink);text-align:left;min-height:118px;padding:9px;display:flex;flex-direction:column;gap:8px}.piece.selected{border-color:#f1cf81;background:#3c4d4b;box-shadow:0 0 0 2px #eed19c50}.piece.done{opacity:.5}.piece-name{font-size:12px;color:#e8deca}.mini{display:grid;gap:2px;width:max-content;align-self:center;max-width:100%}.mini-cell{width:21px;height:21px;background:#899994;border:1px solid #e8dcc1a1;border-radius:2px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px}.mini-cell.blank{background:transparent;border-color:transparent}
+.control-title{margin:17px 0 8px;font-size:13px;color:var(--accent)}.controls{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.control{color:#f6e7c6;background:#35505b;border:1px solid #66818a;padding:11px 3px;border-radius:7px;font-size:13px}.control:disabled{opacity:.35;cursor:not-allowed}.secondary{color:#d3d9d8;background:transparent;border:1px solid #597077;padding:10px 14px;border-radius:8px}.status{padding:11px 12px;background:#13272f;border-left:3px solid var(--accent);margin-top:14px;font-size:13px;line-height:1.65;min-height:64px}.under{margin-top:10px;display:flex;align-items:center;justify-content:space-between;gap:8px}.footer{text-align:center;font-size:11px;color:#9cb1b1;margin-top:23px}.success{display:none;margin-top:16px;padding:16px;border:1px solid #e7c884;background:#2b4143;border-radius:9px;text-align:center}.success.show{display:block}.success h3{font-family:serif;font-size:23px;color:#f8dd95;margin:0 0 4px}.success p{margin:5px 0;font-size:14px}.success small{color:#c7d0c9}
+@media(max-width:700px){main{padding:17px 12px 25px}.layout{grid-template-columns:1fr}.box{padding:13px}.altar{max-width:390px;padding:16px 14px 7px}.rack{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.piece{min-height:96px;padding:7px 3px;gap:6px}.piece-name{text-align:center;font-size:11px}.mini-cell{height:16px;width:16px;font-size:9px}.subtitle{margin-bottom:16px}.paper{padding:13px 15px}}
+@media(max-width:380px){.rack{grid-template-columns:repeat(2,minmax(0,1fr))}.piece{min-height:95px}.mini-cell{height:19px;width:19px}}
+</style>
+</head>
+<body>
+<main>
+<header><div class="label">ARCANE ACADEMY · GRADUATION EXAM</div><h1 class="title">土魔法学　実技試験</h1><p class="subtitle">石の移動を習得した者に与えられる、四元素の試験のひとつ。</p></header>
+<section class="paper"><div class="paper-label">試験課題　第一の石盤</div><p>中央の<strong>4×4のくぼみ</strong>を、石材で<strong>隙間なく、重なりなく</strong>塞ぎなさい。</p><p>床に刻まれた<strong>◆と◇の印</strong>は、それぞれ<strong>同じ印の付いた石</strong>で覆うこと。石材の向きを変えてもよい。</p></section>
+<div class="layout">
+<section class="box"><h2>石盤</h2><div class="tiny">石を選び、置きたい位置のマスを押す。置いた石を押すと取り上げられる。</div>
+<div class="altar"><div id="board" aria-label="4行4列の石盤"></div><div class="altar-bottom"><div class="carving-caption">✧ 校章の刻まれた石盤 ✧</div><button class="ornament" id="ornament" aria-label="石盤の縁の飾りを調べる"><div class="bricks"><span class="brick"></span><span class="brick"></span></div><span class="rune">◇</span></button></div></div>
+<div class="success" id="success" role="status"><h3>✦ 合格 ✦</h3><p>土魔法学の実技試験に合格しました。</p><small>最初に気づいたこと、迷ったことを教えてください。</small></div>
+</section>
+<section class="box"><h2>石材棚</h2><div class="rack" id="rack"></div>
+<p class="control-title">選んでいる石：<strong id="selectedLabel">なし</strong></p><div class="controls"><button class="control" id="rotate" disabled>↻ 回転</button><button class="control" id="flip" disabled>⇋ 裏返す</button><button class="control" id="clearSelected" disabled>↩ 戻す</button></div><div class="status" id="status" aria-live="polite">石材を選んでください。</div><div class="under"><span class="tiny" id="filledCount">0 / 16 マス</span><button class="secondary" id="reset">最初から</button></div><p class="tiny">※ヒント・答えは表示されません。途中の操作は何度でもやり直せます。</p></section>
+</div>
+<div class="footer">魔法学校｜作問検証用プロトタイプ 01</div>
+</main>
+<script>
+(()=>{
+'use strict';
+const BASE={A:[[0,0],[1,0],[0,1],[1,1]],B:[[0,0],[1,0],[2,0],[0,1]],C:[[0,0],[1,0],[2,0]],D:[[0,0],[1,0],[0,1]],X:[[0,0],[0,1]]};
+const META={A:{name:'角石',glyph:'○',color:'#647d80'},B:{name:'曲石',glyph:'✦',color:'#a16d58'},C:{name:'長石',glyph:'▽',color:'#5e8990'},D:{name:'印の石',glyph:'◆',color:'#b69653'},X:{name:'縁の飾り石',glyph:'◇',color:'#a3a7a0'}};
+const pieces=Object.fromEntries(Object.keys(BASE).map(k=>[k,{rot:0,flip:false,at:null}]));
+let active=null, finished=false;
+const $=id=>document.getElementById(id), board=$('board'), rack=$('rack');
+function shapeFor(id){let p=BASE[id].map(([x,y])=>[x,y]);if(pieces[id].flip)p=p.map(([x,y])=>[-x,y]);for(let i=0;i<pieces[id].rot;i++)p=p.map(([x,y])=>[-y,x]);const mx=Math.min(...p.map(v=>v[0])),my=Math.min(...p.map(v=>v[1]));return p.map(([x,y])=>[x-mx,y-my]);}
+function occupied(){const o={};for(const id of Object.keys(pieces)){const at=pieces[id].at;if(!at)continue;for(const [dx,dy] of shapeFor(id))o[`${at[0]+dx},${at[1]+dy}`]=id;}return o;}
+function message(t){$('status').textContent=t;}
+function miniature(id){const s=shapeFor(id),w=Math.max(...s.map(q=>q[0]))+1,h=Math.max(...s.map(q=>q[1]))+1;const g=document.createElement('div');g.className='mini';g.style.gridTemplateColumns=`repeat(${w},1fr)`;for(let y=0;y<h;y++)for(let x=0;x<w;x++){const c=document.createElement('span');c.className='mini-cell'+(s.some(q=>q[0]===x&&q[1]===y)?'':' blank');if(s.some(q=>q[0]===x&&q[1]===y)){c.style.background=META[id].color;if(x===s[0][0]&&y===s[0][1])c.textContent=META[id].glyph;}g.appendChild(c);}return g;}
+function pick(id){if(finished)return;active=id;if(pieces[id].at){pieces[id].at=null;message(`${META[id].name}を石盤から取り上げました。`);}else{message(`${META[id].name}を選びました。石盤のマスを押して配置できます。`);}render();}
+function place(x,y){if(finished)return;const o=occupied(),hit=o[`${x},${y}`];if(hit){pick(hit);return;}if(!active){message('石材棚から石を選んでください。');return;}const s=shapeFor(active),cells=s.map(([dx,dy])=>[x+dx,y+dy]);if(cells.some(([cx,cy])=>cx<0||cx>3||cy<0||cy>3)){message('そこには収まりません。回転させるか、別のマスを選んでください。');return;}if(cells.some(([cx,cy])=>o[`${cx},${cy}`])){message('ほかの石と重なります。');return;}pieces[active].at=[x,y];message(`${META[active].name}を置きました。`);active=null;render();check();}
+function check(){const o=occupied();const fill=Object.keys(o).length;
+if(fill!==16)return;
+if(o['3,0']!=='D'||o['3,1']!=='X'){message('くぼみは塞がりましたが、床の印と石の印が一致していません。');return;}
+finished=true;$('success').classList.add('show');message('試験合格。石盤が完成しました！');render();}
+function render(){const o=occupied();board.innerHTML='';for(let y=0;y<4;y++)for(let x=0;x<4;x++){const button=document.createElement('button');button.className='cell';button.type='button';const id=o[`${x},${y}`];if(id){button.classList.add('occupied');button.style.background=`linear-gradient(135deg,${META[id].color},#334f56)`;const b=document.createElement('span');b.className='glyph';b.textContent=META[id].glyph;button.appendChild(b);button.setAttribute('aria-label',`${x+1}列${y+1}行 ${META[id].name}`);}else{if(x===3&&y===0)button.textContent='◆';if(x===3&&y===1)button.textContent='◇';button.setAttribute('aria-label',`${x+1}列${y+1}行 空き ${button.textContent}`);}button.addEventListener('click',()=>place(x,y));board.appendChild(button);}
+rack.innerHTML='';for(const id of ['A','B','C','D']){const btn=document.createElement('button');btn.type='button';btn.className='piece'+(active===id?' selected':'')+(pieces[id].at?' done':'');const nm=document.createElement('span');nm.className='piece-name';nm.textContent=META[id].name;btn.append(nm,miniature(id));btn.addEventListener('click',()=>pick(id));rack.appendChild(btn);}
+$('selectedLabel').textContent=active?META[active].name:'なし';for(const id of ['rotate','flip','clearSelected'])$(id).disabled=!active||finished;
+$('ornament').classList.toggle('selected',active==='X');$('ornament').classList.toggle('removed',Boolean(pieces.X.at));$('ornament').disabled=finished;
+$('filledCount').textContent=`${Object.keys(o).length} / 16 マス`;
+}
+$('ornament').addEventListener('click',()=>pick('X'));
+$('rotate').addEventListener('click',()=>{if(!active)return;pieces[active].rot=(pieces[active].rot+1)%4;render();message(`${META[active].name}を回転させました。`)});
+$('flip').addEventListener('click',()=>{if(!active)return;pieces[active].flip=!pieces[active].flip;render();message(`${META[active].name}を裏返しました。`)});
+$('clearSelected').addEventListener('click',()=>{if(!active)return;const name=META[active].name;active=null;render();message(`${name}を選択解除しました。`)});
+$('reset').addEventListener('click',()=>{for(const p of Object.values(pieces)){p.rot=0;p.flip=false;p.at=null}active=null;finished=false;$('success').classList.remove('show');render();message('試験を最初の状態に戻しました。')});
+render();
+})();
+</script>
+</body>
+</html>

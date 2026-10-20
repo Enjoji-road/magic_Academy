@@ -59,7 +59,7 @@ function whisper(time,duration=0.2,frequency=1000,level=0.12){
   node.connect(filter);filter.connect(gain);gain.connect(master);
   node.start(time);node.stop(time+duration);
 }
-let lastSound=0;
+let lastSound=-Infinity;
 function play(name){
   if(!enabled)return;
   const audioCtx=context();if(!audioCtx)return;

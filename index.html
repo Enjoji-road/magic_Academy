@@ -4,40 +4,54 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#14242c">
-<meta name="description" content="魔法学校・土魔法学の実技試験。石と向き合い、第一の石盤を完成させよう。">
-<title>魔法学校｜土魔法学</title>
-<link rel="stylesheet" href="style.css">
-<script src="engine.js" defer></script>
-<script src="app.js" defer></script>
+<meta name="description" content="魔法学校の実技試験。好きな教室から挑戦し、いつでも別の試験へ移れる。">
+<title>魔法学校｜試験一覧</title>
+<style>
+:root{color-scheme:dark;--gold:#e6c581;--ink:#f3eee4}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 20% 0%,#36454c,#1a2e36 43%,#101e26);min-height:100vh;color:var(--ink);font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}
+main{width:min(970px,100%);margin:0 auto;padding:30px clamp(16px,4vw,36px) 60px}
+.eyebrow{font-size:11px;letter-spacing:.2em;color:#dbbb7b}.hero{position:relative;overflow:hidden;border:1px solid #62777a;border-radius:15px;background:linear-gradient(140deg,#273f45dd,#15272ede);padding:clamp(23px,5vw,40px);margin-bottom:24px}
+.hero::after{content:"✦";position:absolute;right:4%;top:-35px;font-size:210px;color:#c6a76d13;pointer-events:none}
+h1{font:clamp(32px,6vw,51px)/1.25 "Hiragino Mincho ProN","Yu Mincho",serif;letter-spacing:.15em;margin:12px 0 14px;color:#ffe7bc}
+.hero p{position:relative;font-size:14px;line-height:1.9;color:#d2dcd8;max-width:670px}.count{position:relative;display:inline-block;border:1px solid #9aa8a3;border-radius:20px;padding:8px 14px;font-size:12px;color:#f0d9a7}
+h2{font-size:16px;letter-spacing:.1em;color:#e6c88f;margin:0 0 16px}
+.rooms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.room{display:flex;flex-direction:column;gap:10px;min-width:0;text-decoration:none;border:1px solid #5d777b;border-radius:13px;padding:20px;background:#233940;min-height:200px;color:var(--ink);transition:background .15s ease,border-color .15s ease}
+a.room:hover{background:#2c454d;border-color:#ddb979}a.room:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.room .top{display:flex;align-items:center;gap:12px}.symbol{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;font-size:29px;background:#39494b;border:1px solid #6b7e7e;flex:none}
+.name{font-family:"Hiragino Mincho ProN",serif;letter-spacing:.07em;font-size:22px;margin:0}.sub{font-size:11px;color:#d0c8b8;margin:4px 0}
+.desc{font-size:13px;color:#c8d3d0;line-height:1.6;flex:1}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px}.badge{border:1px solid #93a2a0;color:#e0e5df;border-radius:20px;padding:4px 10px}.badge.passed{color:#b9ebcd;border-color:#9bc7ad}.go{color:#f6d99d;font-weight:700}
+.room.locked{background:#1b2b32;color:#8d9b9a;border-color:#3d5358}.room.locked .symbol{opacity:.52}.room.locked .desc{color:#91a4a1}
+.final{margin-top:24px;border:1px dashed #73858a;border-radius:12px;padding:20px;background:#1c3038}
+.final h2{margin-bottom:6px}.final p{font-size:13px;color:#bfceca;line-height:1.8;margin:0}
+footer{font-size:12px;color:#aebfbc;line-height:1.8;margin-top:18px}
+@media(max-width:610px){.rooms{grid-template-columns:minmax(0,1fr)}.room{min-height:175px;padding:15px}.hero{padding:22px}.room .name{font-size:20px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
 </head>
 <body>
 <main>
-<header><div class="eyebrow">ARCANE ACADEMY <span>ELEMENT IV</span></div><div class="heading"><h1>土魔法学</h1><span class="course">第一の石盤</span></div></header>
-<section class="paper" aria-labelledby="task-title"><h2 id="task-title">実技試験</h2><p>六行六列のくぼみを、石で隙間なく、重なりなく塞げ。</p><p><b>◆・◇の刻印</b>を、床の同じ印に重ねよ。</p><p><b>三連石に辺で接する石</b>は、すべて<b>四連石</b>でなければならない。</p><small>三連・四連は、ひとつながりの石のマス数を表す。斜めの接触は数えない。</small></section>
-<nav class="spells" aria-label="使用する魔法">
-<button type="button" class="spell chosen" data-spell="earth" aria-pressed="true"><span aria-hidden="true">⬡</span> 土</button>
-<button type="button" class="spell" data-spell="water" aria-pressed="false"><span aria-hidden="true">≈</span> 水</button>
-<button type="button" class="spell" data-spell="fire" aria-pressed="false"><span aria-hidden="true">♨</span> 炎</button>
-<button type="button" class="spell" data-spell="wind" aria-pressed="false"><span aria-hidden="true">彡</span> 風</button>
-</nav>
-<div class="layout">
-<section class="box scene" aria-label="石盤と操作">
-<div class="section-top"><h2>実習台</h2><span id="filledCount" class="tiny">4 / 36</span></div>
-<div class="altar"><div class="carving" aria-hidden="true">✦　 TERRA　 ✦</div><div id="board" aria-label="6行6列の石盤"></div><div class="altar-foot" aria-hidden="true"><i></i><span>ACADEMIA · LAPIS</span><i></i></div></div>
-<div class="status" id="status" role="status" aria-live="polite">土魔法を選び、石に触れると持ち上がります。</div>
-<div class="actions"><button type="button" id="judge" class="primary">石盤を判定する</button><button type="button" id="undo" class="secondary" disabled>一手戻る</button></div>
-<div id="success" class="success" hidden role="status"><div class="seal" aria-hidden="true">合</div><h2>土魔法学　合格</h2><p>第一の石盤が、あなたの魔法を認めました。</p><small>合格の記録を残したまま、装置を調べられます。</small></div>
-</section>
-<section class="box materials" aria-labelledby="rack-title"><div class="section-top"><h2 id="rack-title">石材棚</h2><span class="tiny">触れて選択</span></div><div id="rack" class="rack"></div><p class="tiny rack-note">刻印は石の一マスに刻まれています。<br>向きを変えると、刻印の位置も変わります。<br>二つの印は、表裏の対応する位置に刻まれています。</p><details class="guide"><summary>操作と魔法</summary><ol><li>土魔法で石に触れ、持ち上げる。</li><li>石盤に触れて、配置する位置を確認する。</li><li>必要なら矢印・回転・裏返しで調整し、「ここに置く」。</li></ol><p>石盤を押す位置は、石の左上でなくてもかまいません。候補の位置を表示します。</p><dl><dt>土</dt><dd>土や石を動かす</dd><dt>水</dt><dd>水を出す・流す</dd><dt>炎</dt><dd>燃やす・温める</dd><dt>風</dt><dd>風を起こす</dd></dl><p>キーボード：矢印で位置調整、Rで回転、Fで裏返し、Enterで配置、Escで選択を閉じる。</p></details><div class="under"><span class="tiny" id="saveStatus">途中の状態は自動保存されます</span><button type="button" class="text-button" id="reset">最初から</button></div></section>
+<div class="hero"><div class="eyebrow">ARCANE ACADEMY · GRADUATION TRIALS</div><h1>魔法学校</h1>
+<p>四元素の教室で、実技試験に挑戦しよう。受ける順番は自由。途中で別の教室に移っても、続きから再開できます。</p>
+<div class="count" id="count">合格記録を確認しています…</div>
 </div>
-<footer>魔法学校 <span>·</span> 土魔法学</footer>
+<section aria-labelledby="room-title"><h2 id="room-title">試験教室を選ぶ</h2>
+<div class="rooms">
+<a class="room" href="fire.html"><div class="top"><div class="symbol" aria-hidden="true">🔥</div><div><h3 class="name">炎魔法学</h3><p class="sub">影の持ち主</p></div></div><div class="desc">二つの燭台と三枚の金属板。影から本物を見分ける観察試験。</div><div class="foot"><span class="badge" id="fire-status">未受験</span><span class="go">教室へ入る →</span></div></a>
+<div class="room locked" aria-label="水魔法学・準備中"><div class="top"><div class="symbol" aria-hidden="true">💧</div><div><h3 class="name">水魔法学</h3><p class="sub">試験準備中</p></div></div><div class="desc">水魔法の実技試験は、現在制作中です。</div><div class="foot"><span class="badge">準備中</span></div></div>
+<div class="room locked" aria-label="風魔法学・準備中"><div class="top"><div class="symbol" aria-hidden="true">🌪️</div><div><h3 class="name">風魔法学</h3><p class="sub">試験準備中</p></div></div><div class="desc">風魔法の実技試験は、現在制作中です。</div><div class="foot"><span class="badge">準備中</span></div></div>
+<a class="room" href="earth.html"><div class="top"><div class="symbol" aria-hidden="true">🪨</div><div><h3 class="name">土魔法学</h3><p class="sub">第一の石盤</p></div></div><div class="desc">石を動かし、刻印と隣接条件に従って石盤を完成させる実技試験。</div><div class="foot"><span class="badge" id="earth-status">未受験</span><span class="go">教室へ入る →</span></div></a>
+</div></section>
+<section class="final"><h2>🎓 卒業試験</h2><p>四科目の試験を終えた先に待つ、最後の課題。現在は制作中です。</p></section>
+<footer>開発中の試作品です。合格記録と途中経過は同じブラウザの端末内に保存されます。教室間の移動では初期化されません。</footer>
 </main>
-<section id="placementTools" class="placement-tools" aria-label="選択中の石の操作" hidden>
-<div class="tool-head"><div id="heldMini" aria-hidden="true"></div><div class="held"><span class="tiny">土魔法で持ち上げています</span><strong id="selectedLabel"></strong></div><button type="button" class="icon-button" id="cancel" aria-label="選択を閉じる">×</button></div>
-<div class="orientation"><button type="button" id="rotate" class="secondary">↻ 回転</button><button type="button" id="flip" class="secondary">⇋ 裏返す</button><span class="tiny" id="previewNote">石盤に触れて位置を確認</span></div>
-<div class="positioning"><div class="nudge" aria-label="位置の微調整"><button type="button" data-nudge="-1,0" aria-label="左へ一マス">←</button><button type="button" data-nudge="0,-1" aria-label="上へ一マス">↑</button><button type="button" data-nudge="0,1" aria-label="下へ一マス">↓</button><button type="button" data-nudge="1,0" aria-label="右へ一マス">→</button></div><button type="button" id="cast" class="cast" disabled>ここに置く</button></div>
-</section>
-<dialog id="resetDialog"><h2>最初からやり直しますか？</h2><p>石の配置と合格記録を、初期状態に戻します。</p><div class="actions"><button type="button" class="secondary" id="keepPlaying">続ける</button><button type="button" class="primary" id="confirmReset">最初から</button></div></dialog>
-<noscript>この試験にはJavaScriptが必要です。ブラウザの設定を確認してください。</noscript>
+<script>
+(function(){
+"use strict";var passed=0;
+[["magic-academy-fire-v1","fire-status"],["magic-academy-earth-v2","earth-status"]].forEach(function(p){try{var d=JSON.parse(localStorage.getItem(p[0])||"null");if(d&&d.passed){var s=document.getElementById(p[1]);s.textContent="合格済み ✓";s.classList.add("passed");passed++;}else if(d&&(d.moves||d.seen&&(d.seen.left||d.seen.right))){document.getElementById(p[1]).textContent="挑戦中";}}catch(e){}});
+document.getElementById("count").textContent="合格："+passed+" / 4 科目　｜　現在は2教室がプレイ可能";
+})();
+</script>
 </body>
 </html>

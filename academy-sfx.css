@@ -1,0 +1,6 @@
+/* 音量を伴う自動再生は行わない。効果音のオン/オフのみ。 */
+.academy-sfx-toolbar{width:min(1040px,100%);margin:0 auto;padding:9px 16px 0;display:flex;justify-content:flex-end;font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif}
+.academy-sfx-toolbar button{min-height:40px;padding:8px 14px;background:linear-gradient(145deg,#30454b,#20313c);border:1px solid #9f906f;border-radius:9px;color:#f3dfb9;font:inherit;font-size:12px;cursor:pointer}
+.academy-sfx-toolbar button[aria-pressed="false"]{color:#b3c0bd;border-color:#5e7372}
+.academy-sfx-toolbar button:focus-visible{outline:3px solid #e8c884;outline-offset:3px}
+@media(max-width:370px){.academy-sfx-toolbar{padding:8px 10px 0}}

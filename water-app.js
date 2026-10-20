@@ -89,13 +89,18 @@ function readings(o){const grid=document.createElement('div');grid.className='re
 function openZoom(depths=state.depths,measured=Boolean(state.current),title='中央水槽・拡大図',origin=$('enlarge')){
  lastFocus=origin;$('zoomTitle').textContent=title;$('zoomContent').replaceChildren(buildScene(depths,measured));openDialog($('zoomDialog'));window.AcademySFX?.play('paper');
 }
-function renderRecords(){
- $('recordCount').textContent=state.records.length+'件';$('recordList').replaceChildren();
+function renderRecords(showLatest=false){
+ const list=$('recordList'),previousScroll=list.scrollLeft;
+ $('recordCount').textContent=state.records.length+'件';
+ $('recordsSwipeHint').hidden=state.records.length<2;
+ list.replaceChildren();
  if(!state.records.length){const p=document.createElement('p');p.className='small';p.textContent='供水瓶に水を注ぐと、ここに観測が記録されます。';$('recordList').append(p);return;}
  state.records.forEach((ds,index)=>{const o=M.observe(ds),card=document.createElement('article');card.className='journal';const head=document.createElement('div');head.className='journal-head';const heading=document.createElement('h3');heading.textContent='観測 '+String(index+1).padStart(2,'0');const zoom=document.createElement('button');zoom.type='button';zoom.textContent='図を見る';zoom.setAttribute('aria-label',heading.textContent+'の図を見る');zoom.addEventListener('click',()=>openZoom(ds,true,heading.textContent,zoom));head.append(heading,zoom);card.append(head);
   const cap=document.createElement('p');cap.className='depth-caption';cap.textContent='皿 I / II / III / IV：'+ds.map(depthLabel).join(' / ');card.append(cap,readings(o));
   const event=document.createElement('div');event.className='journal-observation';for(const message of[o.bubbles.length?'給水中、皿 '+o.bubbles.map(i=>M.OUTLETS[i]).join('・')+' の水中に気泡。水の噴き出しは見られない。':'給水中、四皿から気泡は出なかった。','四皿に青い水は現れなかった。用意した水の色も変わらなかった。','水面が落ち着くと、中央への流れも止まった。']){const p=document.createElement('p');p.textContent=message;event.append(p);}card.append(event);$('recordList').append(card);
  });
+ // Re-rendering a record must not unexpectedly jump back to the first card.
+ list.scrollLeft=showLatest?list.scrollWidth:previousScroll;
 }
 function renderDraft(){
  $('draftRows').replaceChildren();M.ROOMS.forEach((name,i)=>{const row=document.createElement('fieldset');row.className='draft-row';const legend=document.createElement('legend');legend.textContent='房 '+name;row.append(legend);const choices=document.createElement('div');choices.className='draft-choices';
@@ -114,7 +119,9 @@ function pour(){
   const messages={fire:'外周の受け皿の銀縁が、ほのかに温まりました。',wind:'水盤の脇の小さな布が、風を受けて揺れました。',earth:'足元の石製の受け皿がずれ、台座の下の排水溝が少し見えました。'};
   renderScene(true,spell);say(messages[spell]);window.AcademySFX?.play({fire:'ignite',wind:'wind',earth:'scrape'}[spell]);return;
  }
- M.record(state,state.depths);save();renderScene(true);renderRecords();
+ const earlierCount=state.records.length;
+ M.record(state,state.depths);save();renderScene(true);
+ renderRecords(state.records.length>earlierCount);
  const o=M.observe(state.depths);say(o.bubbles.length?'青い検水が中央へ入りました。四皿の水中に気泡が見え、やがて流れが止まりました。観測を記録しました。':'青い検水が中央へ入り、やがて流れが止まりました。観測を記録しました。');
  window.AcademySFX?.play('water');
 }

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14242c">
+<meta name="description" content="魔法学校・土魔法学の実技試験。石と向き合い、第一の石盤を完成させよう。">
+<title>魔法学校｜土魔法学</title>
+<link rel="stylesheet" href="style.css">
+<script src="engine.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<main><nav aria-label="教室移動" style="margin-bottom:15px"><a href="index.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid #60777b;border-radius:8px;color:#f4e0ae;text-decoration:none">← 試験一覧に戻る</a></nav>
+<header><div class="eyebrow">ARCANE ACADEMY <span>ELEMENT IV</span></div><div class="heading"><h1>土魔法学</h1><span class="course">第一の石盤</span></div></header>
+<section class="paper" aria-labelledby="task-title"><h2 id="task-title">実技試験</h2><p>六行六列のくぼみを、石で隙間なく、重なりなく塞げ。</p><p><b>◆・◇の刻印</b>を、床の同じ印に重ねよ。</p><p><b>三連石に辺で接する石</b>は、すべて<b>四連石</b>でなければならない。</p><small>三連・四連は、ひとつながりの石のマス数を表す。斜めの接触は数えない。</small></section>
+<nav class="spells" aria-label="使用する魔法">
+<button type="button" class="spell chosen" data-spell="earth" aria-pressed="true"><span aria-hidden="true">⬡</span> 土</button>
+<button type="button" class="spell" data-spell="water" aria-pressed="false"><span aria-hidden="true">≈</span> 水</button>
+<button type="button" class="spell" data-spell="fire" aria-pressed="false"><span aria-hidden="true">♨</span> 炎</button>
+<button type="button" class="spell" data-spell="wind" aria-pressed="false"><span aria-hidden="true">彡</span> 風</button>
+</nav>
+<div class="layout">
+<section class="box scene" aria-label="石盤と操作">
+<div class="section-top"><h2>実習台</h2><span id="filledCount" class="tiny">4 / 36</span></div>
+<div class="altar"><div class="carving" aria-hidden="true">✦　 TERRA　 ✦</div><div id="board" aria-label="6行6列の石盤"></div><div class="altar-foot" aria-hidden="true"><i></i><span>ACADEMIA · LAPIS</span><i></i></div></div>
+<div class="status" id="status" role="status" aria-live="polite">土魔法を選び、石に触れると持ち上がります。</div>
+<div class="actions"><button type="button" id="judge" class="primary">石盤を判定する</button><button type="button" id="undo" class="secondary" disabled>一手戻る</button></div>
+<div id="success" class="success" hidden role="status"><div class="seal" aria-hidden="true">合</div><h2>土魔法学　合格</h2><p>第一の石盤が、あなたの魔法を認めました。</p><small>合格の記録を残したまま、装置を調べられます。</small></div>
+</section>
+<section class="box materials" aria-labelledby="rack-title"><div class="section-top"><h2 id="rack-title">石材棚</h2><span class="tiny">触れて選択</span></div><div id="rack" class="rack"></div><p class="tiny rack-note">刻印は石の一マスに刻まれています。<br>向きを変えると、刻印の位置も変わります。<br>二つの印は、表裏の対応する位置に刻まれています。</p><details class="guide"><summary>操作と魔法</summary><ol><li>土魔法で石に触れ、持ち上げる。</li><li>石盤に触れて、配置する位置を確認する。</li><li>必要なら矢印・回転・裏返しで調整し、「ここに置く」。</li></ol><p>石盤を押す位置は、石の左上でなくてもかまいません。候補の位置を表示します。</p><dl><dt>土</dt><dd>土や石を動かす</dd><dt>水</dt><dd>水を出す・流す</dd><dt>炎</dt><dd>燃やす・温める</dd><dt>風</dt><dd>風を起こす</dd></dl><p>キーボード：矢印で位置調整、Rで回転、Fで裏返し、Enterで配置、Escで選択を閉じる。</p></details><div class="under"><span class="tiny" id="saveStatus">途中の状態は自動保存されます</span><button type="button" class="text-button" id="reset">最初から</button></div></section>
+</div>
+<footer>魔法学校 <span>·</span> 土魔法学</footer>
+</main>
+<section id="placementTools" class="placement-tools" aria-label="選択中の石の操作" hidden>
+<div class="tool-head"><div id="heldMini" aria-hidden="true"></div><div class="held"><span class="tiny">土魔法で持ち上げています</span><strong id="selectedLabel"></strong></div><button type="button" class="icon-button" id="cancel" aria-label="選択を閉じる">×</button></div>
+<div class="orientation"><button type="button" id="rotate" class="secondary">↻ 回転</button><button type="button" id="flip" class="secondary">⇋ 裏返す</button><span class="tiny" id="previewNote">石盤に触れて位置を確認</span></div>
+<div class="positioning"><div class="nudge" aria-label="位置の微調整"><button type="button" data-nudge="-1,0" aria-label="左へ一マス">←</button><button type="button" data-nudge="0,-1" aria-label="上へ一マス">↑</button><button type="button" data-nudge="0,1" aria-label="下へ一マス">↓</button><button type="button" data-nudge="1,0" aria-label="右へ一マス">→</button></div><button type="button" id="cast" class="cast" disabled>ここに置く</button></div>
+</section>
+<dialog id="resetDialog"><h2>最初からやり直しますか？</h2><p>石の配置と合格記録を、初期状態に戻します。</p><div class="actions"><button type="button" class="secondary" id="keepPlaying">続ける</button><button type="button" class="primary" id="confirmReset">最初から</button></div></dialog>
+<noscript>この試験にはJavaScriptが必要です。ブラウザの設定を確認してください。</noscript>
+</body>
+</html>

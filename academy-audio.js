@@ -36,7 +36,7 @@
   document.body.append(dialog);
   const openBtn=$(bar,'[data-audio-open]'), indicator=$(bar,'[data-audio-indicator]');
   const playBtn=$(dialog,'[data-audio-play]'),closeBtn=$(dialog,'[data-audio-close]'),muteBtn=$(dialog,'[data-audio-mute]');
-  const slider=$(dialog,'[data-audio-volume]'),pct=$(dialog,'[data-audio-percent]'),status=$(dialog,'[data-audio-status]');
+  const slider=$(dialog,'#academy-audio-volume'),pct=$(dialog,'[data-audio-percent]'),status=$(dialog,'[data-audio-status]');
   const audio=new Audio();audio.preload='none';audio.loop=true;audio.playsInline=true;
   let objectURL=null,loadPromise=null,playing=false,ctx=null,gain=null,source=null,lastSavedPosition=0;
   const notify=msg=>{status.textContent=msg;};

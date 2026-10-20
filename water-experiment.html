@@ -6,11 +6,11 @@
 <meta name="theme-color" content="#132936">
 <meta name="description" content="魔法学校・水盤室。水を注ぎ、静かな六房水槽の観測を記録する。">
 <title>魔法学校｜水魔法学・水の届かない部屋</title>
-<link rel="stylesheet" href="water-experiment.css?v=1">
+<link rel="stylesheet" href="water-experiment.css?v=2">
 <link rel="stylesheet" href="academy-studio-sfx.css?v=1">
 <script src="academy-studio-sfx.js?v=1" defer></script>
 <script src="water-model.js?v=1" defer></script>
-<script src="water-app.js?v=1" defer></script>
+<script src="water-app.js?v=2" defer></script>
 </head>
 <body>
 <a class="skip" href="#experiment">実験装置へ進む</a>
@@ -36,7 +36,7 @@
 <ul><li>供水瓶の水面は、中央水槽の底から90 cm。溢れ口が一定の高さを保ちます。水魔法で圧力を上乗せする装置ではありません。</li><li>中央の六房は高さ120 cm、同じ断面積。給水管は各房の底に一本ずつ入り、逆流防止弁で房同士の水は混ざりません。</li><li>各房には給水管とは別に、同じ高さから出る二本の連絡管があります。それぞれ異なる皿へつながり、途中の分岐・他の出口はありません。同じ皿へ、複数の房の管が来ることはあります。</li><li>この型の連絡管は、六房すべてが同じ取り付け方です。取り出し口は天井面か底面のいずれか。石の覆いで見えません。</li><li>四皿の管の出口は、各皿の底にあります。出口の弁は外向きにだけ開き、水も気体も通せます。皿から管へは逆流しません。「栓」で閉じることもできます。</li><li>供水瓶には青い検水が備え付けられています。注いだ水はそれと混ざって中央へ流れます。四皿に用意するのは無色の水です。測定後の色も記録に残ります。</li><li>復帰レバーは給水を止め、排水口と基準口を開いて、水槽を空・室内と同じ圧力へ戻します。測定時にはどちらも閉まります。</li><li>水深は調節目盛りと排水口で用意します。測定中は溢れ口が四皿の深さを維持します。</li><li>常温・低速の測定を表示しています。細かい渦や液面の揺れ、弁が開くための小さな圧力差は省略しています。目盛りの違いは、その誤差より十分大きくしてあります。</li></ul>
 <p>観測図の拡大・自動記録・自由メモを使えます。提出回数による制限はありません。試験のリセットとメモの消去は別の操作です。</p></details>
 </section>
-<section class="panel" id="records" aria-labelledby="recordsTitle"><div class="section-top"><div><p class="eyebrow">LABORATORY JOURNAL</p><h2 id="recordsTitle">観測記録</h2></div><span id="recordCount" class="small">0件</span></div><p class="small">同じ条件は一枚にまとめ、すべての観測条件を自動保存します。給水中の出来事と、その後の水位を記録します。</p><div id="recordList" class="record-list"><p>供水瓶に水を注ぐと、ここに記録されます。</p></div>
+<section class="panel" id="records" aria-labelledby="recordsTitle"><div class="section-top"><div><p class="eyebrow">LABORATORY JOURNAL</p><h2 id="recordsTitle">観測記録</h2></div><span id="recordCount" class="small">0件</span></div><p class="small">同じ条件は一枚にまとめ、すべての観測条件を自動保存します。給水中の出来事と、その後の水位を記録します。</p><p class="record-scroll-help" id="recordsSwipeHint" hidden>← 観測カードを横にスワイプして見比べられます →</p><div id="recordList" class="record-list" role="region" tabindex="0" aria-label="観測記録。左右にスクロールしてカードを比較できます"><p>供水瓶に水を注ぐと、ここに記録されます。</p></div>
 <label class="notes-label" for="notes">自分の研究メモ <span class="small">採点には使いません</span></label><textarea id="notes" rows="5" maxlength="8000" placeholder="気づいたこと、試したい条件など"></textarea><div class="notes-footer"><span class="small" id="notesCount">0 / 8000</span><button type="button" id="clearNotes">メモを消す</button></div></section>
 <section class="ledger" id="ledger" aria-labelledby="ledgerTitle"><p class="eyebrow">ACADEMY · APPARATUS REGISTER</p><h2 id="ledgerTitle">装置台帳</h2><p>各房の二本の連絡管が、どの皿へつながっているかを記入してください。各行で二つ選び、装置図全体を提出します。</p><form id="answerForm"><div id="draftRows"></div><p class="draft-count" id="draftCount">記入 0 / 12 本</p><button type="submit" class="submit">装置図を提出する</button><p id="answerStatus" role="status" aria-live="polite">記入途中の装置図も保存されます。</p></form></section>
 <section class="pass" id="pass" hidden aria-labelledby="passTitle"><div class="pass-star" aria-hidden="true">✧</div><p>ARCANE ACADEMY</p><h2 id="passTitle">水魔法学 合格</h2><p>六房水槽の装置図が受理されました。</p><div class="seal">学院認印<span>AQUA</span></div><a href="academy-water-preview.html">試験回廊へ戻る →</a></section>

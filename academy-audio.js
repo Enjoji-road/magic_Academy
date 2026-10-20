@@ -78,8 +78,8 @@ function setVolume(){
   muteBtn.setAttribute('aria-pressed',String(state.muted));
 }
 function render(){
-  playBtn.textContent=playing?'⏸ BGMを一時停止':state.enabled?(objectURL?'▶ BGMを再生':'⏳ 音源を読み込み中…'):'▶ BGMを再開';
-  playBtn.disabled=Boolean(state.enabled&&!objectURL&&!playing);
+  playBtn.textContent=playing?'⏸ BGMを一時停止':state.enabled?(objectURL?'▶ BGMを再生':'⏸ 自動再生をオフ'):'▶ BGMを再開';
+  playBtn.disabled=false;
   indicator.textContent=playing&&!state.muted&&state.volume>0?'♫':'♪';
   openBtn.setAttribute('aria-label','設定'+(playing?'・BGM再生中':'・BGM停止中'));
 }
@@ -204,14 +204,13 @@ muteBtn.addEventListener('click',()=>{
   setVolume();persist();
 });
 playBtn.addEventListener('click',()=>{
-  if(playing||!state.enabled){
-    if(playing){stop();return;}
+  if(playing||(state.enabled&&!objectURL)){stop();return;}
+  if(!state.enabled){
     state.enabled=true;state.wasPlaying=true;persist();
     if(!objectURL)prepare();
     else start(true);
     render();return;
   }
-  if(!objectURL){prepare();return;}
   start(true);
 });
 audio.addEventListener('error',()=>{

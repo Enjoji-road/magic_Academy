@@ -12,7 +12,7 @@ for(const side of['left','right']){
   const p=M.PLATES[i],l=M.LAMPS[side];
   for(const sign of[-1,1])check(()=>{const edge=p.x+sign*p.width/2,wall=l.x+(edge-l.x)*actual[i].scale;assert(Math.abs(wall-(actual[i].x+sign*actual[i].width/2))<1e-12);});
  }
- check(()=>assert.equal(M.observation(side).length,6));
+ check(()=>{const polys=M.observation(side);assert.equal(polys.length,6);assert(polys.every(p=>p.reduce((a,v,i)=>{const q=p[(i+1)%p.length];return a+v[0]*q[1]-q[0]*v[1];},0)>0),'Consistent winding is required for a single nonzero compound path');});
 }
 check(()=>assert.equal(M.restore({passed:true,version:1}),null));
 check(()=>assert.equal(M.restore({version:2,puzzle:'other',passed:true}),null));

@@ -8,10 +8,10 @@ const X=x=>75+x*25,Y=y=>80+y*25;
 function save(){try{localStorage.setItem(M.KEY,JSON.stringify(state));}catch{storageOK=false;}$('saveStatus').textContent=storageOK?'観測・選択・合格記録は、このブラウザに自動保存されます。':'このブラウザでは途中保存を利用できません。ページを閉じると状態が失われます。';}
 function say(text){$('status').textContent=text;}
 function number(v){return Number(v.toFixed(6));}
-function polygon(points){return points.map(([x,z])=>`${number(X(x))},${number(63+25*z)}`).join(' ');}
+function crestPath(points){return 'M'+points.map(([x,z])=>`${number(X(x))},${number(63+25*z)}`).join('L')+'Z';}
 function wall(side,seen){let out='<rect x="25" y="9" width="700" height="105" rx="5" fill="'+(seen?'#cdbb99':'#30434c')+'" stroke="#d1c19f" stroke-width="2"/>';
  for(let n=1;n<=9;n++)out+=`<line x1="${X(M.slotX(n))}" y1="111" x2="${X(M.slotX(n))}" y2="121" stroke="#cfbe99"/><text x="${X(M.slotX(n))}" y="146" text-anchor="middle" fill="#e3d9be" font-size="24">${n}</text>`;
- if(seen)out+='<g fill="#273036" stroke="none">'+M.observation(side).map(p=>`<polygon points="${polygon(p)}"/>`).join('')+'</g>';else out+='<text x="375" y="72" text-anchor="middle" fill="#c7d0cb" font-size="25">未観測</text>';
+ if(seen)out+='<path fill="#273036" stroke="none" fill-rule="nonzero" d="'+M.observation(side).map(crestPath).join(' ')+'"/>';else out+='<text x="375" y="72" text-anchor="middle" fill="#c7d0cb" font-size="25">未観測</text>';
  return out;}
 function room(){let s='<rect x="9" y="7" width="782" height="437" rx="12" fill="#2a3f4b" stroke="#71828a" stroke-width="2"/>';
  for(let x=-2;x<=26;x++)s+=`<line x1="${X(x)}" y1="${Y(0)}" x2="${X(x)}" y2="${Y(12)}" stroke="#8da2a7" stroke-width="${x%3===0?1.2:.6}" opacity="${x%3===0?.42:.2}"/>`;

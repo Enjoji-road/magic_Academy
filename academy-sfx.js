@@ -65,7 +65,7 @@ function play(name){
   const audioCtx=context();if(!audioCtx)return;
   const t=audioCtx.currentTime+0.005;
   // 誤操作で連続鳴動し続けないよう、ごく短いクールダウン。
-  if(t-lastSound<0.05)return;
+  if(name!=='pass'&&t-lastSound<0.05)return;
   lastSound=t;
   try{
     switch(name){
@@ -96,7 +96,7 @@ function play(name){
         tone(420,t,0.19,0.09,'sine',680);
         break;
       case 'pass':
-        [523,659,784,1046].forEach((hz,i)=>tone(hz,t+i*0.115,0.40,0.20,'sine'));
+        [523,659,784,1046].forEach((hz,i)=>tone(hz,t+0.17+i*0.115,0.40,0.20,'sine'));
         break;
       case 'fail':
         tone(260,t,0.18,0.09,'triangle',205);

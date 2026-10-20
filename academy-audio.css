@@ -1,0 +1,25 @@
+/* Shared Academy Audio Settings — additive, independent of exam UI. */
+.academy-audio-toolbar{width:min(1040px,100%);margin:0 auto;padding:11px 18px 0;display:flex;align-items:center;justify-content:flex-end;gap:9px;font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif}
+.academy-audio-toolbar button{min-height:44px;padding:9px 16px;border-radius:10px;border:1px solid #b79b68;background:linear-gradient(165deg,#36454b,#22323c);color:#f3dfb9;font:inherit;font-size:13px;cursor:pointer;white-space:nowrap}
+.academy-audio-toolbar button:hover{background:#3c4b50}.academy-audio-toolbar button:focus-visible{outline:3px solid #f1d696;outline-offset:3px}
+.academy-audio-dialog{box-sizing:border-box;border:1px solid #b89a67;border-radius:16px;width:min(430px,calc(100vw - 28px));max-height:min(86vh,760px);overflow-y:auto;padding:0;color:#f3eee3;background:#1f343b;box-shadow:0 24px 70px #0009;font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif}
+.academy-audio-dialog::backdrop{background:#0a1219b5;backdrop-filter:blur(3px)}
+.academy-audio-dialog *{box-sizing:border-box}
+.academy-audio-content{padding:23px 22px 20px}
+.academy-audio-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:19px}
+.academy-audio-head h2{font-family:"Hiragino Mincho ProN",serif;color:#f4d69e;font-size:23px;letter-spacing:.1em;margin:0}
+.academy-audio-close{width:44px;height:44px;flex:none;border:1px solid #8b9b98;border-radius:9px;background:#2b4248;color:#fff5d8;cursor:pointer;font-size:20px}
+.academy-audio-track{border:1px solid #526a6c;border-radius:10px;background:#162a31;padding:14px;margin-bottom:18px}
+.academy-audio-track strong{display:block;color:#fff0d0;font-size:17px}.academy-audio-track span{display:block;color:#b9c9c8;font-size:12px;margin-top:4px;line-height:1.6}
+.academy-audio-volume-label{display:flex;justify-content:space-between;align-items:center;margin:4px 0 11px;color:#f3e5ca;font-size:15px}
+.academy-audio-slider{width:100%;accent-color:#e7c884;min-height:36px;cursor:pointer}
+.academy-audio-controls{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.academy-audio-controls button{min-height:48px;border-radius:9px;font:inherit;font-size:14px;cursor:pointer;padding:10px 14px}
+.academy-audio-play{flex:2;min-width:180px;background:linear-gradient(#f0d394,#d9b675);border:1px solid #f2d79b;color:#2b302b;font-weight:750}
+.academy-audio-mute{flex:1;min-width:98px;background:#31454c;border:1px solid #90a2a2;color:#f5ecdb}
+.academy-audio-hint{color:#bfcecc;font-size:12px;line-height:1.85;margin:12px 0 0}
+.academy-audio-message{color:#e8ce9d;font-size:12px;line-height:1.7;min-height:21px;margin:12px 0 0}
+.academy-audio-credit{margin:16px 0 0;font-size:12px;color:#c7d1cd;border-top:1px solid #526769;padding-top:14px}.academy-audio-credit a{color:#f0d29f;text-decoration:underline}
+.academy-audio-dialog button:focus-visible,.academy-audio-dialog input:focus-visible{outline:3px solid #f3daa4;outline-offset:3px}
+@media(max-width:370px){.academy-audio-toolbar{padding:9px 10px 0}.academy-audio-content{padding:16px}.academy-audio-controls{flex-direction:column}.academy-audio-play,.academy-audio-mute{min-width:0;width:100%}}
+@media(prefers-reduced-motion:reduce){.academy-audio-dialog::backdrop{backdrop-filter:none}}

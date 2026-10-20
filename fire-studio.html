@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#241b22">
+<meta name="description" content="魔法学校・灯火観測室。炎を灯し、観測を記録し、失われた台帳を埋める。">
+<title>魔法学校｜灯火観測室・灯樹の原像</title>
+<link rel="stylesheet" href="fire-experiment.css?v=4">
+<link rel="stylesheet" href="academy-studio.css?v=1">
+<link rel="stylesheet" href="academy-studio-sfx.css?v=1">
+<script src="academy-studio-sfx.js?v=1" defer></script>
+<script src="fire-experiment-model.js?v=4" defer></script>
+<script src="fire-experiment-app.js?v=4" defer></script>
+<script src="fire-studio.js?v=1" defer></script>
+</head>
+<body class="studio-fire">
+<div class="academy-topbar"><a class="academy-brand" href="academy-preview.html"><span aria-hidden="true">✦</span><span>魔法学校<small>ARCANE ACADEMY</small></span></a><button type="button" class="settings-button" data-settings>⚙ 設定</button></div>
+<main>
+<a class="back" href="academy-preview.html">← 試験回廊へ戻る</a>
+<header class="studio-heading"><div class="room-number">I <span>IGNIS · OBSERVATORY</span></div><div><p class="room-kicker">炎魔法学 / 灯火観測室</p><h1>灯樹の原像</h1><p class="room-subtitle">真鍮の灯具に、観測のための炎を。</p></div><svg class="room-emblem" viewBox="0 0 120 140" aria-hidden="true"><path d="M10 130V54Q10 17 60 6Q110 17 110 54V130Z" fill="#603b32" stroke="#b69763"/><path d="M22 119V56Q22 29 60 19Q98 29 98 56V119Z" fill="#211e26" stroke="#796450"/><path d="M60 35C63 63 90 66 86 91C81 119 40 120 34 94C30 75 44 62 49 52C49 72 63 75 60 35Z" fill="#cb945c"/><path d="M61 73C63 88 74 92 68 104C59 117 43 101 51 90Z" fill="#f0cf93"/><path d="M60 6V29M10 69H33M88 69H110M19 130L38 109M101 130L84 109" stroke="#bd9a60"/></svg></header>
+<section class="assignment" aria-labelledby="assignment-title"><div class="seal-mark" aria-hidden="true">✦</div><div><p class="paper-eyebrow">実技試験 / 創立資料の照合</p><h2 id="assignment-title">失われた台帳</h2><p>保管庫に残された、創立当時の原校章<b>「六葉の灯樹」</b>。台帳から失われたのは、その登録番号だけ。</p><p>炎魔法で観測装置を使い、<b>原校章の登録番号</b>を記せ。</p></div></section>
+<nav class="magics" aria-label="使用する魔法">
+<button type="button" class="magic" data-magic="fire" aria-pressed="true"><span aria-hidden="true">♨</span> 炎</button>
+<button type="button" class="magic" data-magic="water" aria-pressed="false"><span aria-hidden="true">≈</span> 水</button>
+<button type="button" class="magic" data-magic="wind" aria-pressed="false"><span aria-hidden="true">彡</span> 風</button>
+<button type="button" class="magic" data-magic="earth" aria-pressed="false"><span aria-hidden="true">⬡</span> 土</button>
+</nav>
+<nav class="work-tabs" aria-label="実習内の移動"><a href="#lab-title">観測装置</a><a href="#records-title">観測とメモ</a><a href="#archive-title">登録台帳</a></nav>
+<div class="studio-workspace">
+<section class="panel lab" aria-labelledby="lab-title">
+<div class="topline"><div><p class="section-number">01 / APPARATUS</p><h2 id="lab-title">灯火観測装置</h2></div><button type="button" class="small-button" id="enlargeRoom">配置図を拡大</button></div>
+<div class="scene" tabindex="0" aria-label="配置図。横にスクロールできます"><svg id="room" viewBox="0 0 780 490" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="上から見た実験室の配置図"></svg></div>
+<p class="caption">上面図。xは横方向、yは光源から壁への奥行き。札の面は壁と平行。図は横に動かせます。</p>
+<div class="lamps"><button type="button" data-lamp="first" aria-pressed="false"><span aria-hidden="true">♧</span> 燭台 I に魔法を使う</button><button type="button" data-lamp="second" aria-pressed="false"><span aria-hidden="true">♧</span> 燭台 II に魔法を使う</button></div>
+<div class="status" id="status" role="status" aria-live="polite">炎魔法を選び、燭台に触れてください。</div>
+<div class="utility-row"><button type="button" class="small-button" id="cover">観測窓を閉じる</button><span class="small" id="windowState">観測窓：閉</span></div>
+<details class="mechanism" id="mechanism"><summary>装置の仕組みを見る <span aria-hidden="true">＋</span></summary><div class="mechanism-content"><h3>金属と、光の通り道</h3><ol><li>数字が透かされた金属札に光を当てます。</li><li>穴がある部分だけ、光が通ります。</li><li>二枚が重なると、両方に穴がある部分だけ光が通ります。</li><li>その結果、元の札とは異なる数字が壁に映ることがあります。</li></ol><div class="mechanism-diagram" id="mechanismDiagram" role="img" aria-label="説明用の数字4と7の透かしを重ねると、両方に共通する右側の二つの穴だけが明るくなる"></div><p class="small">明るい箇所が、光の通る穴です。説明用の札を使った図で、試験の札の刻字ではありません。</p></div></details>
+<details class="specs"><summary>操作と装置の仕様・寸法</summary>
+<p>燭台のボタンに、選択中の魔法を使います。炎で点火すると、その燭台の遮光蓋が開きます。遮光蓋は連動しており、壁へ届く観測光は常に一灯分です。他の芯に火が残っていても、その光は壁に届きません。</p>
+<p>原校章は、6枚の火焔形の金属札と支柱を一体に組んだ立体金工です。正面は保護ケースの内側を向いています。上面図では札を真上から見ています。</p>
+<p>札にはそれぞれ0〜9の数字が一つ、透かしで刻まれています。金属は不透明、透かしは透明です。すべて同じ刻字規格・同じ向きです。</p>
+<p>光源は点光源、光は直進するものとして扱います。反射・散乱・半影は考えません。観測壁の目盛りと額縁は固定の計測枠です。</p>
+<div class="table-wrap"><table><caption>装置の寸法（単位は共通。高さは光源の高さを0とする）</caption><thead><tr><th>装置</th><th>x</th><th>y</th><th>中心の高さ</th><th>札の幅</th></tr></thead><tbody>
+<tr><td>燭台 I</td><td>0</td><td>0</td><td>0</td><td>—</td></tr><tr><td>燭台 II</td><td>1</td><td>0</td><td>0</td><td>—</td></tr>
+<tr><td>札 A</td><td>−1/2</td><td>6</td><td>3</td><td>0.39</td></tr><tr><td>札 B</td><td>0</td><td>6</td><td>3</td><td>0.39</td></tr><tr><td>札 C</td><td>1/2</td><td>6</td><td>3</td><td>0.39</td></tr>
+<tr><td>札 D</td><td>−1/3</td><td>4</td><td>2</td><td>0.26</td></tr><tr><td>札 E</td><td>0</td><td>4</td><td>2</td><td>0.26</td></tr><tr><td>札 F</td><td>1/3</td><td>4</td><td>2</td><td>0.26</td></tr>
+<tr><td>観測壁</td><td>目盛りを参照</td><td>12</td><td>—</td><td>—</td></tr></tbody></table></div>
+<p>札の縦横比はすべて同じです。各透かしは、下の規格に従って作られています。壁の図も、札と同じ向きから見たものです。</p><div class="font-grid" id="fontSamples" role="img" aria-label="透かしの刻字規格、0から9の見本"></div>
+<p>観測は点火時に自動で記録されます。記録は何度でも見比べられ、ページを閉じても保存されます。</p><p class="small">炎：燃やす・温める／水：水を出す・流す／風：風を起こす／土：土や石を動かす。</p>
+</details>
+</section>
+<section class="panel records" aria-labelledby="records-title"><div class="topline"><div><p class="section-number">02 / OBSERVATIONS</p><h2 id="records-title">観測記録</h2></div><button type="button" class="small-button" id="compare">並べて拡大</button></div><p class="small">壁を正面から見た記録。下端の数字は壁のx座標。</p><div class="record-grid">
+<article class="record" id="firstFrame"><div class="topline"><h3><span class="record-index">I</span>燭台 I</h3><button type="button" class="small-button" data-zoom="first">拡大</button></div><svg id="observFirst" viewBox="0 0 700 320" role="img" aria-label="燭台Iは未観測"></svg><p class="record-foot">灯火観測室 / 第一記録</p></article>
+<article class="record" id="secondFrame"><div class="topline"><h3><span class="record-index">II</span>燭台 II</h3><button type="button" class="small-button" data-zoom="second">拡大</button></div><svg id="observSecond" viewBox="0 0 700 320" role="img" aria-label="燭台IIは未観測"></svg><p class="record-foot">灯火観測室 / 第二記録</p></article>
+</div></section>
+<section class="panel notebook" aria-labelledby="notes-title"><div class="topline"><h2 id="notes-title">実習ノート</h2><span class="small" id="notesStatus" aria-live="polite">この端末に自動保存</span></div><label for="experimentNotes">気づいたことや仮説を、自由に記録できます。</label><textarea id="experimentNotes" rows="5" maxlength="8000" placeholder="観測メモ…"></textarea><div class="notebook-bottom"><span id="notesCount" class="small">0 / 8000</span><button type="button" class="small-button" id="clearNotes">メモを消す</button></div></section>
+<aside class="panel archive" aria-labelledby="archive-title"><div class="topline"><div><p class="section-number">03 / ARCHIVE</p><h2 id="archive-title">創立登録台帳</h2></div><span class="archive-corner" aria-hidden="true">✦</span></div><p class="small">台帳に残された、原校章の正面配置。</p>
+<svg id="archiveDiagram" viewBox="0 0 600 560" role="img" aria-label="原校章の配置略図。上段は左からA、B、C。下段は左からD、E、F。刻字は記録されていない。"></svg>
+<p class="archive-note">登録番号は<b>A → B → C → D → E → F</b>の6桁。札の位置と採番順だけが、台帳に残っている。</p>
+<form id="answerForm" novalidate><label for="answer">原校章の登録番号</label><div class="ledger-entry"><span aria-hidden="true">No.</span><input id="answer" name="answer" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" maxlength="40" placeholder="数字6桁" aria-describedby="feedback"></div><button type="submit" class="primary" id="submit">台帳に記し、提出する</button></form>
+<div id="feedback" class="feedback" aria-live="polite">登録番号を記入し、台帳を提出してください。</div>
+<section id="pass" class="pass" hidden><div class="ritual-lights" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="academy-pass-stamp" role="img" aria-label="学院の合格印"><span>ARCANE ACADEMY</span><b>合格</b><small>IGNIS</small></div><h3>炎魔法学　合格</h3><p>台帳の登録番号が照合されました。</p><svg id="restoredSeal" viewBox="0 0 600 560" role="img" aria-label="復元された原校章"></svg><p class="small">合格の記録を残したまま、観測を続けられます。</p><a href="academy-preview.html">試験回廊に戻る →</a></section>
+<div class="answer-bottom"><button type="button" class="secondary" id="reset">この試験を最初から</button></div></aside>
+</div>
+<footer><span>魔法学校 · 灯火観測室 / UI試作品</span><span id="saveStatus">観測と記入内容を自動保存します。</span></footer>
+</main>
+<dialog id="zoomDialog"><div class="topline"><h2 id="zoomTitle">配置図</h2><button type="button" class="secondary" id="closeZoom">閉じる</button></div><div class="zoom-scroll" id="zoomContent"></div><p class="small">横に収まらない図はスクロールできます。Escキーでも閉じられます。</p></dialog>
+<noscript>この試験にはJavaScriptが必要です。</noscript>
+</body>
+</html>

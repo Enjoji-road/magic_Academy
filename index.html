@@ -38,7 +38,7 @@ footer{font-size:12px;color:#aebfbc;line-height:1.8;margin-top:18px}
 </div>
 <section aria-labelledby="room-title"><h2 id="room-title">試験教室を選ぶ</h2>
 <div class="rooms">
-<a class="room" href="fire.html"><div class="top"><div class="symbol" aria-hidden="true">🔥</div><div><h3 class="name">炎魔法学</h3><p class="sub">影の持ち主</p></div></div><div class="desc">二つの燭台と三枚の金属板。影から本物を見分ける観察試験。</div><div class="foot"><span class="badge" id="fire-status">未受験</span><span class="go">教室へ入る →</span></div></a>
+<a class="room" href="fire.html"><div class="top"><div class="symbol" aria-hidden="true">🔥</div><div><h3 class="name">炎魔法学</h3><p class="sub">影の持ち主</p></div></div><div class="desc">二つの燭台と五枚の金属板。影から本物を見分ける観察試験。</div><div class="foot"><span class="badge" id="fire-status">未受験</span><span class="go">教室へ入る →</span></div></a>
 <div class="room locked" aria-label="水魔法学・準備中"><div class="top"><div class="symbol" aria-hidden="true">💧</div><div><h3 class="name">水魔法学</h3><p class="sub">試験準備中</p></div></div><div class="desc">水魔法の実技試験は、現在制作中です。</div><div class="foot"><span class="badge">準備中</span></div></div>
 <div class="room locked" aria-label="風魔法学・準備中"><div class="top"><div class="symbol" aria-hidden="true">🌪️</div><div><h3 class="name">風魔法学</h3><p class="sub">試験準備中</p></div></div><div class="desc">風魔法の実技試験は、現在制作中です。</div><div class="foot"><span class="badge">準備中</span></div></div>
 <a class="room" href="earth.html"><div class="top"><div class="symbol" aria-hidden="true">🪨</div><div><h3 class="name">土魔法学</h3><p class="sub">第一の石盤</p></div></div><div class="desc">石を動かし、刻印と隣接条件に従って石盤を完成させる実技試験。</div><div class="foot"><span class="badge" id="earth-status">未受験</span><span class="go">教室へ入る →</span></div></a>
@@ -48,9 +48,20 @@ footer{font-size:12px;color:#aebfbc;line-height:1.8;margin-top:18px}
 </main>
 <script>
 (function(){
-"use strict";var passed=0;
-[["magic-academy-fire-v1","fire-status"],["magic-academy-earth-v2","earth-status"]].forEach(function(p){try{var d=JSON.parse(localStorage.getItem(p[0])||"null");if(d&&d.passed){var s=document.getElementById(p[1]);s.textContent="合格済み ✓";s.classList.add("passed");passed++;}else if(d&&(d.moves||d.seen&&(d.seen.left||d.seen.right))){document.getElementById(p[1]).textContent="挑戦中";}}catch(e){}});
-document.getElementById("count").textContent="合格："+passed+" / 4 科目　｜　現在は2教室がプレイ可能";
+"use strict";
+function refreshProgress(){
+ var passed=0;
+ var exams=[{key:"magic-academy-fire-v2",id:"fire-status",version:2,puzzle:"shadow-v2-depths-20261020"},{key:"magic-academy-earth-v2",id:"earth-status"}];
+ exams.forEach(function(p){
+  var badge=document.getElementById(p.id);badge.textContent="未受験";badge.classList.remove("passed");
+  try{var d=JSON.parse(localStorage.getItem(p.key)||"null");if(!d||p.version&&(d.version!==p.version||d.puzzle!==p.puzzle))return;
+   if(d.passed&&(!p.version||d.seen&&d.seen.left&&d.seen.right)){badge.textContent="合格済み ✓";badge.classList.add("passed");passed++;}
+   else if(d.moves||d.seen&&(d.seen.left||d.seen.right)){badge.textContent="挑戦中";}
+  }catch(e){}
+ });
+ document.getElementById("count").textContent="合格："+passed+" / 4 科目　｜　現在は2教室がプレイ可能";
+}
+refreshProgress();window.addEventListener("pageshow",refreshProgress);window.addEventListener("storage",refreshProgress);
 })();
 </script>
 </body>

@@ -1,6 +1,6 @@
-# 魔法学校 — 土魔法学
+# 魔法学校
 
-土魔法学の初見テスト用プロトタイプです。
+炎魔法学・土魔法学の初見テスト用プロトタイプです。
 
 [プレイする](https://enjoji-road.github.io/magic_Academy/)
 
@@ -9,7 +9,7 @@
 
 ## 旧版
 
-4×4の試作品は `prototype-01-4x4.html` に、変更前の内容をそのまま保存しています。
+土魔法学4×4の試作品は `prototype-01-4x4.html`、旧炎魔法学は `fire-prototype-01.html` に、変更前の内容をそのまま保存しています。
 
 ## 検証する場合のみ
 
@@ -17,6 +17,9 @@
 初見プレイ前は開かないでください。
 
 ```sh
+python3 research/fire/verify_projection.py
+node research/fire/test_model.cjs
+node research/fire/test_interaction.cjs
 python3 research/verify_design.py
 python3 research/verify_alternative.py
 node research/test_engine.cjs

@@ -1,0 +1,457 @@
+{
+  "A_five_coplanar": {
+    "projected": {
+      "left": [
+        {
+          "id": "A",
+          "center": 0,
+          "width": 2,
+          "scale": 2
+        },
+        {
+          "id": "B",
+          "center": 6,
+          "width": 2,
+          "scale": 2
+        },
+        {
+          "id": "C",
+          "center": 12,
+          "width": 2,
+          "scale": 2
+        },
+        {
+          "id": "D",
+          "center": 18,
+          "width": 2,
+          "scale": 2
+        },
+        {
+          "id": "E",
+          "center": 24,
+          "width": 2,
+          "scale": 2
+        }
+      ],
+      "right": [
+        {
+          "id": "A",
+          "center": -6,
+          "width": 2,
+          "scale": 2
+        },
+        {
+          "id": "B",
+          "center": 0,
+          "width": 2,
+          "scale": 2
+        },
+        {
+          "id": "C",
+          "center": 6,
+          "width": 2,
+          "scale": 2
+        },
+        {
+          "id": "D",
+          "center": 12,
+          "width": 2,
+          "scale": 2
+        },
+        {
+          "id": "E",
+          "center": 18,
+          "width": 2,
+          "scale": 2
+        }
+      ]
+    },
+    "same_full_images": [
+      0,
+      6,
+      9,
+      12,
+      18
+    ],
+    "painting_candidates": [
+      [
+        9,
+        2
+      ]
+    ],
+    "single_view_candidates": {
+      "left": [
+        [
+          9,
+          2
+        ]
+      ],
+      "right": [
+        [
+          9,
+          2
+        ]
+      ]
+    },
+    "same_center_owners": {
+      "left": {
+        "0": [
+          "A"
+        ],
+        "6": [
+          "B"
+        ],
+        "12": [
+          "C"
+        ],
+        "18": [
+          "D"
+        ],
+        "24": [
+          "E"
+        ]
+      },
+      "right": {
+        "-6": [
+          "A"
+        ],
+        "0": [
+          "B"
+        ],
+        "6": [
+          "C"
+        ],
+        "12": [
+          "D"
+        ],
+        "18": [
+          "E"
+        ]
+      }
+    },
+    "visible_components": {
+      "left": 6,
+      "right": 6
+    }
+  },
+  "B_two_depths_containment": {
+    "projected": {
+      "left": [
+        {
+          "id": "A",
+          "center": 12,
+          "width": 3,
+          "scale": 3
+        },
+        {
+          "id": "B",
+          "center": 24,
+          "width": 3,
+          "scale": 3
+        },
+        {
+          "id": "C",
+          "center": 6,
+          "width": 2,
+          "scale": 2
+        },
+        {
+          "id": "D",
+          "center": 18,
+          "width": 2,
+          "scale": 2
+        },
+        {
+          "id": "E",
+          "center": 24,
+          "width": 2,
+          "scale": 2
+        }
+      ],
+      "right": [
+        {
+          "id": "A",
+          "center": 0,
+          "width": 3,
+          "scale": 3
+        },
+        {
+          "id": "B",
+          "center": 12,
+          "width": 3,
+          "scale": 3
+        },
+        {
+          "id": "C",
+          "center": 0,
+          "width": 2,
+          "scale": 2
+        },
+        {
+          "id": "D",
+          "center": 12,
+          "width": 2,
+          "scale": 2
+        },
+        {
+          "id": "E",
+          "center": 18,
+          "width": 2,
+          "scale": 2
+        }
+      ]
+    },
+    "same_full_images": [
+      6,
+      12,
+      18
+    ],
+    "painting_candidates": [
+      [
+        6,
+        2
+      ]
+    ],
+    "single_view_candidates": {
+      "left": [
+        [
+          6,
+          2
+        ],
+        [
+          12,
+          2
+        ],
+        [
+          12,
+          3
+        ],
+        [
+          18,
+          2
+        ],
+        [
+          24,
+          2
+        ],
+        [
+          24,
+          3
+        ]
+      ],
+      "right": [
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    "same_center_owners": {
+      "left": {
+        "12": [
+          "A"
+        ],
+        "24": [
+          "B",
+          "E"
+        ],
+        "6": [
+          "C"
+        ],
+        "18": [
+          "D"
+        ]
+      },
+      "right": {
+        "0": [
+          "A",
+          "C"
+        ],
+        "12": [
+          "B",
+          "D"
+        ],
+        "18": [
+          "E"
+        ]
+      }
+    },
+    "visible_components": {
+      "left": 4,
+      "right": 4
+    }
+  },
+  "C_partial_overlap": {
+    "projected": {
+      "left": [
+        {
+          "id": "A",
+          "center": 12,
+          "width": 3,
+          "scale": 3
+        },
+        {
+          "id": "B",
+          "center": 24,
+          "width": 3,
+          "scale": 3
+        },
+        {
+          "id": "C",
+          "center": 6,
+          "width": 2,
+          "scale": 2
+        },
+        {
+          "id": "D",
+          "center": 18,
+          "width": 2,
+          "scale": 2
+        },
+        {
+          "id": "E",
+          "center": 23,
+          "width": 2,
+          "scale": 2
+        }
+      ],
+      "right": [
+        {
+          "id": "A",
+          "center": 0,
+          "width": 3,
+          "scale": 3
+        },
+        {
+          "id": "B",
+          "center": 12,
+          "width": 3,
+          "scale": 3
+        },
+        {
+          "id": "C",
+          "center": 0,
+          "width": 2,
+          "scale": 2
+        },
+        {
+          "id": "D",
+          "center": 12,
+          "width": 2,
+          "scale": 2
+        },
+        {
+          "id": "E",
+          "center": 17,
+          "width": 2,
+          "scale": 2
+        }
+      ]
+    },
+    "same_full_images": [
+      6,
+      12
+    ],
+    "painting_candidates": [
+      [
+        6,
+        2
+      ]
+    ],
+    "single_view_candidates": {
+      "left": [
+        [
+          6,
+          2
+        ],
+        [
+          12,
+          2
+        ],
+        [
+          12,
+          3
+        ],
+        [
+          18,
+          2
+        ],
+        [
+          23,
+          2
+        ],
+        [
+          24,
+          2
+        ],
+        [
+          24,
+          3
+        ]
+      ],
+      "right": [
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    "same_center_owners": {
+      "left": {
+        "12": [
+          "A"
+        ],
+        "24": [
+          "B"
+        ],
+        "6": [
+          "C"
+        ],
+        "18": [
+          "D"
+        ],
+        "23": [
+          "E"
+        ]
+      },
+      "right": {
+        "0": [
+          "A",
+          "C"
+        ],
+        "12": [
+          "B",
+          "D"
+        ],
+        "17": [
+          "E"
+        ]
+      }
+    },
+    "visible_components": {
+      "left": 4,
+      "right": 4
+    }
+  },
+  "ablation_remove_C": {
+    "same_observed_pixels": true,
+    "left_only_candidates": [
+      [
+        6,
+        2
+      ]
+    ]
+  },
+  "model": {
+    "light": "single point source; inactive lamp shutter closed",
+    "wall_y": 12,
+    "lamp_x": {
+      "left": 9,
+      "right": 15
+    },
+    "plate_width": 1,
+    "plate_centres_z": 0,
+    "opaque_union": "exact rational polygon cross sections; no opacity summation",
+    "seconds": 7.333
+  }
+}

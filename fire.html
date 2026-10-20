@@ -4,65 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17232c">
-<meta name="description" content="魔法学校・炎魔法学の初見試験。灯火と影から紋章の持ち主を推理する。">
+<meta name="description" content="魔法学校・炎魔法学『影の持ち主』。二つの灯火と、壁に現れる紋章の試験。">
 <title>魔法学校｜炎魔法学・影の持ち主</title>
-<style>
-:root{color-scheme:dark;--bg:#14242c;--paper:#eee0c3;--ink:#f4ede0;--muted:#c8d0cd;--line:#50636c;--gold:#e8c47e}
-*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:radial-gradient(ellipse at top left,#46342c,#192a31 47%,#111e27);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;min-height:100vh}
-button,select{font:inherit}button{cursor:pointer;touch-action:manipulation}button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #f9d99c;outline-offset:3px}button:disabled{cursor:not-allowed;opacity:.45}[hidden]{display:none!important}
-main{width:min(1100px,100%);margin:auto;padding:20px clamp(12px,3vw,32px) 50px}
-.back{color:#f1d8a0;text-decoration:none;border:1px solid #766c5c;min-height:44px;display:inline-flex;align-items:center;padding:0 15px;border-radius:10px;margin-bottom:14px}
-.eyebrow{display:flex;justify-content:space-between;gap:12px;color:#e5bb77;font-size:11px;letter-spacing:.16em}
-h1{font-family:"Hiragino Mincho ProN",serif;font-size:clamp(28px,5vw,42px);letter-spacing:.12em;margin:8px 0 12px;font-weight:600}
-h1 span{font-family:system-ui,sans-serif;font-size:13px;letter-spacing:.06em;color:#d6bf99;vertical-align:middle}
-.paper{border:1px solid #e2c58e;border-radius:8px;background:linear-gradient(125deg,#f4e9d4,#e4cfaa);color:#342f28;line-height:1.75;padding:16px 18px;margin-bottom:16px}
-.paper h2{font-size:12px;letter-spacing:.18em;margin:0 0 3px;color:#705739}
-.paper p{margin:4px 0;font-size:14px}
-.panel{background:#1c3039dc;border:1px solid var(--line);border-radius:14px;padding:16px;min-width:0}
-.topline{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 0 12px}.topline h2{font-size:15px;letter-spacing:.08em;color:#f0d49e;margin:0}.small{color:var(--muted);font-size:12px;line-height:1.6}
-.magics{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 15px}.magic{flex:1;min-width:65px;min-height:48px;background:#21343b;color:#dce1dd;border:1px solid #698089;border-radius:9px;display:flex;align-items:center;justify-content:center;gap:7px}.magic[aria-pressed="true"]{background:#665039;color:#ffe5b3;border-color:#e6be77;box-shadow:inset 0 0 0 1px #e3bb7470}
-.grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(270px,0.8fr);gap:15px}
-.scene{background:linear-gradient(170deg,#253743,#172833);border:1px solid #556773;border-radius:10px;padding:9px}
-.stage{width:100%;height:auto;display:block;aspect-ratio:1010/580}.caption{padding:7px 3px 0;text-align:center;color:#ced3d0;font-size:12px}
-.lamps{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
-.lamp{min-height:48px;border-radius:9px;background:#33434a;color:#f4e5ca;border:1px solid #85918d}
-.lamp.on{background:#705336;border-color:#e8c47e;box-shadow:inset 0 0 0 1px #dbb478}
-.status{background:#152630;border:1px solid #4c5d66;border-radius:8px;padding:12px;margin:12px 0;font-size:13px;line-height:1.7;min-height:66px}
-.toolrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.secondary{min-height:44px;background:#20313a;color:#f3e3c0;border:1px solid #738185;padding:0 14px;border-radius:8px}
-.trace-on{background:#66543b;border-color:#d8b784}
-.observation{display:grid;grid-template-columns:55px repeat(9,minmax(0,1fr));gap:3px;align-items:center;margin-top:8px}
-.observation .label{font-size:12px;color:#e9d1a1}
-.observation span{display:grid;place-items:center;font-size:11px;min-width:0;min-height:26px;background:#31434c;border:1px solid #61727a;border-radius:3px;color:#dce8e3}
-.observation span.marked{background:#c9b58e;color:#182731;font-weight:800}
-.observation span.unseen{color:#71828b}
-.legend{font-size:12px;color:#b9c8c8;margin:8px 0 0}
-.answer-block{display:grid;gap:11px;margin-top:12px}
-.answer-block label{display:block;font-size:13px;color:#dfdacd;line-height:1.65}
-.answer-block select{display:block;width:100%;border-radius:8px;border:1px solid #819096;background:#233740;color:#f6efe1;padding:11px 12px;margin-top:5px;min-height:46px;font-size:16px}
-.wall-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:7px}
-.wall-choices button{min-height:46px;background:#2d3e46;border:1px solid #74878b;color:#f4ebd8;border-radius:8px}
-.wall-choices button.chosen{background:#735537;border:2px solid #f1cd85}
-.primary{min-height:48px;width:100%;border-radius:9px;border:1px solid #eac584;background:linear-gradient(#eacc91,#d9b674);color:#30291f;font-weight:750;font-size:15px}
-.feedback{padding:12px;border-radius:8px;background:#21353b;border:1px solid #718280;font-size:13px;line-height:1.75;margin-top:10px}
-.pass{background:linear-gradient(130deg,#2d504b,#244138);padding:17px;border:1px solid #9bc4a8;border-radius:10px;text-align:center;margin-top:12px}
-.pass h3{margin:0 0 5px;font-family:serif;color:#ffe2ad;font-size:22px}.pass p{margin:4px 0;line-height:1.8}.pass a{display:inline-flex;align-items:center;justify-content:center;padding:10px 15px;border-radius:8px;margin-top:12px;background:#f0d29c;color:#2b302e;text-decoration:none;font-weight:bold;min-height:44px}
-.side-note{font-size:12px;color:#c2c9c7;line-height:1.7;margin:12px 0 0}
-@media(max-width:760px){.grid{grid-template-columns:minmax(0,1fr)}.panel{padding:13px}.eyebrow{font-size:9px}.paper p{font-size:13px}}
-@media(max-width:360px){.magic{font-size:13px;min-width:55px;gap:3px}.scene{padding:3px}.observation{gap:2px}.observation .label{font-size:10px}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style>
+<link rel="stylesheet" href="fire.css?v=2">
+<script src="fire-model.js?v=2" defer></script>
+<script src="fire-app.js?v=2" defer></script>
 </head>
 <body>
 <main>
 <a class="back" href="index.html">← 試験一覧へ戻る</a>
-<header><div class="eyebrow"><span>ARCANE ACADEMY</span><span>ELEMENT I · FIRE</span></div>
-<h1>炎魔法学 <span>影の持ち主</span></h1></header>
-<section class="paper">
-<h2>実技試験</h2>
-<p>壁には、同じ形の紋章がいくつも現れる。そこには<b>金属板の影</b>に紛れて、<b>壁に直接描かれた紋章が一つだけ</b>ある。</p>
-<p><b>炎魔法</b>で左右から照らし、描かれた紋章を特定せよ。吊られた金属板は3枚、形はすべて同じである。</p>
-</section>
+<header><div class="eyebrow"><span>ARCANE ACADEMY</span><span>ELEMENT I · FIRE</span></div><h1>炎魔法学 <span>影の持ち主</span></h1></header>
+<section class="paper"><h2>実技試験</h2><p>壁に映る<b>金属板の影</b>の中に、<b>壁に直接描かれた紋章が一つだけ</b>ある。</p><p><b>炎魔法</b>で左右の燭台を灯し、その紋章を特定せよ。</p></section>
 <nav class="magics" aria-label="使用する魔法">
 <button type="button" class="magic" data-magic="fire" aria-pressed="true">🔥 炎</button>
 <button type="button" class="magic" data-magic="water" aria-pressed="false">💧 水</button>
@@ -71,144 +23,21 @@ h1 span{font-family:system-ui,sans-serif;font-size:13px;letter-spacing:.06em;col
 </nav>
 <div class="grid">
 <section class="panel" aria-labelledby="lab-title">
-<div class="topline"><h2 id="lab-title">影の実験室</h2><span class="small" id="viewLabel">観測待ち</span></div>
-<div class="scene">
-<svg id="stage" class="stage" viewBox="0 0 1010 580" xmlns="http://www.w3.org/2000/svg" aria-label="上から見た部屋の図。手前の壁に9つの位置、奥に左右の燭台、中央にA・B・Cの金属板がある。" role="img"></svg>
-<div class="caption">上から見た実験室　―　壁の位置は左から①〜⑨</div>
-</div>
-<div class="lamps">
-<button type="button" class="lamp" data-lamp="left">🕯️ 左の燭台を照らす</button>
-<button type="button" class="lamp" data-lamp="right">🕯️ 右の燭台を照らす</button>
-</div>
-<p class="small">燭台を選ぶと、観測窓が片方の光だけを通す。火を消す魔法ではありません。</p>
-<div class="status" id="status" aria-live="polite">炎魔法を選び、燭台を灯してください。</div>
-<div class="toolrow">
-<button type="button" class="secondary" id="trace" aria-pressed="false">測光糸を使う</button>
-<button type="button" class="secondary" id="hint">ヒントを見る</button>
-<button type="button" class="secondary" id="reset">最初から</button>
-</div>
-<div id="hintText" class="feedback" hidden></div>
-<div class="panel" style="margin-top:15px;padding:12px">
-<div class="topline"><h2>観測記録</h2><span class="small">●＝紋章が見えた場所</span></div>
-<div class="observation" id="observLeft"></div>
-<div class="observation" id="observRight"></div>
-<p class="legend">同じ場所に見える印も、同じ原因とは限らない。</p>
-</div>
+<div class="topline"><h2 id="lab-title">影の実験室</h2><button type="button" class="small-button" id="enlargeRoom">配置図を拡大</button></div>
+<div class="scene"><svg id="stage" class="stage" viewBox="0 0 800 455" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="上から見た実験室の配置図"></svg><div class="caption">上から見た配置図。方眼一つは1単位。</div></div>
+<div class="lamps"><button type="button" class="lamp" data-lamp="left">🕯️ 左の燭台</button><button type="button" class="lamp" data-lamp="right">🕯️ 右の燭台</button></div>
+<div class="status" id="status" role="status" aria-live="polite">炎魔法を選び、観測する燭台に触れてください。</div>
+<details class="specs"><summary>装置の仕様・操作</summary><p>金属板は5枚。すべて同じ形・同じ大きさ・同じ向きで、壁と平行に吊られている。板の幅は1単位。</p><p>燭台は点光源として扱う。光源と板の中心は同じ高さにあり、光は直進する。反射・散乱・半影は考えない。</p><p>観測窓は、選んだ燭台側だけの防光扉を開く。もう片方が灯っていても、その光は壁に届かない。壁には、金属板による影と、描かれた紋章以外の模様はない。</p><p>配置図の金色の点が光源、銀色の線が金属板。方眼の座標は次の通り。</p><div class="table-wrap"><table><caption>装置の位置（x：横、y：燭台から壁への方向）</caption><thead><tr><th>装置</th><th>x</th><th>y</th></tr></thead><tbody><tr><td>左の光源</td><td>9</td><td>0</td></tr><tr><td>右の光源</td><td>15</td><td>0</td></tr><tr><td>板 A</td><td>10</td><td>4</td></tr><tr><td>板 B</td><td>14</td><td>4</td></tr><tr><td>板 C</td><td>7.5</td><td>6</td></tr><tr><td>板 D</td><td>13.5</td><td>6</td></tr><tr><td>板 E</td><td>16.5</td><td>6</td></tr><tr><td>壁</td><td>位置1〜9：0,3,…,24</td><td>12</td></tr></tbody></table></div><p>燭台のボタンには選んだ魔法を使う。配置図の金属板や小石にも触れられる。記録されるのは装置が静止した状態の観測。</p><p>炎：燃やす・温める／水：水を出す・流す／風：風を起こす／土：土や石を動かす。</p></details>
+<section class="records" aria-labelledby="observation-title"><div class="topline"><h2 id="observation-title">観測記録</h2><span class="small">壁を正面から見た図</span></div>
+<div class="observ-frame" id="leftFrame"><div class="record-heading"><h3>左の燭台</h3><button type="button" class="small-button" data-enlarge="left">拡大</button></div><svg id="observLeft" viewBox="0 0 800 160" role="img" aria-label="左の観測は未記録"></svg></div>
+<div class="observ-frame" id="rightFrame"><div class="record-heading"><h3>右の燭台</h3><button type="button" class="small-button" data-enlarge="right">拡大</button></div><svg id="observRight" viewBox="0 0 800 160" role="img" aria-label="右の観測は未記録"></svg></div>
 </section>
-<section class="panel" aria-labelledby="answer-title">
-<div class="topline"><h2 id="answer-title">試験記録を提出</h2><span class="small">二つの光を比べよう</span></div>
-<div class="small">壁は左から1〜9番。直接描かれた紋章はどこにある？</div>
-<div class="wall-choices" id="wallChoices" role="group" aria-label="直接描かれた印の位置"></div>
-<div class="answer-block">
-<label>もう一つ、両方の観測で同じ位置に見える印は？
-<select id="otherPosition"><option value="">位置を選ぶ</option></select>
-</label>
-<label>その印は、<b>左</b>から照らすとどの板の影？
-<select id="leftOwner"><option value="">板を選ぶ</option><option value="A">A の板</option><option value="B">B の板</option><option value="C">C の板</option></select>
-</label>
-<label>同じ印は、<b>右</b>から照らすとどの板の影？
-<select id="rightOwner"><option value="">板を選ぶ</option><option value="A">A の板</option><option value="B">B の板</option><option value="C">C の板</option></select>
-</label>
-<button type="button" class="primary" id="submit">試験記録を提出する</button>
-</div>
-<div class="feedback" id="feedback" aria-live="polite">観測した位置と、影を生んだ金属板の組合せを調べてみよう。</div>
-<div class="pass" id="pass" hidden><h3>炎魔法学　合格</h3><p>影の見え方に惑わされず、光と物体の関係を見抜きました。</p><p>合格記録は保存されました。</p><a href="index.html">試験一覧に戻る</a></div>
-<p class="side-note">途中の状態と合格記録は、この端末に自動保存されます。ほかの試験を受けても、あとで戻れます。</p>
 </section>
+<section class="panel answer-panel" aria-labelledby="answer-title"><div class="topline"><h2 id="answer-title">試験記録を提出</h2></div><p class="answer-question">壁に直接描かれている紋章はどれか？</p><div class="small">壁の位置番号を一つ選んでください。</div><div class="wall-choices" id="wallChoices" role="group" aria-label="直接描かれた紋章の位置"></div><button type="button" class="primary submit" id="submit">提出する</button><div class="feedback" id="feedback" aria-live="polite">位置を選んで、試験記録を提出してください。</div><div class="pass" id="pass" hidden><h3>炎魔法学　合格</h3><p>試験記録が受理されました。</p><a href="index.html">試験一覧に戻る</a></div><p class="side-note" id="saveStatus">観測・選択・合格記録は、このブラウザに自動保存されます。</p><div class="answer-bottom"><button type="button" class="secondary" id="reset">最初から</button><a class="plain-link" href="index.html">一覧へ戻る</a></div></section>
 </div>
+<footer>魔法学校 · 炎魔法学</footer>
 </main>
-<script>
-(function(){
-"use strict";
-var KEY="magic-academy-fire-v1";
-var WORLD={left:{lamp:3,seen:[5,6,7,9],origin:{5:"A",7:"B",9:"C"}},right:{lamp:7,seen:[1,3,5,6],origin:{1:"A",3:"B",5:"C"}}};
-var start={magic:"fire",view:"",lit:{left:false,right:false},seen:{left:false,right:false},trace:false,hints:0,selected:0,other:"",leftOwner:"",rightOwner:"",passed:false};
-var state=Object.assign({},start,{lit:{left:false,right:false},seen:{left:false,right:false}});
-var $=function(id){return document.getElementById(id);};
-try{var saved=JSON.parse(localStorage.getItem(KEY)||"null");if(saved&&typeof saved==="object"){state.magic=["fire","water","wind","earth"].includes(saved.magic)?saved.magic:"fire";state.view=["left","right"].includes(saved.view)?saved.view:"";state.lit={left:!!(saved.lit&&saved.lit.left),right:!!(saved.lit&&saved.lit.right)};state.seen={left:!!(saved.seen&&saved.seen.left),right:!!(saved.seen&&saved.seen.right)};state.trace=!!saved.trace;state.hints=Math.max(0,Math.min(3,Number(saved.hints)||0));state.selected=Number(saved.selected)||0;state.other=String(saved.other||"");state.leftOwner=String(saved.leftOwner||"");state.rightOwner=String(saved.rightOwner||"");state.passed=!!saved.passed;}}catch(e){}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
-function say(t){$("status").textContent=t;}
-function xp(n){return 105+(n-1)*100;}
-function geometry(){
- var v=state.view,ink=6, s= v?WORLD[v]:null, lampX=s?xp(s.lamp):0, lines="", symbols="",source="";
- var marks=s?s.seen:[];
- var plates=[4,5,6],names=["A","B","C"];
- plates.forEach(function(p,i){
- var xx=xp(p);
- if(v){
-  var endpoint=2*p-s.lamp;
-  lines+='<line x1="'+lampX+'" y1="82" x2="'+xp(endpoint)+'" y2="445" stroke="#e6ce96" stroke-width="2" opacity="'+(state.trace?".85":".13")+'" />';
-  if(state.trace){lines+='<line x1="'+lampX+'" y1="82" x2="'+xx+'" y2="253" stroke="#fff3cd" stroke-width="3" stroke-dasharray="8 7" opacity=".8"/>';}
- }
- source+='<g><line x1="'+xx+'" y1="190" x2="'+xx+'" y2="226" stroke="#8b9aa0" stroke-width="3"/><rect x="'+(xx-19)+'" y="224" width="38" height="61" rx="5" fill="#81929b" stroke="#e0d5bf" stroke-width="3"/><rect x="'+(xx-9)+'" y="237" width="18" height="32" rx="3" fill="#445660"/><text x="'+xx+'" y="316" text-anchor="middle" fill="#f3dfba" font-size="26" font-weight="700">'+names[i]+'</text></g>';
- });
- for(var n=1;n<=9;n++){
- var x=xp(n),has=marks.includes(n);
- symbols+='<line x1="'+x+'" y1="433" x2="'+x+'" y2="517" stroke="#b6a88f" opacity=".28"/>';
- if(has){symbols+='<g transform="translate('+x+',474)"><path d="M 0 -29 L 8 -12 L 25 -9 L 12 4 L 17 22 L 0 12 L -17 22 L -12 4 L -25 -9 L -8 -12 Z" fill="#273036" stroke="#24282c" stroke-width="3"/><circle r="4" fill="#a8a79a"/></g>';}
- symbols+='<text x="'+x+'" y="554" text-anchor="middle" fill="#d6d4c8" font-size="21">'+n+'</text>';
- }
- var lamps="";
- ["left","right"].forEach(function(side){
- var n=WORLD[side].lamp,x=xp(n),active=side===v,burn=state.lit[side];
- lamps+='<g><rect x="'+(x-25)+'" y="99" width="50" height="50" rx="7" fill="#66533f" stroke="#a28e76" stroke-width="3"/><path d="M'+x+' 100 L'+x+' 55" stroke="#a28e76" stroke-width="7"/>'+(burn?'<path d="M'+x+' 78 C '+(x-24)+' 52 '+(x-6)+' 41 '+x+' 28 C '+(x+29)+' 60 '+x+' 84 '+x+' 78 Z" fill="'+(active?"#fbe4a3":"#a88356")+'"/>':'<circle cx="'+x+'" cy="68" r="7" fill="#5e696b"/>')+'<text x="'+x+'" y="181" fill="'+(active?"#ffe5a8":"#c4beb1")+'" font-size="21" text-anchor="middle">'+(side==="left"?"左の燭台":"右の燭台")+'</text></g>';
- });
- var lightCone= v?'<polygon points="'+lampX+',82 105,433 905,433" fill="#d4af72" opacity=".12"/>':"";
- $("stage").innerHTML='<defs><linearGradient id="fireFloor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#344954"/><stop offset="1" stop-color="#273643"/></linearGradient><linearGradient id="fireWall" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#decfae"/><stop offset="1" stop-color="#a99477"/></linearGradient></defs>'+
- '<rect x="6" y="6" width="998" height="565" rx="20" fill="url(#fireFloor)" stroke="#71828a" stroke-width="5"/>'+
- '<path d="M 45 190 L 965 190 M 45 391 L 965 391" stroke="#7d8b8f" stroke-width="2" stroke-dasharray="13 12" opacity=".43"/>'+
- lightCone+lines+
- '<rect x="65" y="423" width="880" height="107" rx="12" fill="url(#fireWall)" stroke="#e9d8b9" stroke-width="4"/>'+symbols+source+lamps+
- '<text x="45" y="371" font-size="18" fill="#b8c9ce">金属板 3枚</text>'+
- '<text x="38" y="416" font-size="18" fill="#d9bd8f">観測壁</text>'+
- (!v?'<text x="505" y="390" font-size="26" text-anchor="middle" fill="#f2dbad">燭台を照らして観察する</text>':"");
-}
-function observation(target,side){
- var seen=state.seen[side],nums=WORLD[side].seen;
- var s='<div class="label">'+(side==="left"?"左照明":"右照明")+'</div>';
- for(var i=1;i<=9;i++)s+='<span class="'+(!seen?"unseen":nums.includes(i)?"marked":"")+'">'+(!seen?"?":nums.includes(i)?"●":"·")+'</span>';
- $(target).innerHTML=s;
-}
-function render(){
- document.querySelectorAll("[data-magic]").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.magic===state.magic));});
- document.querySelectorAll("[data-lamp]").forEach(function(b){b.classList.toggle("on",b.dataset.lamp===state.view);b.setAttribute("aria-pressed",String(b.dataset.lamp===state.view));});
- $("trace").classList.toggle("trace-on",state.trace);$("trace").setAttribute("aria-pressed",String(state.trace));$("trace").textContent=state.trace?"測光糸をしまう":"測光糸を使う";
- $("viewLabel").textContent=state.view?(state.view==="left"?"左の燭台で観測中":"右の燭台で観測中"):"観測待ち";
- geometry();observation("observLeft","left");observation("observRight","right");
- document.querySelectorAll("#wallChoices button").forEach(function(b){b.classList.toggle("chosen",Number(b.dataset.slot)===state.selected);b.setAttribute("aria-pressed",String(Number(b.dataset.slot)===state.selected));});
- $("otherPosition").value=state.other;$("leftOwner").value=state.leftOwner;$("rightOwner").value=state.rightOwner;
- $("pass").hidden=!state.passed;
- var hints=["","観測した壁の印は、光に照らされた板の数より一つ多い。","二つの観測で位置が変わらない印を探そう。","光源から金属板を通って壁へ、まっすぐ線を延ばそう。位置が同じでも原因が同じとは限らない。"];
- $("hintText").hidden=state.hints===0;if(state.hints)$("hintText").textContent="ヒント "+state.hints+" / 3： "+hints[state.hints];
-}
-for(var n=1;n<=9;n++){
- var btn=document.createElement("button");btn.type="button";btn.dataset.slot=String(n);btn.textContent=String(n)+" 番";btn.setAttribute("aria-pressed","false");btn.addEventListener("click",function(e){state.selected=Number(e.currentTarget.dataset.slot);save();render();});
- $("wallChoices").appendChild(btn);
- var opt=document.createElement("option");opt.value=String(n);opt.textContent=n+" 番";$("otherPosition").appendChild(opt);
-}
-document.querySelectorAll("[data-magic]").forEach(function(b){b.addEventListener("click",function(){state.magic=b.dataset.magic;save();render();say(state.magic==="fire"?"炎魔法を選んだ。左右の燭台に使ってみよう。":state.magic==="wind"?"風魔法を選んだ。吊り下がった板が風を受け、かすかに揺れている。":state.magic==="water"?"水魔法を選んだ。石の床に水滴が落ち、細い溝を流れた。":"土魔法を選んだ。床の小石がふわりと持ち上がった。");});});
-document.querySelectorAll("[data-lamp]").forEach(function(b){b.addEventListener("click",function(){
- var side=b.dataset.lamp;
- if(state.magic!=="fire"){say(state.magic==="wind"?"金属板が風で揺れ、やがて静止した。燭台を灯すには炎魔法が必要だ。":state.magic==="water"?"燭台の受け皿が濡れた。まだ光は生まれない。":"台座の小石が動いた。燭台を灯すには炎魔法が必要だ。");return;}
- state.view=side;state.lit[side]=true;state.seen[side]=true;save();render();say((side==="left"?"左":"右")+"の燭台に火を灯した。観測窓には片側の光だけが映され、壁の紋章が見える。");
-});});
-$("trace").addEventListener("click",function(){state.trace=!state.trace;save();render();say(state.trace?"金属板の中心を通る光の進路を、測光糸で示した。":"測光糸をしまった。");});
-$("hint").addEventListener("click",function(){state.hints=Math.min(state.hints+1,3);save();render();});
-["otherPosition","leftOwner","rightOwner"].forEach(function(id){$(id).addEventListener("change",function(){state[id==="otherPosition"?"other":id]=this.value;save();});});
-$("submit").addEventListener("click",function(){
- if(!state.seen.left||!state.seen.right){$("feedback").textContent="両方の燭台で観測してから、記録を提出しよう。";return;}
- if(!state.selected||!state.other||!state.leftOwner||!state.rightOwner){$("feedback").textContent="位置と板の組合せを、すべて記録してから提出しよう。";return;}
- if(state.selected===6&&state.other==="5"&&state.leftOwner==="A"&&state.rightOwner==="C"){
- state.passed=true;save();render();$("feedback").textContent="すべての観測を説明できた。合格だ！";say("炎魔法学、合格。壁の印と影の持ち主を正しく見分けた。");
- }else{$("feedback").textContent="記録が観測結果のすべてを説明できていない。光源・金属板・壁の位置関係をもう一度調べよう。";}
-});
-$("reset").addEventListener("click",function(){
- if(!window.confirm("炎魔法学の観測と合格記録を最初からやり直しますか？"))return;
- state={magic:"fire",view:"",lit:{left:false,right:false},seen:{left:false,right:false},trace:false,hints:0,selected:0,other:"",leftOwner:"",rightOwner:"",passed:false};
- save();render();$("feedback").textContent="観測した位置と、影を生んだ金属板の組合せを調べてみよう。";say("最初の状態に戻しました。");
-});
-render();if(state.passed){say("合格記録を読み込みました。試験一覧に戻ることも、引き続き観測することもできます。");}else if(state.seen.left||state.seen.right){say("前回の観測を読み込みました。続きから試験を受けられます。");}
-})();
-</script>
+<dialog id="zoomDialog"><div class="topline"><h2 id="zoomTitle">配置図</h2><button type="button" class="secondary" id="closeZoom">閉じる</button></div><div class="zoom-scroll"><svg id="zoomStage" xmlns="http://www.w3.org/2000/svg" role="img"></svg></div><p class="small">横に収まらない場合は、図を横にスクロールできます。</p></dialog>
+<noscript>この試験にはJavaScriptが必要です。</noscript>
 </body>
 </html>

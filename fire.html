@@ -194,7 +194,7 @@ document.querySelectorAll("[data-lamp]").forEach(function(b){b.addEventListener(
 });});
 $("trace").addEventListener("click",function(){state.trace=!state.trace;save();render();say(state.trace?"金属板の中心を通る光の進路を、測光糸で示した。":"測光糸をしまった。");});
 $("hint").addEventListener("click",function(){state.hints=Math.min(state.hints+1,3);save();render();});
-["otherPosition","leftOwner","rightOwner"].forEach(function(id){$(id).addEventListener("change",function(){state[id]=this.value;save();});});
+["otherPosition","leftOwner","rightOwner"].forEach(function(id){$(id).addEventListener("change",function(){state[id==="otherPosition"?"other":id]=this.value;save();});});
 $("submit").addEventListener("click",function(){
  if(!state.seen.left||!state.seen.right){$("feedback").textContent="両方の燭台で観測してから、記録を提出しよう。";return;}
  if(!state.selected||!state.other||!state.leftOwner||!state.rightOwner){$("feedback").textContent="位置と板の組合せを、すべて記録してから提出しよう。";return;}

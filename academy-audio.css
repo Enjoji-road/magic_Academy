@@ -9,8 +9,6 @@
 .academy-audio-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:19px}
 .academy-audio-head h2{font-family:"Hiragino Mincho ProN",serif;color:#f4d69e;font-size:23px;letter-spacing:.1em;margin:0}
 .academy-audio-close{width:44px;height:44px;flex:none;border:1px solid #8b9b98;border-radius:9px;background:#2b4248;color:#fff5d8;cursor:pointer;font-size:20px}
-.academy-audio-track{border:1px solid #526a6c;border-radius:10px;background:#162a31;padding:14px;margin-bottom:18px}
-.academy-audio-track strong{display:block;color:#fff0d0;font-size:17px}.academy-audio-track span{display:block;color:#b9c9c8;font-size:12px;margin-top:4px;line-height:1.6}
 .academy-audio-volume-label{display:flex;justify-content:space-between;align-items:center;margin:4px 0 11px;color:#f3e5ca;font-size:15px}
 .academy-audio-slider{width:100%;accent-color:#e7c884;min-height:36px;cursor:pointer}
 .academy-audio-controls{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}

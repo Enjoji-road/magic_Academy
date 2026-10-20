@@ -3,6 +3,8 @@
  'use strict';
  const M=window.FireArchive,$=id=>document.getElementById(id),NOTE='magic-academy-fire-notes-v1';let serial=0;
  for(const id of['observFirst','observSecond'])$(id).setAttribute('viewBox','0 0 700 360');
+ const scene=$('room').parentElement;
+ if(scene.clientWidth>0&&scene.scrollWidth>scene.clientWidth)scene.scrollLeft=Math.max(0,scene.scrollWidth*470/780-scene.clientWidth/2);
  function decorate(svg){
   if(!svg||svg.querySelector('[data-studio-defs]'))return;
   const id='studio-'+(++serial),base=svg.querySelector('rect');

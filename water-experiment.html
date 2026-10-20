@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#132936">
+<meta name="description" content="魔法学校・水盤室。水を注ぎ、静かな六房水槽の観測を記録する。">
+<title>魔法学校｜水魔法学・水の届かない部屋</title>
+<link rel="stylesheet" href="water-experiment.css?v=1">
+<link rel="stylesheet" href="academy-studio-sfx.css?v=1">
+<script src="academy-studio-sfx.js?v=1" defer></script>
+<script src="water-model.js?v=1" defer></script>
+<script src="water-app.js?v=1" defer></script>
+</head>
+<body>
+<a class="skip" href="#experiment">実験装置へ進む</a>
+<div class="shell">
+<header class="academy-bar"><a class="wordmark" href="academy-water-preview.html"><span class="academy-sigil" aria-hidden="true">✧</span><span>魔法学校<small>ARCANE ACADEMY</small></span></a><button type="button" data-settings>⚙ 設定</button></header>
+<a class="back" href="academy-water-preview.html">← 試験回廊へ戻る</a>
+<div class="room-heading"><div class="room-index">II <span>AQUA · LABORATORY</span></div><p class="eyebrow">水魔法学 / 水盤室</p><h1>水の届かない部屋</h1><p class="subtitle">青銀の縁に、水音がひとつ。</p></div>
+<main>
+<section class="assignment" aria-labelledby="assignmentTitle"><p class="eyebrow">実技試験課題</p><h2 id="assignmentTitle">六房水槽の装置図を復元せよ。</h2><p>中央の水槽は、互いに水の混ざらない六つの房に分かれています。給水は正常。それでも、途中で水が止まります。</p><p>水魔法で観測を重ね、石の覆いに隠れた連絡管のつながりを調べてください。各房から出る二本の管を、台帳の装置図に記録して提出します。</p></section>
+<nav class="room-nav" aria-label="水盤室内の移動"><a href="#experiment">実験</a><a href="#records">記録</a><a href="#ledger">台帳</a></nav>
+<section class="panel magic-panel" aria-labelledby="magicTitle"><div class="section-top"><h2 id="magicTitle">使用する魔法</h2><span class="small">四元素実技</span></div><div class="magic-grid"><button type="button" data-spell="fire" aria-pressed="false"><span aria-hidden="true">🔥</span>炎</button><button type="button" data-spell="water" aria-pressed="true"><span aria-hidden="true">💧</span>水</button><button type="button" data-spell="wind" aria-pressed="false"><span aria-hidden="true">🌪️</span>風</button><button type="button" data-spell="earth" aria-pressed="false"><span aria-hidden="true">🪨</span>土</button></div><p class="small" id="spellDescription">水魔法：水を出し、流します。皿の水を整えてから、供水瓶へ水を注いでください。</p></section>
+<section class="panel apparatus" id="experiment" aria-labelledby="experimentTitle"><div class="section-top"><div><p class="eyebrow">SIX-CHAMBER VESSEL</p><h2 id="experimentTitle">中央水槽と四つの皿</h2></div><button type="button" id="enlarge">図を拡大</button></div>
+<p class="diagram-note">図は正面の模式図です。値は水面が落ち着いた後の高さ。管の内部は石の覆いに隠れています。</p>
+<div class="scene-scroll" id="sceneScroll" tabindex="0" aria-label="水槽図。狭い画面では左右に動かせます"><div id="scene"></div></div>
+<div class="measure-summary"><span class="live-dot" aria-hidden="true"></span><span id="measurementState">まだ給水していません</span></div>
+<div class="controls-heading"><h3>四皿の準備</h3><p class="small">数字は、管の出口から水面までの深さです。</p></div>
+<div class="depth-grid" id="depthControls"></div>
+<details class="calibration"><summary>備え付けの測定札</summary><p>皿の水深をまとめて用意するための三枚の札です。どれから使っても、自由に変更しても構いません。</p><div class="profile-grid" id="profiles"></div></details>
+<div class="action-row"><button type="button" id="pour" class="primary">💧 供水瓶に水を注ぐ</button><button type="button" id="drain">復帰レバー</button></div>
+<p class="small">条件を変えると、復帰機構が中央水槽を空に戻します。給水するまで測定は始まりません。順序で結果は変わらず、過去の測定は記録に残ります。</p>
+<p class="status" id="status" role="status" aria-live="polite">水盤室へようこそ。装置の銘板も自由に確認できます。</p>
+<details class="apparatus-facts"><summary>装置の銘板・操作方法</summary>
+<ul><li>供水瓶の水面は、中央水槽の底から90 cm。溢れ口が一定の高さを保ちます。水魔法で圧力を上乗せする装置ではありません。</li><li>中央の六房は高さ120 cm、同じ断面積。給水管は各房の底に一本ずつ入り、逆流防止弁で房同士の水は混ざりません。</li><li>各房には給水管とは別に、同じ高さから出る二本の連絡管があります。それぞれ異なる皿へつながり、途中の分岐・他の出口はありません。同じ皿へ、複数の房の管が来ることはあります。</li><li>この型の連絡管は、六房すべてが同じ取り付け方です。取り出し口は天井面か底面のいずれか。石の覆いで見えません。</li><li>四皿の管の出口は、各皿の底にあります。出口の弁は外向きにだけ開き、水も気体も通せます。皿から管へは逆流しません。「栓」で閉じることもできます。</li><li>供水瓶には青い検水が備え付けられています。注いだ水はそれと混ざって中央へ流れます。四皿に用意するのは無色の水です。測定後の色も記録に残ります。</li><li>復帰レバーは給水を止め、排水口と基準口を開いて、水槽を空・室内と同じ圧力へ戻します。測定時にはどちらも閉まります。</li><li>水深は調節目盛りと排水口で用意します。測定中は溢れ口が四皿の深さを維持します。</li><li>常温・低速の測定を表示しています。細かい渦や液面の揺れ、弁が開くための小さな圧力差は省略しています。目盛りの違いは、その誤差より十分大きくしてあります。</li></ul>
+<p>観測図の拡大・自動記録・自由メモを使えます。提出回数による制限はありません。試験のリセットとメモの消去は別の操作です。</p></details>
+</section>
+<section class="panel" id="records" aria-labelledby="recordsTitle"><div class="section-top"><div><p class="eyebrow">LABORATORY JOURNAL</p><h2 id="recordsTitle">観測記録</h2></div><span id="recordCount" class="small">0件</span></div><p class="small">同じ条件は一枚にまとめ、すべての観測条件を自動保存します。給水中の出来事と、その後の水位を記録します。</p><div id="recordList" class="record-list"><p>供水瓶に水を注ぐと、ここに記録されます。</p></div>
+<label class="notes-label" for="notes">自分の研究メモ <span class="small">採点には使いません</span></label><textarea id="notes" rows="5" maxlength="8000" placeholder="気づいたこと、試したい条件など"></textarea><div class="notes-footer"><span class="small" id="notesCount">0 / 8000</span><button type="button" id="clearNotes">メモを消す</button></div></section>
+<section class="ledger" id="ledger" aria-labelledby="ledgerTitle"><p class="eyebrow">ACADEMY · APPARATUS REGISTER</p><h2 id="ledgerTitle">装置台帳</h2><p>各房の二本の連絡管が、どの皿へつながっているかを記入してください。各行で二つ選び、装置図全体を提出します。</p><form id="answerForm"><div id="draftRows"></div><p class="draft-count" id="draftCount">記入 0 / 12 本</p><button type="submit" class="submit">装置図を提出する</button><p id="answerStatus" role="status" aria-live="polite">記入途中の装置図も保存されます。</p></form></section>
+<section class="pass" id="pass" hidden aria-labelledby="passTitle"><div class="pass-star" aria-hidden="true">✧</div><p>ARCANE ACADEMY</p><h2 id="passTitle">水魔法学 合格</h2><p>六房水槽の装置図が受理されました。</p><div class="seal">学院認印<span>AQUA</span></div><a href="academy-water-preview.html">試験回廊へ戻る →</a></section>
+<div class="save-row"><p id="saveStatus">この端末のブラウザへ自動保存します。</p><button type="button" id="reset">試験をリセット</button></div>
+<footer><span>魔法学校 · 水盤室</span><span>研究試作品 v1</span></footer>
+</main></div>
+<dialog id="zoomDialog" aria-labelledby="zoomTitle"><div class="zoom-heading"><h2 id="zoomTitle">中央水槽・拡大図</h2><button type="button" id="closeZoom">閉じる</button></div><p>左右に動かして確認できます。</p><div class="zoom-scroll" id="zoomContent"></div></dialog>
+<dialog id="resetDialog" aria-labelledby="resetTitle"><h2 id="resetTitle">試験をリセットしますか？</h2><p>観測・台帳・合格記録を初期化します。研究メモと、他の試験の記録は残ります。</p><div class="action-row"><button type="button" id="cancelReset">戻る</button><button type="button" id="confirmReset">リセットする</button></div></dialog>
+<noscript><p class="noscript">水盤室の操作と保存にはJavaScriptが必要です。</p></noscript>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#17272c">
+<meta name="description" content="魔法学校・炎魔法学の研究試作『灯樹の原像』。炎を灯し、失われた台帳を埋める観測実習。">
+<title>魔法学校｜炎魔法学・灯樹の原像</title>
+<link rel="stylesheet" href="fire-experiment.css?v=4">
+<script src="fire-experiment-model.js?v=4" defer></script>
+<script src="fire-experiment-app.js?v=4" defer></script>
+</head>
+<body>
+<main>
+<a class="back" href="index.html">← 試験一覧へ</a>
+<header><div class="eyebrow"><span>ARCANE ACADEMY · FIRE</span><span>研究試作 IV</span></div><h1>炎魔法学 <span>灯樹の原像</span></h1><div class="header-rule"></div></header>
+<section class="assignment" aria-labelledby="assignment-title"><div class="seal-mark" aria-hidden="true">✦</div><div><h2 id="assignment-title">失われた台帳</h2><p>保管庫に残された、創立当時の原校章<b>「六葉の灯樹」</b>。台帳から失われたのは、その登録番号だけ。</p><p>炎魔法で観測装置を使い、<b>原校章の登録番号</b>を記せ。</p></div></section>
+<nav class="magics" aria-label="使用する魔法">
+<button type="button" class="magic" data-magic="fire" aria-pressed="true"><span aria-hidden="true">🔥</span> 炎</button>
+<button type="button" class="magic" data-magic="water" aria-pressed="false"><span aria-hidden="true">💧</span> 水</button>
+<button type="button" class="magic" data-magic="wind" aria-pressed="false"><span aria-hidden="true">🌪️</span> 風</button>
+<button type="button" class="magic" data-magic="earth" aria-pressed="false"><span aria-hidden="true">🪨</span> 土</button>
+</nav>
+<div class="layout">
+<section class="panel lab" aria-labelledby="lab-title">
+<div class="topline"><h2 id="lab-title">観測装置</h2><button type="button" class="small-button" id="enlargeRoom">配置図を拡大</button></div>
+<div class="scene"><svg id="room" viewBox="0 0 780 490" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="上から見た実験室の配置図"></svg></div>
+<p class="caption">上面図。xは横方向、yは光源から壁への奥行き。札の面は壁と平行。</p>
+<div class="lamps"><button type="button" data-lamp="first" aria-pressed="false"><span aria-hidden="true">🕯️</span> 燭台 I を灯す</button><button type="button" data-lamp="second" aria-pressed="false"><span aria-hidden="true">🕯️</span> 燭台 II を灯す</button></div>
+<div class="status" id="status" role="status" aria-live="polite">炎魔法を選び、燭台に触れてください。</div>
+<div class="utility-row"><button type="button" class="small-button" id="cover">観測窓を閉じる</button><span class="small" id="windowState">観測窓：閉</span></div>
+<details class="specs"><summary>操作と装置の仕様</summary>
+<p>燭台のボタンに、選択中の魔法を使います。炎で点火すると、その燭台の遮光蓋が開きます。遮光蓋は連動しており、壁へ届く観測光は常に一灯分です。他の芯に火が残っていても、その光は壁に届きません。</p>
+<p>原校章は、6枚の火焔形の金属札と支柱を一体に組んだ立体金工です。正面は保護ケースの内側を向いています。上面図では札を真上から見ています。</p>
+<p>札にはそれぞれ0〜9の数字が一つ、透かしで刻まれています。金属は不透明、透かしは透明です。すべて同じ刻字規格・同じ向きです。</p>
+<p>光源は点光源、光は直進するものとして扱います。反射・散乱・半影は考えません。観測壁の目盛りと額縁は固定の計測枠です。</p>
+<div class="table-wrap"><table><caption>装置の寸法（単位は共通。高さは光源の高さを0とする）</caption><thead><tr><th>装置</th><th>x</th><th>y</th><th>中心の高さ</th><th>札の幅</th></tr></thead><tbody>
+<tr><td>燭台 I</td><td>0</td><td>0</td><td>0</td><td>—</td></tr><tr><td>燭台 II</td><td>1</td><td>0</td><td>0</td><td>—</td></tr>
+<tr><td>札 A</td><td>−1/2</td><td>6</td><td>3</td><td>0.39</td></tr><tr><td>札 B</td><td>0</td><td>6</td><td>3</td><td>0.39</td></tr><tr><td>札 C</td><td>1/2</td><td>6</td><td>3</td><td>0.39</td></tr>
+<tr><td>札 D</td><td>−1/3</td><td>4</td><td>2</td><td>0.26</td></tr><tr><td>札 E</td><td>0</td><td>4</td><td>2</td><td>0.26</td></tr><tr><td>札 F</td><td>1/3</td><td>4</td><td>2</td><td>0.26</td></tr>
+<tr><td>観測壁</td><td>目盛りを参照</td><td>12</td><td>—</td><td>—</td></tr></tbody></table></div>
+<p>札の縦横比はすべて同じです。各透かしは、下の規格に従って作られています。壁の図も、札と同じ向きから見たものです。</p>
+<div class="font-grid" id="fontSamples" role="img" aria-label="透かしの刻字規格、0から9の見本"></div>
+<p>観測は点火時に自動で記録されます。記録は何度でも見比べられ、ページを閉じても保存されます。</p>
+<p class="small">炎：燃やす・温める／水：水を出す・流す／風：風を起こす／土：土や石を動かす。</p>
+</details>
+</section>
+<aside class="panel archive" aria-labelledby="archive-title"><div class="topline"><h2 id="archive-title">台帳の残存図</h2><span class="small">原校章・正面配置</span></div>
+<svg id="archiveDiagram" viewBox="0 0 600 560" role="img" aria-label="原校章の配置略図。上段は左からA、B、C。下段は左からD、E、F。刻字は記録されていない。"></svg>
+<p class="archive-note">登録番号は<b>A → B → C → D → E → F</b>の6桁。札の位置と採番順だけが、台帳に残っている。</p>
+<form id="answerForm" novalidate><label for="answer">原校章の登録番号</label><input id="answer" name="answer" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" maxlength="40" placeholder="数字6桁" aria-describedby="feedback"><button type="submit" class="primary" id="submit">台帳を提出する</button></form>
+<div id="feedback" class="feedback" aria-live="polite">登録番号を記入し、台帳を提出してください。</div>
+<section id="pass" class="pass" hidden><h3>炎魔法学　合格</h3><p>台帳の登録番号が照合されました。</p><svg id="restoredSeal" viewBox="0 0 600 560" role="img" aria-label="復元された原校章"></svg><p class="small">この試作の記録は、通常版の試験記録とは別に保存されます。</p><a href="index.html">試験一覧に戻る</a></section>
+<div class="answer-bottom"><button type="button" class="secondary" id="reset">この試作を最初から</button></div>
+</aside>
+</div>
+<section class="panel records" aria-labelledby="records-title"><div class="topline"><h2 id="records-title">観測記録</h2><button type="button" class="small-button" id="compare">並べて拡大</button></div><p class="small">壁を正面から見た記録。下端の数字は壁のx座標。</p><div class="record-grid">
+<article class="record" id="firstFrame"><div class="topline"><h3>燭台 I</h3><button type="button" class="small-button" data-zoom="first">拡大</button></div><svg id="observFirst" viewBox="0 0 700 320" role="img" aria-label="燭台Iは未観測"></svg></article>
+<article class="record" id="secondFrame"><div class="topline"><h3>燭台 II</h3><button type="button" class="small-button" data-zoom="second">拡大</button></div><svg id="observSecond" viewBox="0 0 700 320" role="img" aria-label="燭台IIは未観測"></svg></article>
+</div></section>
+<footer><span>魔法学校 · 炎魔法学</span><span id="saveStatus">観測と記入内容を自動保存します。</span></footer>
+</main>
+<dialog id="zoomDialog"><div class="topline"><h2 id="zoomTitle">配置図</h2><button type="button" class="secondary" id="closeZoom">閉じる</button></div><div class="zoom-scroll" id="zoomContent"></div><p class="small">横に収まらない図はスクロールできます。Escキーでも閉じられます。</p></dialog>
+<noscript>この試作をプレイするにはJavaScriptが必要です。</noscript>
+</body>
+</html>

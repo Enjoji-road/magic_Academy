@@ -30,3 +30,14 @@
 .academy-magic-vfx.amv-reduced{animation:none!important;opacity:.65;transform:translate(-50%,-50%)}
 .academy-magic-vfx.amv-reduced *{animation:none!important}
 .academy-magic-vfx.amv-reduced .amv-spark{opacity:0}
+
+/* Element-specific flowing currents, flame jets, wind paths and stone fractures. */
+.academy-magic-vfx .amv-trails{fill:none;stroke:var(--amv-color);stroke-width:2.9;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 3px var(--amv-color))}
+.academy-magic-vfx .amv-trails path{stroke-dasharray:330;stroke-dashoffset:330;animation:amv-trace .95s cubic-bezier(.17,.73,.27,1) both}
+.academy-magic-vfx .amv-trails path:nth-child(2){animation-delay:.13s;stroke-width:2}
+.academy-magic-vfx.amv-earth .amv-trails path{stroke-width:2.25}
+.academy-magic-vfx.amv-wind .amv-trails path{stroke-width:2.5;opacity:.76}
+.academy-magic-vfx.amv-water .amv-trails path{opacity:.9}
+@keyframes amv-trace{0%{stroke-dashoffset:330;opacity:0}22%{opacity:.85}64%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:-90;opacity:0}}
+@media(prefers-reduced-motion:reduce){.academy-magic-vfx .amv-trails path{stroke-dashoffset:0!important;opacity:.55!important}}
+.academy-magic-vfx.amv-reduced .amv-trails path{stroke-dashoffset:0!important;opacity:.55!important}

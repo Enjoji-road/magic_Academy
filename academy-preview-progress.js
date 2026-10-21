@@ -1,17 +1,21 @@
-/* The hall reads existing exam records. It never creates, repairs or changes them. */
+/* Four-exam, read-only hall progression. Uses existing versioned localStorage keys; never writes to exam records. */
 (function(root,factory){
 'use strict';
-const api=factory();
+const api=factory(root);
 if(typeof module==='object'&&module.exports)module.exports=api;
 if(root.document){
  root.AcademyHallProgress=api;
  const refresh=()=>{let progress;try{progress=api.readProgress(root.localStorage);}catch{progress=api.readProgress(null);}api.render(root.document,progress);};
  refresh();root.addEventListener('pageshow',refresh);root.addEventListener('storage',refresh);
 }
-})(typeof globalThis!=='undefined'?globalThis:this,function(){
+})(typeof globalThis!=='undefined'?globalThis:this,function(root){
 'use strict';
 const FIRE_KEY='magic-academy-fire-experiment-v4',EARTH_KEY='magic-academy-earth-v2';
-const FIRE_PUZZLE='fire-archive-six-leaves-20261020',PIECES='ABCDEFGHI';
+const WATER_KEY='magic-academy-water-insight-v1',WIND_KEY='magic-academy-wind-ribbon-v1';
+const FIRE_PUZZLE='fire-archive-six-leaves-20261020',WATER_PUZZLE='water-insight-displacement-20261021',PIECES='ABCDEFGHI';
+const kinds=['fire','water','wind','earth'];
+const statusLabels={new:'未受験','in-progress':'挑戦中',passed:'合格済み ✓'};
+const actionLabels={new:'入室する →','in-progress':'続きから →',passed:'再入室する →'};
 function object(value){return value!==null&&typeof value==='object'&&!Array.isArray(value);}
 function parse(raw){try{const value=JSON.parse(raw||'null');return object(value)?value:null;}catch{return null;}}
 function fireState(data){
@@ -26,24 +30,42 @@ function earthState(data){
  const changed=[...PIECES].some(id=>{const p=data.pieces[id];if(p.rot!==0||p.flip)return true;return id==='C'?!(Array.isArray(p.at)&&p.at[0]===2&&p.at[1]===2):p.at!==null;});
  return Number.isSafeInteger(data.moves)&&data.moves>0||data.discovered===true||changed?'in-progress':'new';
 }
+function waterState(data){
+ if(!data||data.version!==1||data.puzzle!==WATER_PUZZLE||!object(data.physical)||!Array.isArray(data.records))return'new';
+ // Validate through the actual exam model when present (same checks as loading the room).
+ if(root.WaterInsight&& !root.WaterInsight.restore(JSON.stringify(data)))return'new';
+ if(data.passed===true)return'passed';
+ return data.records.length>1||typeof data.answer==='string'&&data.answer.trim()!==''||typeof data.notes==='string'&&data.notes.trim()!==''||Number.isSafeInteger(data.attempts)&&data.attempts>0?'in-progress':'new';
+}
+function windState(data){
+ if(!data||data.version!==1||!Array.isArray(data.records)||!['still','left','right','up'].includes(data.wind)||!['front','left','right','low'].includes(data.view))return'new';
+ if(data.passed===true)return'passed';
+ return data.wind!=='still'||data.view!=='front'||data.records.length>0||typeof data.answer==='string'&&data.answer.trim()!==''||typeof data.notes==='string'&&data.notes.trim()!==''?'in-progress':'new';
+}
 function readProgress(storage){
  let available=Boolean(storage&&typeof storage.getItem==='function');
- function get(key){try{return parse(storage.getItem(key));}catch{available=false;return null;}}
- const fire=fireState(get(FIRE_KEY)),earth=earthState(get(EARTH_KEY));
- return{fire,earth,passed:Number(fire==='passed')+Number(earth==='passed'),storageAvailable:available};
+ const get=key=>{try{return parse(storage?.getItem(key));}catch{available=false;return null;}};
+ const statuses={
+  fire:fireState(get(FIRE_KEY)),water:waterState(get(WATER_KEY)),
+  wind:windState(get(WIND_KEY)),earth:earthState(get(EARTH_KEY))
+ };
+ return{...statuses,passed:kinds.filter(kind=>statuses[kind]==='passed').length,storageAvailable:available};
 }
 function render(document,progress){
- for(const kind of['fire','earth']){
+ for(const kind of kinds){
   const state=progress[kind],badge=document.getElementById(kind+'-status'),action=document.getElementById(kind+'-action'),door=document.getElementById(kind+'-door'),seal=document.getElementById(kind+'-seal');
-  badge.textContent={new:'未受験','in-progress':'挑戦中',passed:'合格済み ✓'}[state];
-  badge.classList.toggle('passed',state==='passed');badge.classList.toggle('in-progress',state==='in-progress');
-  door.classList.toggle('passed',state==='passed');
-  action.textContent={new:'入室する →','in-progress':'続きから →',passed:'再入室する →'}[state];
-  seal.classList.toggle('passed',state==='passed');seal.querySelector('.seal-state').textContent=state==='passed'?'合格':'未合格';
+  if(badge){badge.textContent=statusLabels[state];badge.classList.toggle('passed',state==='passed');badge.classList.toggle('in-progress',state==='in-progress');}
+  if(action)action.textContent=actionLabels[state];
+  if(door)door.classList.toggle('passed',state==='passed');
+  if(seal){seal.classList.toggle('passed',state==='passed');const status=seal.querySelector('.seal-state');if(status)status.textContent=state==='passed'?'合格':'未合格';}
  }
- document.getElementById('academy-progress').textContent='合格 '+progress.passed+' / 4 科目';
- document.getElementById('graduation-note').textContent=progress.passed===2?'炎・土の合格を記録しています。水・風の開室をお待ちください。':'現在受験できるのは、炎・土の二教室です。';
- document.getElementById('hall-save-note').textContent=progress.storageAvailable?'途中経過と合格記録は、この端末のブラウザに保存されます。':'このブラウザでは保存記録を確認できません。各教室の保存状況をご確認ください。';
+ const summary=document.getElementById('academy-progress');if(summary)summary.textContent='合格 '+progress.passed+' / 4 科目';
+ const graduate=document.getElementById('graduation-note');if(graduate)graduate.textContent=progress.passed===4?
+  '四科目の合格を確認しました。卒業試験は現在準備中です。':
+  '四つの試験室に入室できます。合格記録は各教室を出ても保持されます。';
+ const note=document.getElementById('hall-save-note');if(note)note.textContent=progress.storageAvailable?
+  '途中経過と合格記録は、この端末のブラウザに保存されます。':
+  'このブラウザでは保存記録を確認できません。各教室の保存状況をご確認ください。';
 }
-return{FIRE_KEY,EARTH_KEY,fireState,earthState,readProgress,render};
+return{FIRE_KEY,WATER_KEY,WIND_KEY,EARTH_KEY,fireState,waterState,windState,earthState,readProgress,render};
 });

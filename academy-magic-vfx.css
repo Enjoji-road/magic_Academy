@@ -1,0 +1,32 @@
+/* Shared school spell choreography. Pure ornament; no hit regions or game state. */
+.academy-magic-vfx{position:fixed;z-index:2147482000;pointer-events:none;user-select:none;-webkit-user-select:none;transform:translate(-50%,-50%);isolation:isolate;opacity:0;animation:amv-appear 1.06s cubic-bezier(.21,.7,.34,1) both;filter:drop-shadow(0 0 14px var(--amv-color));contain:layout style paint}
+.academy-magic-vfx .amv-sigil{display:block;width:100%;height:100%;color:var(--amv-color);overflow:visible}
+.academy-magic-vfx .amv-halo{fill:var(--amv-color);opacity:.08;filter:blur(16px)}
+.academy-magic-vfx .amv-outer{fill:none;stroke:var(--amv-color);stroke-width:1.1;opacity:.7;transform-origin:140px 140px;animation:amv-ring 1.05s ease-out both}
+.academy-magic-vfx .amv-lace{fill:none;stroke:var(--amv-color);stroke-width:1.45;stroke-linejoin:round;opacity:.9;transform-origin:140px 140px;animation:amv-lace .9s cubic-bezier(.22,.79,.26,1) both}
+.academy-magic-vfx .amv-element{stroke:var(--amv-color);transform-origin:140px 140px;animation:amv-core 1.05s ease-out both}
+.academy-magic-vfx .amv-stars{fill:var(--amv-color);filter:drop-shadow(0 0 4px var(--amv-color))}
+.academy-magic-vfx .amv-spark{transform-box:fill-box;transform-origin:center;animation:amv-spark 1.02s ease-out both}
+.academy-magic-vfx .amv-label{fill:var(--amv-color);font-family:Georgia,serif;font-size:12px;letter-spacing:4px;opacity:.9}
+.academy-magic-vfx.amv-fire .amv-element{filter:drop-shadow(0 0 8px #ffc07b);animation-name:amv-flame}
+.academy-magic-vfx.amv-water .amv-element{filter:drop-shadow(0 0 5px #c0f5ff);animation-name:amv-flow}
+.academy-magic-vfx.amv-wind .amv-element{filter:drop-shadow(0 0 4px #d9eeef);animation-name:amv-gust}
+.academy-magic-vfx.amv-earth .amv-element{filter:drop-shadow(0 0 5px #dfc994);animation-name:amv-stone}
+@keyframes amv-appear{0%{opacity:0;transform:translate(-50%,-50%) scale(.68)}16%{opacity:.95;transform:translate(-50%,-50%) scale(.96)}53%{opacity:1;transform:translate(-50%,-50%) scale(1)}83%{opacity:.5}100%{opacity:0;transform:translate(-50%,-50%) scale(1.08)}}
+@keyframes amv-ring{0%{opacity:0;transform:rotate(-47deg) scale(.62)}33%{opacity:1}100%{opacity:.35;transform:rotate(30deg) scale(1.07)}}
+@keyframes amv-lace{0%{opacity:0;transform:rotate(60deg) scale(.25)}34%{opacity:1}100%{opacity:.65;transform:rotate(0deg) scale(1)}}
+@keyframes amv-core{0%{opacity:0;transform:scale(.2)}37%{opacity:1;transform:scale(1.17)}100%{opacity:.45;transform:scale(1)}}
+@keyframes amv-flame{0%{opacity:0;transform:scale(.3) translateY(26px)}40%{opacity:1;transform:scale(1.2) translateY(-7px)}100%{opacity:0;transform:scale(1.05) translateY(-15px)}}
+@keyframes amv-flow{0%{opacity:0;transform:rotate(-26deg) scale(.3)}42%{opacity:1;transform:rotate(9deg) scale(1.08)}100%{opacity:0;transform:rotate(18deg) scale(1)}}
+@keyframes amv-gust{0%{opacity:0;transform:translateX(-26px) rotate(-14deg)}35%{opacity:1;transform:translateX(0) rotate(3deg)}100%{opacity:0;transform:translateX(24px) rotate(14deg)}}
+@keyframes amv-stone{0%{opacity:0;transform:translateY(22px) scale(.76)}42%{opacity:1;transform:translateY(-8px) scale(1.08)}100%{opacity:.35;transform:translateY(0) scale(1)}}
+@keyframes amv-spark{0%{opacity:0}25%{opacity:1}60%{opacity:.85}100%{opacity:0}}
+@media(max-width:600px){.academy-magic-vfx{filter:drop-shadow(0 0 9px var(--amv-color))}.academy-magic-vfx .amv-halo{opacity:.045}}
+@media(prefers-reduced-motion:reduce){
+ .academy-magic-vfx{animation:none!important;opacity:.65;transform:translate(-50%,-50%)}
+ .academy-magic-vfx *{animation:none!important}
+ .academy-magic-vfx .amv-spark{opacity:0}
+}
+.academy-magic-vfx.amv-reduced{animation:none!important;opacity:.65;transform:translate(-50%,-50%)}
+.academy-magic-vfx.amv-reduced *{animation:none!important}
+.academy-magic-vfx.amv-reduced .amv-spark{opacity:0}

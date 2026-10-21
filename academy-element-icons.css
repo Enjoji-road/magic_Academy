@@ -1,0 +1,13 @@
+/* Uniform 24×24 academic elemental insignia on all spell selectors. */
+.academy-element-button{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:7px!important;font-variant-emoji:text;white-space:nowrap}
+.academy-element-icon{display:block;flex:none;width:23px;height:23px;stroke:currentColor;overflow:visible}
+.academy-element-text{font-size:inherit}
+.academy-element-button[aria-pressed="true"] .academy-element-icon{filter:drop-shadow(0 0 4px currentColor)}
+.academy-element-button[data-spell="fire"],.academy-element-button[data-magic="fire"]{--academy-element:#f0ba86}
+.academy-element-button[data-spell="water"],.academy-element-button[data-magic="water"]{--academy-element:#9cdae5}
+.academy-element-button[data-spell="wind"],.academy-element-button[data-magic="wind"]{--academy-element:#cbdddc}
+.academy-element-button[data-spell="earth"],.academy-element-button[data-magic="earth"]{--academy-element:#d5c69b}
+.academy-element-button[aria-pressed="true"] .academy-element-icon{color:var(--academy-element)}
+.classroom-door .academy-door-symbol{color:var(--room-color);width:60px;height:88px}
+.symbol.academy-symbol-icon .academy-element-icon{height:31px;width:31px}
+@media(max-width:420px){.academy-element-button{gap:3px!important}.academy-element-icon{width:20px;height:20px}.academy-element-text{font-size:clamp(11px,3vw,14px)}}

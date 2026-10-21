@@ -51,7 +51,7 @@ function emblem(spell){
  '<circle class="amv-halo" cx="140" cy="140" r="122"/>'+
  '<g class="amv-outer"><circle cx="140" cy="140" r="105"/><circle cx="140" cy="140" r="86"/>'+ticks+'</g>'+
  '<g class="amv-lace"><path d="'+star+'"/><circle cx="140" cy="140" r="57"/><circle cx="140" cy="140" r="50"/><path d="M140 23V42M140 238V257M23 140H42M238 140H257"/></g>'+
- TRAILS[spell]+'<g class="amv-element">'+GLYPHS[spell]+'</g><g class="amv-stars">'+particles+'</g>'+
+ TRAILS[spell]+'<g class="amv-element">'+(window.AcademyElementIcons?.glyph(spell,'vfx')||GLYPHS[spell])+'</g><g class="amv-stars">'+particles+'</g>'+
  '<text x="140" y="219" class="amv-label" text-anchor="middle">'+LABEL[spell]+'</text></svg>';
 }
 function wipe(){clearTimeout(removeTimer);if(active){active.remove();active=null;}}

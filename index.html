@@ -1,68 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#14242c">
-<meta name="description" content="魔法学校の実技試験。好きな教室から挑戦し、いつでも別の試験へ移れる。">
-<title>魔法学校｜試験一覧</title>
-<style>
-:root{color-scheme:dark;--gold:#e6c581;--ink:#f3eee4}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 20% 0%,#36454c,#1a2e36 43%,#101e26);min-height:100vh;color:var(--ink);font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}
-main{width:min(970px,100%);margin:0 auto;padding:30px clamp(16px,4vw,36px) 60px}
-.eyebrow{font-size:11px;letter-spacing:.2em;color:#dbbb7b}.hero{position:relative;overflow:hidden;border:1px solid #62777a;border-radius:15px;background:linear-gradient(140deg,#273f45dd,#15272ede);padding:clamp(23px,5vw,40px);margin-bottom:24px}
-.hero::after{content:"✦";position:absolute;right:4%;top:-35px;font-size:210px;color:#c6a76d13;pointer-events:none}
-h1{font:clamp(32px,6vw,51px)/1.25 "Hiragino Mincho ProN","Yu Mincho",serif;letter-spacing:.15em;margin:12px 0 14px;color:#ffe7bc}
-.hero p{position:relative;font-size:14px;line-height:1.9;color:#d2dcd8;max-width:670px}.count{position:relative;display:inline-block;border:1px solid #9aa8a3;border-radius:20px;padding:8px 14px;font-size:12px;color:#f0d9a7}
-h2{font-size:16px;letter-spacing:.1em;color:#e6c88f;margin:0 0 16px}
-.rooms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
-.room{display:flex;flex-direction:column;gap:10px;min-width:0;text-decoration:none;border:1px solid #5d777b;border-radius:13px;padding:20px;background:#233940;min-height:200px;color:var(--ink);transition:background .15s ease,border-color .15s ease}
-a.room:hover{background:#2c454d;border-color:#ddb979}a.room:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-.room .top{display:flex;align-items:center;gap:12px}.symbol{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;font-size:29px;background:#39494b;border:1px solid #6b7e7e;flex:none}
-.name{font-family:"Hiragino Mincho ProN",serif;letter-spacing:.07em;font-size:22px;margin:0}.sub{font-size:11px;color:#d0c8b8;margin:4px 0}
-.desc{font-size:13px;color:#c8d3d0;line-height:1.6;flex:1}
-.foot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px}.badge{border:1px solid #93a2a0;color:#e0e5df;border-radius:20px;padding:4px 10px}.badge.passed{color:#b9ebcd;border-color:#9bc7ad}.go{color:#f6d99d;font-weight:700}
-.room.locked{background:#1b2b32;color:#8d9b9a;border-color:#3d5358}.room.locked .symbol{opacity:.52}.room.locked .desc{color:#91a4a1}
-.final{margin-top:24px;border:1px dashed #73858a;border-radius:12px;padding:20px;background:#1c3038}
-.final h2{margin-bottom:6px}.final p{font-size:13px;color:#bfceca;line-height:1.8;margin:0}
-footer{font-size:12px;color:#aebfbc;line-height:1.8;margin-top:18px}
-@media(max-width:610px){.rooms{grid-template-columns:minmax(0,1fr)}.room{min-height:175px;padding:15px}.hero{padding:22px}.room .name{font-size:20px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
-</style>
+<meta name="description" content="魔法学校の四元素実技試験。学院の回廊から教室を選び、観察と実験を始めよう。">
+<title>魔法学校｜四元素実技試験</title>
+<link rel="stylesheet" href="academy-preview-hall.css?v=1">
+<link rel="stylesheet" href="academy-studio-sfx.css?v=1">
+<script src="academy-studio-sfx.js?v=1" defer></script>
+<script src="water-insight-model.js?v=1" defer></script>
+<script src="academy-preview-progress.js?v=2" defer></script>
+<link rel="stylesheet" href="academy-element-icons.css?v=1">
+<script src="academy-element-icons.js?v=1" defer></script>
 </head>
-<body>
+<body class="academy-hall">
+<svg class="hall-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<symbol id="academy-star" viewBox="0 0 80 80"><path d="M40 5 46 28 64 16 52 34 75 40 52 46 64 64 46 52 40 75 34 52 16 64 28 46 5 40 28 34 16 16 34 28Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m40 21 19 19-19 19-19-19Z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="40" cy="40" r="7" fill="currentColor"/></symbol>
+<symbol id="hall-fire" viewBox="0 0 80 100"><path d="M42 8c4 23 23 31 23 51 0 21-13 33-27 33S14 81 14 64c0-13 8-24 15-33-1 14 1 20 7 24C48 40 35 27 42 8Z" fill="currentColor" fill-opacity=".2" stroke="currentColor" stroke-width="2"/><path d="M40 59c-9 12-13 16-10 24 3 9 16 10 21 1 5-8-4-17-11-25Z" fill="currentColor" fill-opacity=".8"/><path d="M22 95h36" stroke="currentColor" stroke-width="2"/></symbol>
+<symbol id="hall-water" viewBox="0 0 80 100"><path d="M40 10C32 27 16 42 16 59a24 24 0 0 0 48 0c0-17-16-32-24-49Z" fill="currentColor" fill-opacity=".13" stroke="currentColor" stroke-width="2"/><path d="M25 58c0 10 6 18 15 18M11 87q29 10 58 0M17 94q23 7 46 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="hall-wind" viewBox="0 0 80 100"><path d="M11 37h39c19 0 19-23 4-23-7 0-12 6-11 12M8 49h56c15 0 15 19 2 19-6 0-9-4-9-8M17 61h19c17 0 16 22 2 22-6 0-10-4-10-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="m22 9 4 7-4 7-4-7Zm-9 74 3 6-3 6-3-6Z" fill="currentColor" fill-opacity=".6"/></symbol>
+<symbol id="hall-earth" viewBox="0 0 80 100"><path d="m14 72 10-39 27-8 15 19-5 32-25 11Z" fill="currentColor" fill-opacity=".15" stroke="currentColor" stroke-width="2"/><path d="m24 33 12 17 30-6M36 50v37M14 72l22-22M51 25 36 50M14 93h52" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m49 57 6 7-6 7-6-7Z" fill="currentColor" fill-opacity=".65"/></symbol>
+</svg>
+<a class="skip-link" href="#classrooms">教室選択へ進む</a>
+<div class="hall-shell">
+<header class="hall-header">
+<a class="academy-wordmark" href="index.html" aria-label="魔法学校・試験一覧"><svg viewBox="0 0 80 80" aria-hidden="true"><use href="#academy-star"/></svg><span>ARCANE ACADEMY<span class="wordmark-sub">魔法学校</span></span></a>
+<button class="hall-settings" type="button" data-settings>⚙ 設定</button>
+</header>
 <main>
-<div class="hero"><div class="eyebrow">ARCANE ACADEMY · GRADUATION TRIALS</div><h1>魔法学校</h1>
-<p>四元素の教室で、実技試験に挑戦しよう。受ける順番は自由。途中で別の教室に移っても、続きから再開できます。</p>
-<div class="count" id="count">合格記録を確認しています…</div>
+<section class="hall-hero" aria-labelledby="hall-title">
+<div class="hero-window" aria-hidden="true"><svg viewBox="0 0 240 300"><path d="M26 278V125Q26 48 120 12q94 36 94 113v153Z" fill="#b6c6bb" fill-opacity=".045" stroke="#cfb478" stroke-opacity=".35" stroke-width="2"/><path d="M40 264V126q0-64 80-100 80 36 80 100v138ZM120 26v238M40 126h160M40 208h160M120 58l55 67-55 70-55-70Z" fill="none" stroke="#cfb478" stroke-opacity=".25" stroke-width="1.5"/><path d="m120 58 55 67-55 70-55-70Z" fill="#8b634c" fill-opacity=".22"/><path d="M40 208h80v56H40ZM120 126h80v82h-80Z" fill="#698e91" fill-opacity=".1"/><use href="#academy-star" x="85" y="90" width="70" height="70" color="#d5bc80" opacity=".5"/></svg></div>
+<p class="hall-overline">四元素実技試験</p>
+<h1 id="hall-title">知を灯し、<br class="hero-break">魔法を学ぶ。</h1>
+<p class="hall-intro">石造りの回廊の先に、四つの実技試験室が待っています。<br class="wide-break">受ける順番は自由。気になる教室の扉を開いてください。</p>
+<div class="hall-summary" role="status" aria-live="polite"><span class="summary-rule" aria-hidden="true"></span><span id="academy-progress">合格記録を確認しています</span></div>
+</section>
+<section class="classroom-section" id="classrooms" aria-labelledby="classroom-title">
+<div class="section-heading"><h2 id="classroom-title">試験教室</h2><p>途中でも回廊へ戻れます</p></div>
+<div class="classroom-grid">
+<a class="classroom-door door-fire" id="fire-door" href="fire-studio.html" aria-labelledby="fire-title fire-subtitle">
+<div class="door-arch" aria-hidden="true"><span class="door-number">I</span><svg viewBox="0 0 80 100"><use href="#hall-fire"/></svg><span class="door-knob"></span></div>
+<div class="door-content"><div class="door-subject">炎魔法学</div><h3 id="fire-title">灯火観測室</h3><p class="door-subtitle" id="fire-subtitle">灯樹の原像</p><p class="door-description">真鍮の燭台と、静かな観測壁。灯りをともして、実験を始めましょう。</p><div class="door-bottom"><span class="door-status" id="fire-status">未受験</span><span class="door-action" id="fire-action">入室する <span aria-hidden="true">→</span></span></div></div>
+</a>
+<a class="classroom-door door-water" id="water-door" href="water-insight-experiment.html" aria-labelledby="water-title water-subtitle">
+<div class="door-arch" aria-hidden="true"><span class="door-number">II</span><svg viewBox="0 0 80 100"><use href="#hall-water"/></svg><span class="door-knob"></span></div>
+<div class="door-content"><div class="door-subject">水魔法学</div><h3 id="water-title">水盤室</h3><p class="door-subtitle" id="water-subtitle">水の届かない部屋</p><p class="door-description">封印瓶と計量鐘。水を注ぎ、静かな変化を観測しましょう。</p><div class="door-bottom"><span class="door-status" id="water-status">未受験</span><span class="door-action" id="water-action">入室する →</span></div></div>
+</a>
+<a class="classroom-door door-wind" id="wind-door" href="wind-ribbon-experiment.html" aria-labelledby="wind-title wind-subtitle">
+<div class="door-arch" aria-hidden="true"><span class="door-number">III</span><svg viewBox="0 0 80 100"><use href="#hall-wind"/></svg><span class="door-knob"></span></div>
+<div class="door-content"><div class="door-subject">風魔法学</div><h3 id="wind-title">高塔観測室</h3><p class="door-subtitle" id="wind-subtitle">風に綴じられた言葉</p><p class="door-description">高塔に残る白銀の記念帯。風を送り、古い銘を読み解きましょう。</p><div class="door-bottom"><span class="door-status" id="wind-status">未受験</span><span class="door-action" id="wind-action">入室する →</span></div></div>
+</a>
+<a class="classroom-door door-earth" id="earth-door" href="earth-studio.html" aria-labelledby="earth-title earth-subtitle">
+<div class="door-arch" aria-hidden="true"><span class="door-number">IV</span><svg viewBox="0 0 80 100"><use href="#hall-earth"/></svg><span class="door-knob"></span></div>
+<div class="door-content"><div class="door-subject">土魔法学</div><h3 id="earth-title">封印石盤室</h3><p class="door-subtitle" id="earth-subtitle">第一の石盤</p><p class="door-description">旧い石造りの試験場。石に触れ、その重みと刻印を確かめてください。</p><div class="door-bottom"><span class="door-status" id="earth-status">未受験</span><span class="door-action" id="earth-action">入室する <span aria-hidden="true">→</span></span></div></div>
+</a>
 </div>
-<section aria-labelledby="room-title"><h2 id="room-title">試験教室を選ぶ</h2>
-<div class="rooms">
-<a class="room" href="fire.html"><div class="top"><div class="symbol" aria-hidden="true">🔥</div><div><h3 class="name">炎魔法学</h3><p class="sub">影の持ち主</p></div></div><div class="desc">二つの燭台と五枚の金属板。影から本物を見分ける観察試験。</div><div class="foot"><span class="badge" id="fire-status">未受験</span><span class="go">教室へ入る →</span></div></a>
-<div class="room locked" aria-label="水魔法学・準備中"><div class="top"><div class="symbol" aria-hidden="true">💧</div><div><h3 class="name">水魔法学</h3><p class="sub">試験準備中</p></div></div><div class="desc">水魔法の実技試験は、現在制作中です。</div><div class="foot"><span class="badge">準備中</span></div></div>
-<div class="room locked" aria-label="風魔法学・準備中"><div class="top"><div class="symbol" aria-hidden="true">🌪️</div><div><h3 class="name">風魔法学</h3><p class="sub">試験準備中</p></div></div><div class="desc">風魔法の実技試験は、現在制作中です。</div><div class="foot"><span class="badge">準備中</span></div></div>
-<a class="room" href="earth.html"><div class="top"><div class="symbol" aria-hidden="true">🪨</div><div><h3 class="name">土魔法学</h3><p class="sub">第一の石盤</p></div></div><div class="desc">石を動かし、刻印と隣接条件に従って石盤を完成させる実技試験。</div><div class="foot"><span class="badge" id="earth-status">未受験</span><span class="go">教室へ入る →</span></div></a>
-</div></section>
-<section class="final"><h2>🎓 卒業試験</h2><p>四科目の試験を終えた先に待つ、最後の課題。現在は制作中です。</p></section>
-<footer>開発中の試作品です。合格記録と途中経過は同じブラウザの端末内に保存されます。教室間の移動では初期化されません。</footer>
+</section>
+<section class="graduation-panel" aria-labelledby="graduation-title">
+<div class="graduation-mark" aria-hidden="true"><svg viewBox="0 0 80 80"><use href="#academy-star"/></svg></div>
+<div class="graduation-copy"><p class="hall-overline">四元素の、その先へ</p><h2 id="graduation-title">卒業試験</h2><p>四科目の合格記録をそろえた先に待つ、最後の試験。<br>現在、課題を準備しています。</p><div class="subject-seals" aria-label="四科目の合格状況"><span id="fire-seal" data-seal="fire">炎<span class="seal-state">未合格</span></span><span id="water-seal" data-seal="water">水<span class="seal-state">未合格</span></span><span id="wind-seal" data-seal="wind">風<span class="seal-state">未合格</span></span><span id="earth-seal" data-seal="earth">土<span class="seal-state">未合格</span></span></div><p class="graduation-note" id="graduation-note">四つの試験室に入室できます。</p></div>
+</section>
+<p class="hall-save-note" id="hall-save-note">途中経過と合格記録は、この端末のブラウザに保存されます。</p>
 </main>
-<script>
-(function(){
-"use strict";
-function refreshProgress(){
- var passed=0;
- var exams=[{key:"magic-academy-fire-v2",id:"fire-status",version:2,puzzle:"shadow-v2-depths-20261020"},{key:"magic-academy-earth-v2",id:"earth-status"}];
- exams.forEach(function(p){
-  var badge=document.getElementById(p.id);badge.textContent="未受験";badge.classList.remove("passed");
-  try{var d=JSON.parse(localStorage.getItem(p.key)||"null");if(!d||p.version&&(d.version!==p.version||d.puzzle!==p.puzzle))return;
-   if(d.passed&&(!p.version||d.seen&&d.seen.left&&d.seen.right)){badge.textContent="合格済み ✓";badge.classList.add("passed");passed++;}
-   else if(d.moves||d.seen&&(d.seen.left||d.seen.right)){badge.textContent="挑戦中";}
-  }catch(e){}
- });
- document.getElementById("count").textContent="合格："+passed+" / 4 科目　｜　現在は2教室がプレイ可能";
-}
-refreshProgress();window.addEventListener("pageshow",refreshProgress);window.addEventListener("storage",refreshProgress);
-})();
-</script>
+<footer class="hall-footer"><span>魔法学校 · 四元素の回廊</span><span>四元素実技試験</span></footer>
+</div>
+<noscript><p class="hall-noscript">教室へはそのまま入室できます。進行状況の表示にはJavaScriptが必要です。</p></noscript>
 </body>
 </html>

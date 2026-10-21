@@ -8,6 +8,13 @@ const GLYPHS={
  wind:'<path d="M103 124h70c15 0 17-20 5-20-7 0-10 5-10 9M94 140h88c19 0 21 23 7 23-7 0-11-5-11-10M111 157h40c12 0 13 14 6 18-5 3-12-1-11-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M125 107q18-22 34-23-7 22-28 29" stroke="currentColor" fill="currentColor" fill-opacity=".19" stroke-width="2"/>',
  earth:'<path d="M140 92 174 110 174 150 140 170 106 150 106 110Z" fill="currentColor" fill-opacity=".17" stroke="currentColor" stroke-width="3"/><path d="m140 92 0 41-34 17m34-17 34 17M125 117l15 16 17-18M116 162l17 14m31-14-14 14" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="m128 105 12-6 13 6" fill="none" stroke="currentColor" stroke-width="1.8"/>'
 };
+/* Attribute-specific energy paths: not just concentric rings. */
+const TRAILS={
+ fire:'<g class="amv-trails"><path d="M75 175Q90 157 85 128T102 84M200 180Q182 144 192 119T174 82M87 196q-10-13-6-27M203 199q11-19 4-32"/><path d="M98 225q27-12 18-29M167 213q23-23 11-36"/></g>',
+ water:'<g class="amv-trails"><path d="M40 190C64 167 84 201 110 181S149 165 166 179 218 188 241 160"/><path d="M33 209C69 190 85 225 121 200S178 184 194 201 222 221 249 190"/><path d="M81 76C91 93 105 97 107 116"/></g>',
+ wind:'<g class="amv-trails"><path d="M30 110C63 80 77 119 106 100S151 80 169 89"/><path d="M37 178C72 148 91 193 122 164S170 147 191 156 231 169 249 145"/><path d="M82 223q33-38 77-21t79-20"/></g>',
+ earth:'<g class="amv-trails"><path d="m63 206 27-20 15 10 16-22 19 13 23-22 24 14 29-20"/><path d="m72 110 17 13 15-8 14 17m92-28-22 17-10-8-14 17"/><path d="m107 213-7 13 19-8m49-11 15 17 12-19"/></g>'
+};
 const LABEL={fire:'IGNIS',water:'AQUA',wind:'VENTUS',earth:'TERRA'};
 const COLORS={fire:'#f0b16b',water:'#8fdfed',wind:'#cbdfe4',earth:'#d3c290'};
 const SELECTOR='button, [data-target], [data-piece], .cell';
@@ -44,7 +51,7 @@ function emblem(spell){
  '<circle class="amv-halo" cx="140" cy="140" r="122"/>'+
  '<g class="amv-outer"><circle cx="140" cy="140" r="105"/><circle cx="140" cy="140" r="86"/>'+ticks+'</g>'+
  '<g class="amv-lace"><path d="'+star+'"/><circle cx="140" cy="140" r="57"/><circle cx="140" cy="140" r="50"/><path d="M140 23V42M140 238V257M23 140H42M238 140H257"/></g>'+
- '<g class="amv-element">'+GLYPHS[spell]+'</g><g class="amv-stars">'+particles+'</g>'+
+ TRAILS[spell]+'<g class="amv-element">'+GLYPHS[spell]+'</g><g class="amv-stars">'+particles+'</g>'+
  '<text x="140" y="219" class="amv-label" text-anchor="middle">'+LABEL[spell]+'</text></svg>';
 }
 function wipe(){clearTimeout(removeTimer);if(active){active.remove();active=null;}}

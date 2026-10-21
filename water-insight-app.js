@@ -21,6 +21,16 @@ function diagram(p,{bubbles=false,magic=null,target='source',waterFlow=false}={}
  text(svg,34,46,'AQUA · VOLUME LABORATORY',{'font-size':14,'letter-spacing':2,fill:'#aac9d3'});
  text(svg,926,46,'正面模式図',{'font-size':17,'text-anchor':'end',fill:'#aac9d3'});
  add(svg,'path',{d:'M32 76h896M32 608h896',stroke:'#7595a255'});
+ // Academy water chamber: architectural traces, etched circles and subtle reflected light.
+ const halo=add(defs,'radialGradient',{id:id+'aura',cx:'50%',cy:'28%',r:'70%'});
+ add(halo,'stop',{offset:'0','stop-color':'#7bd1e4','stop-opacity':'.16'});
+ add(halo,'stop',{offset:'1','stop-color':'#102837','stop-opacity':'0'});
+ add(svg,'rect',{x:20,y:80,width:920,height:520,rx:14,fill:fill('aura')});
+ add(svg,'path',{d:'M33 572V235Q33 95 180 95h600q147 0 147 140v337',stroke:'#bcae8170','stroke-width':2,fill:'none'});
+ add(svg,'path',{d:'M46 570V238Q46 109 182 109h596q136 0 136 129v332',stroke:'#8ba8a63a','stroke-width':1,fill:'none'});
+ for(const x of [190,480,770]){add(svg,'path',{d:`M${x-9} 85l9-9 9 9-9 9Z`,stroke:'#c6b989',fill:'#7aaeb522','stroke-width':1.1});}
+ add(svg,'path',{d:'M182 580h600M182 585h600',stroke:'#d0b97650',fill:'none','stroke-width':1});
+ 
  // Constant-head feed. The supply is not a calibrated volume measure.
  text(svg,96,155,'供水瓶',{'text-anchor':'middle'});
  add(svg,'rect',{x:57,y:176,width:78,height:170,rx:11,fill:fill('glass'),stroke:'#a5ccd8','stroke-width':2});
@@ -29,7 +39,10 @@ function diagram(p,{bubbles=false,magic=null,target='source',waterFlow=false}={}
  text(svg,96,278,'検水',{'text-anchor':'middle','font-size':18});
  // Sealed opaque bottle. Its initial/remaining water quantity is never drawn.
  add(svg,'path',{d:'M228 304v-33h82v33q62 8 62 58v160q0 29-29 29H194q-29 0-29-29V362q0-50 63-58Z',fill:fill('stone'),stroke:'#a2c5cd','stroke-width':2});
+ add(svg,'path',{d:'M169 359q6-45 52-51M368 359q-6-45-52-51',stroke:'#dbc69b77','stroke-width':2,fill:'none'});
  add(svg,'rect',{x:194,y:368,width:150,height:125,rx:6,fill:'#223943',stroke:'#9ab4b7'});
+ add(svg,'rect',{x:201,y:374,width:136,height:113,rx:3,fill:'none',stroke:'#d4be8b88','stroke-width':1});
+ add(svg,'path',{d:'M257 345l12-12 12 12-12 12Z',stroke:'#d8c392',fill:'#86bdc122','stroke-width':1.4});
  text(svg,269,408,'封 印 瓶',{'text-anchor':'middle','font-size':24});
  text(svg,269,449,'5,000 mL',{'text-anchor':'middle','font-size':24,fill:'#e1d8b8'});
  text(svg,269,475,'中は見えない',{'text-anchor':'middle','font-size':17,fill:'#b0c5ca'});
@@ -47,6 +60,8 @@ function diagram(p,{bubbles=false,magic=null,target='source',waterFlow=false}={}
  const surface=363,bellHeight=210,waterHeight=(Cvalue(m.bellWater)/5000)*bellHeight,bottom=surface+waterHeight,top=bottom-bellHeight;
  add(svg,'rect',{x:556,y:339,width:286,height:222,rx:10,fill:fill('glass'),stroke:'#97c1ca','stroke-width':2});
  add(svg,'rect',{x:559,y:surface,width:280,height:195,rx:5,fill:'#8fcbd530','stroke':'none'});
+ add(svg,'path',{d:'M556 336h287M556 563h287',stroke:'#c9b98c88','stroke-width':3,fill:'none'});
+ add(svg,'path',{d:'M566 348h259M566 553h259',stroke:'#d4e8e633','stroke-width':1,fill:'none'});
  add(svg,'path',{d:`M556 ${surface}h286m0 0h35v143h-25`,fill:'none',stroke:'#91bec9','stroke-width':3});
  add(svg,'path',{d:'M592 124v442M812 124v442',stroke:'#607c89','stroke-width':2});
  // Counterbalanced, levelled measuring bell. No hidden pressure changes at readout.
@@ -56,6 +71,8 @@ function diagram(p,{bubbles=false,magic=null,target='source',waterFlow=false}={}
  const bell=add(svg,'g',{class:'bell'});
  add(bell,'path',{d:`M612 ${bottom}V${top+13}q0-13 13-13h103q13 0 13 13v${bellHeight-13}`,fill:fill('glass'),stroke:'#cee6e7','stroke-width':2.3});
  add(bell,'rect',{x:615,y:surface,width:123,height:Math.max(0,waterHeight-1),fill:'#c1e5df55'});
+ add(bell,'path',{d:`M624 ${top+14}v${Math.min(114,bellHeight-27)}`,stroke:'#edffff44','stroke-width':6,'stroke-linecap':'round',fill:'none'});
+ add(bell,'path',{d:`M616 ${top+2}h122`,stroke:'#d7c08f99','stroke-width':3,fill:'none'});
  add(bell,'path',{d:`M614 ${surface}h125`,stroke:'#f0ffff','stroke-width':2});
  for(let v=0;v<=5000;v+=1000){const y=bottom-v/5000*bellHeight;add(bell,'path',{d:`M729 ${y}h13`,stroke:'#cadde0','stroke-width':1.2});text(bell,749,y+6,String(v),{'font-size':20,fill:'#c7dce1'});}
  text(svg,676,top-18,'計量鐘',{'text-anchor':'middle','font-size':22});
@@ -69,12 +86,70 @@ function diagram(p,{bubbles=false,magic=null,target='source',waterFlow=false}={}
  if(waterFlow)add(svg,'path',{d:'M96 346v174h150',stroke:'#d2f6fb',fill:'none','stroke-width':2,class:'magic-trace'});
  return svg;
 }
+function compactDiagram(p,{bubbles=false,magic=null,target='source',waterFlow=false}={}){
+ const m=M.measure(p),id='cm'+(++diagramId),svg=node('svg',{viewBox:'0 0 390 450',class:'insight-compact-diagram',role:'img','aria-label':'装置全景。封印瓶の上限札：'+(m.full?'到達':'未到達')+'。計量鐘の水は'+format(m.displayWater)+'ミリリットル。連絡管は'+(m.open?'開':'閉')+'。'});
+ add(svg,'title',{},'水盤室：供水瓶、内部の見えない封印瓶、計量鐘');
+ const defs=add(svg,'defs');
+ const glow=add(defs,'radialGradient',{id:id+'light',cx:'48%',cy:'27%',r:'65%'});
+ add(glow,'stop',{offset:'0','stop-color':'#6dbac9','stop-opacity':'.30'});
+ add(glow,'stop',{offset:'1','stop-color':'#0c2633','stop-opacity':0});
+ const water=add(defs,'linearGradient',{id:id+'water',x1:0,x2:1,y1:0,y2:1});
+ add(water,'stop',{offset:0,'stop-color':'#c1eef0','stop-opacity':'.80'});
+ add(water,'stop',{offset:1,'stop-color':'#4b9cbb','stop-opacity':'.52'});
+ add(svg,'rect',{x:0,y:0,width:390,height:450,rx:8,fill:'#112d3b'});
+ add(svg,'rect',{x:0,y:0,width:390,height:450,rx:8,fill:'url(#'+id+'light)'});
+ add(svg,'path',{d:'M17 410V75Q17 21 72 21h246q55 0 55 54v335',fill:'none',stroke:'#b6a57755','stroke-width':1.5});
+ add(svg,'path',{d:'M27 407V77Q27 32 72 32h246q45 0 45 45v330',fill:'none',stroke:'#abd4d124','stroke-width':1});
+ text(svg,195,61,'A Q U A   ·   L A B O R A T O R Y',{'text-anchor':'middle','font-size':12,fill:'#e0cd9d'});
+ add(svg,'path',{d:'M47 77h296M46 425h298',stroke:'#baa98166','stroke-width':1.4,fill:'none'});
+ // Supply is intentionally not marked with a total delivered volume.
+ text(svg,49,158,'供水瓶',{'text-anchor':'middle','font-size':13,fill:'#d0e8e8'});
+ add(svg,'rect',{x:30,y:180,width:38,height:108,rx:6,fill:'#5ea3b122',stroke:'#a3cbd2','stroke-width':2});
+ add(svg,'rect',{x:32,y:208,width:34,height:77,fill:'url(#'+id+'water)'});
+ add(svg,'path',{d:'M30 208h38',stroke:'#e5fcfa','stroke-width':1.5});
+ add(svg,'path',{d:'M49 288v106h56v-20',fill:'none',stroke:'#68aeca','stroke-width':5,'stroke-linecap':'round'});
+ // Sealed, totally opaque stone bottle.
+ add(svg,'path',{d:'M105 189v-16h56v16q20 4 20 27v152q0 20-20 20h-57q-20 0-20-20V216q0-23 21-27Z',fill:'#354d59',stroke:'#b3c8c8','stroke-width':2.5});
+ add(svg,'path',{d:'M105 190v-17h56v17q20 4 20 27v152',fill:'none',stroke:'#cbb88c99','stroke-width':1.5});
+ add(svg,'rect',{x:96,y:242,width:73,height:92,rx:4,fill:'#233a46',stroke:'#bcae85','stroke-width':1.5});
+ add(svg,'rect',{x:100,y:246,width:65,height:84,rx:2,fill:'none',stroke:'#a1bfc266','stroke-width':1});
+ text(svg,133,271,'封 印 瓶',{'text-anchor':'middle','font-size':15});
+ text(svg,133,294,'5,000',{'text-anchor':'middle','font-size':20,fill:'#eee0b8'});
+ text(svg,133,314,'mL',{'text-anchor':'middle','font-size':12,fill:'#eee0b8'});
+ text(svg,133,351,'内部は見えない',{'text-anchor':'middle','font-size':10,fill:'#d6e4e4'});
+ add(svg,'path',{d:'M124 170v-22h17v22',stroke:'#b2c9cc','stroke-width':2,fill:'none'});
+ text(svg,133,131,m.full?'上限到達':'上限未達',{'text-anchor':'middle','font-size':14,fill:m.full?'#e8d198':'#c1d8db'});
+ // One communication pipe: visible outside, bottle pickup stays concealed.
+ add(svg,'path',{d:'M161 176h31v-74h93v240h-4',fill:'none',stroke:'#a7b6b8','stroke-width':5,'stroke-linejoin':'round'});
+ add(svg,'path',{d:'M161 174h33v-74h91',fill:'none',stroke:'#e1e9df44','stroke-width':1.1});
+ text(svg,227,94,'連絡管',{'text-anchor':'middle','font-size':12,fill:'#d7e5df'});
+ add(svg,'circle',{cx:193,cy:142,r:15,fill:'#325364',stroke:'#d2c499','stroke-width':2});
+ add(svg,'path',{d:p.open?'M193 133v18':'M184 142h18',stroke:'#f0e8d3','stroke-width':3,'stroke-linecap':'round'});
+ text(svg,217,148,p.open?'開':'閉',{'font-size':13,fill:'#e2ebdf'});
+ // Bell glides vertically as its retained water falls; internal and external surfaces align.
+ const surface=294,bellHeight=160,bellWaterHeight=Cvalue(m.bellWater)/5000*bellHeight,bottom=surface+bellWaterHeight,top=bottom-bellHeight;
+ add(svg,'rect',{x:224,y:275,width:143,height:148,rx:9,fill:'#739fad16',stroke:'#a7c6cb','stroke-width':2});
+ add(svg,'rect',{x:226,y:surface,width:139,height:126,rx:3,fill:'#8bc3d438'});
+ add(svg,'path',{d:'M224 272h143M224 295h143M224 424h143',stroke:'#bcae85aa','stroke-width':2,fill:'none'});
+ add(svg,'path',{d:'M238 168v244M345 168v244',stroke:'#91aebb77','stroke-width':2});
+ const bell=add(svg,'g',{class:'bell'});
+ add(bell,'path',{d:`M245 ${bottom}V${top+11}q0-11 11-11h56q11 0 11 11v${bellHeight-11}`,fill:'#9ac9ce2d',stroke:'#e0f1e9','stroke-width':2.3});
+ add(bell,'rect',{x:247,y:surface,width:74,height:Math.max(0,bellWaterHeight-1),fill:'#c0e8e257'});
+ add(bell,'path',{d:`M248 ${surface}h74`,stroke:'#f4ffff','stroke-width':2});
+ add(bell,'path',{d:`M250 ${top+11}v100`,stroke:'#d9ffff5e','stroke-width':3,fill:'none'});
+ for(let v=0;v<=5000;v+=1000){const y=bottom-v/5000*bellHeight;add(bell,'path',{d:`M314 ${y}h9`,stroke:'#ecf6ef','stroke-width':1});}
+ text(svg,287,444,'計 量 鐘',{'text-anchor':'middle','font-size':15,fill:'#e5e6d7'});
+ if(bubbles)for(let i=0;i<6;i++)add(svg,'circle',{cx:267+i%3*9,cy:386-i*14,r:2.5+(i%2),fill:'none',stroke:'#e9ffff','stroke-width':1.5,class:'bubble'});
+ if(magic){const color={water:'#b1f3ff',fire:'#efb982',wind:'#cbdfe7',earth:'#bfd6af'}[magic];add(svg,'ellipse',{cx:magic==='water'?(target==='bath'?348:49):153,cy:magic==='water'?(target==='bath'?288:179):409,rx:27,ry:12,fill:'none',stroke:color,'stroke-width':2,class:'magic-trace'});}
+ if(waterFlow)add(svg,'path',{d:'M49 289v104h56',fill:'none',stroke:'#efffff','stroke-width':2,class:'magic-trace'});
+ return svg;
+}
 function Cvalue(x){return Math.max(0,Math.min(5000,x));}
 function showScene(options={}){
- clearTimeout(effectTimer);$('scene').replaceChildren(diagram(state.physical,options));const m=M.measure(state.physical);
+ clearTimeout(effectTimer);$('scene').replaceChildren(diagram(state.physical,options));$('mobileScene').replaceChildren(compactDiagram(state.physical,options));const m=M.measure(state.physical);
  $('liveReading').replaceChildren(document.createTextNode(format(m.displayWater)+' '));const unit=document.createElement('small');unit.textContent='mL';$('liveReading').append(unit);
- $('fullFlag').textContent=m.full?'上限到達':'未到達';$('valve').textContent=m.open?'開 · 閉じる':'閉 · 開く';$('valve').setAttribute('aria-pressed',String(m.open));
- if(options.bubbles||options.magic)effectTimer=setTimeout(()=>document.querySelectorAll('#scene .bubble,#scene .magic-trace').forEach(e=>e.remove()),1100);
+ $('fullFlag').textContent=m.full?'上限到達':'未到達';$('fullFlag').dataset.full=String(m.full);$('valve').textContent=m.open?'開 · 閉じる':'閉 · 開く';$('valve').setAttribute('aria-pressed',String(m.open));
+ if(options.bubbles||options.magic)effectTimer=setTimeout(()=>document.querySelectorAll('#scene .bubble,#scene .magic-trace,#mobileScene .bubble,#mobileScene .magic-trace').forEach(e=>e.remove()),1100);
 }
 function openDialog(d){if(d.showModal)d.showModal();else d.setAttribute('open','');}
 function closeDialog(d){if(d.close)d.close();else d.removeAttribute('open');}

@@ -9,7 +9,10 @@
 <link rel="stylesheet" href="academy-preview-hall.css?v=1">
 <link rel="stylesheet" href="academy-studio-sfx.css?v=1">
 <script src="academy-studio-sfx.js?v=1" defer></script>
-<script src="academy-preview-progress.js?v=1" defer></script>
+<script src="water-insight-model.js?v=1" defer></script>
+<script src="academy-preview-progress.js?v=2" defer></script>
+<link rel="stylesheet" href="academy-element-icons.css?v=1">
+<script src="academy-element-icons.js?v=1" defer></script>
 </head>
 <body class="academy-hall">
 <svg class="hall-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -40,14 +43,14 @@
 <div class="door-arch" aria-hidden="true"><span class="door-number">I</span><svg viewBox="0 0 80 100"><use href="#hall-fire"/></svg><span class="door-knob"></span></div>
 <div class="door-content"><div class="door-subject">炎魔法学</div><h3 id="fire-title">灯火観測室</h3><p class="door-subtitle" id="fire-subtitle">灯樹の原像</p><p class="door-description">真鍮の燭台と、静かな観測壁。灯りをともして、実験を始めましょう。</p><div class="door-bottom"><span class="door-status" id="fire-status">未受験</span><span class="door-action" id="fire-action">入室する <span aria-hidden="true">→</span></span></div></div>
 </a>
-<article class="classroom-door door-water room-preparing" aria-labelledby="water-title">
+<a class="classroom-door door-water" id="water-door" href="water-insight-experiment.html" aria-labelledby="water-title water-subtitle">
 <div class="door-arch" aria-hidden="true"><span class="door-number">II</span><svg viewBox="0 0 80 100"><use href="#hall-water"/></svg><span class="door-knob"></span></div>
-<div class="door-content"><div class="door-subject">水魔法学</div><h3 id="water-title">水盤室</h3><p class="door-subtitle">濃藍と青銀の実習室</p><p class="door-description">ガラスと陶器を備えた教室で、次の実技試験を準備しています。</p><div class="door-bottom"><span class="door-status preparing">準備中</span><span class="door-muted">開室をお待ちください</span></div></div>
-</article>
-<article class="classroom-door door-wind room-preparing" aria-labelledby="wind-title">
+<div class="door-content"><div class="door-subject">水魔法学</div><h3 id="water-title">水盤室</h3><p class="door-subtitle" id="water-subtitle">水の届かない部屋</p><p class="door-description">封印瓶と計量鐘。水を注ぎ、静かな変化を観測しましょう。</p><div class="door-bottom"><span class="door-status" id="water-status">未受験</span><span class="door-action" id="water-action">入室する →</span></div></div>
+</a>
+<a class="classroom-door door-wind" id="wind-door" href="wind-ribbon-experiment.html" aria-labelledby="wind-title wind-subtitle">
 <div class="door-arch" aria-hidden="true"><span class="door-number">III</span><svg viewBox="0 0 80 100"><use href="#hall-wind"/></svg><span class="door-knob"></span></div>
-<div class="door-content"><div class="door-subject">風魔法学</div><h3 id="wind-title">高塔観測室</h3><p class="door-subtitle">白銀と薄布の実験塔</p><p class="door-description">学院の高塔に設けられた教室。次の実技試験は、現在準備中です。</p><div class="door-bottom"><span class="door-status preparing">準備中</span><span class="door-muted">開室をお待ちください</span></div></div>
-</article>
+<div class="door-content"><div class="door-subject">風魔法学</div><h3 id="wind-title">高塔観測室</h3><p class="door-subtitle" id="wind-subtitle">風に綴じられた言葉</p><p class="door-description">高塔に残る白銀の記念帯。風を送り、古い銘を読み解きましょう。</p><div class="door-bottom"><span class="door-status" id="wind-status">未受験</span><span class="door-action" id="wind-action">入室する →</span></div></div>
+</a>
 <a class="classroom-door door-earth" id="earth-door" href="earth-studio.html" aria-labelledby="earth-title earth-subtitle">
 <div class="door-arch" aria-hidden="true"><span class="door-number">IV</span><svg viewBox="0 0 80 100"><use href="#hall-earth"/></svg><span class="door-knob"></span></div>
 <div class="door-content"><div class="door-subject">土魔法学</div><h3 id="earth-title">封印石盤室</h3><p class="door-subtitle" id="earth-subtitle">第一の石盤</p><p class="door-description">旧い石造りの試験場。石に触れ、その重みと刻印を確かめてください。</p><div class="door-bottom"><span class="door-status" id="earth-status">未受験</span><span class="door-action" id="earth-action">入室する <span aria-hidden="true">→</span></span></div></div>
@@ -56,11 +59,11 @@
 </section>
 <section class="graduation-panel" aria-labelledby="graduation-title">
 <div class="graduation-mark" aria-hidden="true"><svg viewBox="0 0 80 80"><use href="#academy-star"/></svg></div>
-<div class="graduation-copy"><p class="hall-overline">四元素の、その先へ</p><h2 id="graduation-title">卒業試験</h2><p>四科目すべての合格後に開かれる、最後の試験。<br>現在、課題を準備しています。</p><div class="subject-seals" aria-label="四科目の合格状況"><span id="fire-seal" data-seal="fire">炎<span class="seal-state">未合格</span></span><span data-seal="water">水<span class="seal-state">準備中</span></span><span data-seal="wind">風<span class="seal-state">準備中</span></span><span id="earth-seal" data-seal="earth">土<span class="seal-state">未合格</span></span></div><p class="graduation-note" id="graduation-note">現在受験できるのは、炎・土の二教室です。</p></div>
+<div class="graduation-copy"><p class="hall-overline">四元素の、その先へ</p><h2 id="graduation-title">卒業試験</h2><p>四科目の合格記録をそろえた先に待つ、最後の試験。<br>現在、課題を準備しています。</p><div class="subject-seals" aria-label="四科目の合格状況"><span id="fire-seal" data-seal="fire">炎<span class="seal-state">未合格</span></span><span id="water-seal" data-seal="water">水<span class="seal-state">未合格</span></span><span id="wind-seal" data-seal="wind">風<span class="seal-state">未合格</span></span><span id="earth-seal" data-seal="earth">土<span class="seal-state">未合格</span></span></div><p class="graduation-note" id="graduation-note">四つの試験室に入室できます。</p></div>
 </section>
 <p class="hall-save-note" id="hall-save-note">途中経過と合格記録は、この端末のブラウザに保存されます。</p>
 </main>
-<footer class="hall-footer"><span>魔法学校 · 四元素の回廊</span><span>UI試作品</span></footer>
+<footer class="hall-footer"><span>魔法学校 · 四元素の回廊</span><span>四元素実技試験</span></footer>
 </div>
 <noscript><p class="hall-noscript">教室へはそのまま入室できます。進行状況の表示にはJavaScriptが必要です。</p></noscript>
 </body>

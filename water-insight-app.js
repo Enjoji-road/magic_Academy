@@ -148,8 +148,20 @@ function Cvalue(x){return Math.max(0,Math.min(5000,x));}
 function showScene(options={}){
  clearTimeout(effectTimer);$('scene').replaceChildren(diagram(state.physical,options));$('mobileScene').replaceChildren(compactDiagram(state.physical,options));const m=M.measure(state.physical);
  $('liveReading').replaceChildren(document.createTextNode(format(m.displayWater)+' '));const unit=document.createElement('small');unit.textContent='mL';$('liveReading').append(unit);
- $('fullFlag').textContent=m.full?'上限到達':'未到達';$('fullFlag').dataset.full=String(m.full);$('valve').textContent=m.open?'開 · 閉じる':'閉 · 開く';$('valve').setAttribute('aria-pressed',String(m.open));
- if(options.bubbles||options.magic)effectTimer=setTimeout(()=>document.querySelectorAll('#scene .bubble,#scene .magic-trace,#mobileScene .bubble,#mobileScene .magic-trace').forEach(e=>e.remove()),1100);
+ $('fullFlag').textContent=m.full?'上限到達':'未到達';$('fullFlag').dataset.full=String(m.full);$('valve').textContent=m.open?'開 · 閉じる':'閉 · 開く';$('valve').setAttribute('aria-pressed',String(m.open));$('valve').setAttribute('aria-label',m.open?'連絡管のつまみを閉じる':'連絡管のつまみを開く');
+ // Animate the actual bell in the instrument frame; avoid moving it when nothing was displaced.
+ if(options.previous&&!reduced()){
+  const prev=M.measure(options.previous).bellWater;
+  const displaced=prev-m.bellWater;
+  if(Math.abs(displaced)>1){
+   for(const [id,height] of [['scene',210],['mobileScene',160]]){
+    const bell=$(id).querySelector('.bell');
+    const delta=displaced/5000*height;
+    if(bell&&typeof bell.animate==='function')bell.animate([{transform:'translateY('+delta+'px)'},{transform:'translateY(0px)'}],{duration:1050,easing:'cubic-bezier(.22,.8,.32,1)'});
+   }
+  }
+ }
+ if(options.bubbles||options.magic)effectTimer=setTimeout(()=>document.querySelectorAll('#scene .bubble,#scene .magic-trace,#mobileScene .bubble,#mobileScene .magic-trace').forEach(e=>e.remove()),2350);
 }
 function openDialog(d){if(d.showModal)d.showModal();else d.setAttribute('open','');}
 function closeDialog(d){if(d.close)d.close();else d.removeAttribute('open');}
@@ -175,7 +187,7 @@ function renderRecords(latest=false){const list=$('recordList'),left=list.scroll
  });list.scrollLeft=latest?list.scrollWidth:left;
 }
 function act(action){
- const before=M.clone(state.physical),result=M.act(state,action);save();showScene({bubbles:result.collected>1e-6,magic:['small','fill','bath'].includes(action)?'water':null,target:action==='bath'?'bath':'source',waterFlow:result.admitted>1e-6});renderRecords(result.newRecord);
+ const before=M.clone(state.physical),result=M.act(state,action);save();showScene({previous:before,bubbles:result.collected>1e-6,magic:['small','fill','bath'].includes(action)?'water':null,target:action==='bath'?'bath':'source',waterFlow:result.admitted>1e-6});renderRecords(result.newRecord);
  const r={action,physical:state.physical};const message=observations(r,{physical:before})[0];say(message+' 観測記録で読み取りを確認できます。');
  if(result.admitted>1e-6||action==='bath')window.AcademySFX?.play('water');else if(action==='open'||action==='close')window.AcademySFX?.play('cover');
 }

@@ -1,0 +1,220 @@
+{
+  "topology": {
+    "connected_surfaces": 1,
+    "boundary_components": 1,
+    "boundary_vertices": 2000,
+    "euler_characteristic": 0,
+    "orientable": false,
+    "ordinary_ring_boundary_components": 2
+  },
+  "reading": {
+    "answer": "よあけをつぐいと",
+    "glyph_count": 8,
+    "task_omitted": "よ??をつ??と",
+    "twist_omitted": "よぐいと",
+    "reversed": "",
+    "permutations_of_visible_glyphs": 40320,
+    "single_glyph_ablation": {
+      "g0": "?あけをつぐいと",
+      "g1": "よ?けをつぐいと",
+      "g2": "よあ?をつぐいと",
+      "g3": "よあけ?つぐいと",
+      "g4": "よあけを?ぐいと",
+      "g5": "よあけをつ?いと",
+      "g6": "よあけをつぐ?と",
+      "g7": "よあけをつぐい?"
+    },
+    "raw_kana_completions_if_task_letters_unknown": 4477456,
+    "cognitive_necessity_proven": false,
+    "reason": "Tracing the actual edge without naming its topology is valid. Dictionary guessing and mental discovery cannot be ruled out by permutation counts."
+  },
+  "geometry": {
+    "seam_max_error": 2.8421709430404007e-13,
+    "fixed_printed_core_max_displacement": 0.0,
+    "half_width": 70,
+    "stadium_tube_radius": 180,
+    "base_embedding_proof": "The radius-70 strip is contained in the embedded radius-180 normal tube of the stadium. The material s coordinate is unique. Three invertible ambient maps preserve injectivity.",
+    "deformation": "z shear; radial rotation; x shear. Each determinant is 1. Elastic kinematics, not CFD or inextensible cloth dynamics.",
+    "sampled_support_collisions": 0,
+    "transition_samples": 2733456,
+    "limits": "Solid supports checked by dense sampling, not a continuous interval collision proof. Mesh depth ordering is a rendering approximation.",
+    "surface_normal_after_one_centreline_loop_dot": [
+      -0.9999999999997904,
+      -0.9999999999997904,
+      -0.9999999999997904,
+      -0.9999999999997904
+    ]
+  },
+  "visibility": {
+    "glyph_centres_visible_by_state": {
+      "still/front": [
+        "g0",
+        "g1",
+        "g2",
+        "g4",
+        "g5",
+        "g6",
+        "g7"
+      ],
+      "still/left": [
+        "g0",
+        "g1",
+        "g2",
+        "g4",
+        "g5",
+        "g6",
+        "g7"
+      ],
+      "still/right": [
+        "g0",
+        "g1",
+        "g2",
+        "g4",
+        "g5",
+        "g6"
+      ],
+      "still/low": [
+        "g1",
+        "g2",
+        "g4",
+        "g5",
+        "g6"
+      ],
+      "left/front": [
+        "g0",
+        "g1",
+        "g2",
+        "g4",
+        "g5",
+        "g6",
+        "g7"
+      ],
+      "left/left": [
+        "g0",
+        "g1",
+        "g2",
+        "g4",
+        "g5",
+        "g6",
+        "g7"
+      ],
+      "left/right": [
+        "g0",
+        "g1",
+        "g2",
+        "g4",
+        "g5",
+        "g6",
+        "g7"
+      ],
+      "left/low": [
+        "g0",
+        "g1",
+        "g2",
+        "g4",
+        "g5",
+        "g6"
+      ],
+      "right/front": [
+        "g0",
+        "g1",
+        "g2",
+        "g4",
+        "g5",
+        "g6"
+      ],
+      "right/left": [
+        "g0",
+        "g1",
+        "g2",
+        "g4",
+        "g5",
+        "g6"
+      ],
+      "right/right": [
+        "g0",
+        "g1",
+        "g2",
+        "g3",
+        "g4",
+        "g5",
+        "g6",
+        "g7"
+      ],
+      "right/low": [
+        "g0",
+        "g1",
+        "g2",
+        "g4",
+        "g5",
+        "g6",
+        "g7"
+      ],
+      "up/front": [
+        "g0",
+        "g1",
+        "g2",
+        "g4",
+        "g5",
+        "g6",
+        "g7"
+      ],
+      "up/left": [
+        "g0",
+        "g1",
+        "g2",
+        "g4",
+        "g5",
+        "g6",
+        "g7"
+      ],
+      "up/right": [
+        "g0",
+        "g1",
+        "g2",
+        "g4",
+        "g5",
+        "g6",
+        "g7"
+      ],
+      "up/low": [
+        "g0",
+        "g1",
+        "g2",
+        "g4",
+        "g5",
+        "g6"
+      ]
+    },
+    "all_glyphs_in_union": true,
+    "static_view_union": [
+      "g0",
+      "g1",
+      "g2",
+      "g4",
+      "g5",
+      "g6",
+      "g7"
+    ],
+    "wind_essential_for_glyph_centres": true,
+    "limits": "Centre-ray test does not prove font legibility, whole-glyph visibility, or that the player interprets a connection. Static topology shortcuts must still be tested by humans.",
+    "critical_glyph_25_sample_footprint": {
+      "still/front": 0,
+      "still/left": 0,
+      "still/right": 0,
+      "still/low": 0,
+      "left/front": 0,
+      "left/left": 6,
+      "left/right": 0,
+      "left/low": 0,
+      "right/front": 0,
+      "right/left": 0,
+      "right/right": 25,
+      "right/low": 0,
+      "up/front": 0,
+      "up/left": 5,
+      "up/right": 1,
+      "up/low": 0
+    }
+  }
+}

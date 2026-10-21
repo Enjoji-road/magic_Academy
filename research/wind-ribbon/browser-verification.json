@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-21",
+  "browser": "Cloud Chrome; real desktop browser with 320, 375, 430 CSS pixel iframe viewports",
+  "page": "wind-ribbon-experiment.html",
+  "checked": {
+    "desktop_cloth_and_task_print_render": true,
+    "wind_changes_preserved_observation_pose": true,
+    "four_camera_windows": true,
+    "expanded_view_keeps_live_spell_and_view_controls": true,
+    "mobile_zoom_opens_at_1_75": true,
+    "scene_and_wind_controls_share_mobile_view": true,
+    "record_can_be_created": true,
+    "notes_accept_input": true,
+    "reduced_motion_setting_works": true,
+    "sound_can_be_disabled": true,
+    "incorrect_answer_does_not_reset": true,
+    "correct_answer_shows_pass": true,
+    "reload_restores_pass_answer_notes_records_settings": true,
+    "reset_clears_only_this_trial_progress_and_retains_notes_settings": true,
+    "application_errors_in_captured_console_log": []
+  },
+  "mobile_layout_samples": [
+    {"viewport": 320, "body_scroll_width": 305, "scene_width": 276, "scene_height": 183.15625, "dock_width": 276, "dock_height": 273},
+    {"viewport": 375, "body_scroll_width": 360, "scene_width": 331, "scene_height": 219.65625, "dock_width": 331, "dock_height": 231},
+    {"viewport": 430, "body_scroll_width": 415, "scene_width": 386, "scene_height": 256.15625, "dock_width": 386, "dock_height": 256}
+  ],
+  "limits": [
+    "Layout samples include browser scrollbar width and were collected during two adjacent UI revisions; the final added pan hint increases dock height at narrow widths.",
+    "No iPhone Safari device test was performed.",
+    "No independent first-time human solver test was performed.",
+    "Glyphs require zoom on small screens; reading fluency and pan workload remain human test items.",
+    "Cloud browser extension metadata errors were present; they were excluded from application console results.",
+    "Browser QA used the supervised local preview. Public delivery is checked separately through GitHub Pages."
+  ]
+}

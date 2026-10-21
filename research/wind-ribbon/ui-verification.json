@@ -1,0 +1,12 @@
+{
+  "geometry_reference_samples": 320,
+  "geometry_max_error": 5.684341886080802e-14,
+  "operations_without_answer_never_pass": 60,
+  "record_limit": 24,
+  "pass_persists": true,
+  "reset_isolated": true,
+  "notes_preserved": true,
+  "zoom_controls_live": true,
+  "canvas_projection_calls": 808640,
+  "browser_rendering": "not tested by this stub"
+}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#172630"><meta name="description" content="魔法学校・風魔法学。高塔観測室に残る記念帯と、風に綴じられた言葉。観測を通して古い銘を読み解く研究試作。">
+<title>魔法学校｜風に綴じられた言葉</title>
+<link rel="stylesheet" href="wind-ribbon-experiment.css?v=1">
+<script src="wind-ribbon-data.js?v=1" defer></script><script src="wind-ribbon-model.js?v=1" defer></script><script src="wind-ribbon-app.js?v=1" defer></script>
+</head>
+<body>
+<a class="skip" href="#observatory">観測装置へ</a>
+<div class="shell"><header class="academy-bar"><a href="academy-preview.html" class="wordmark"><span aria-hidden="true">✧</span><span>魔法学校<small>ARCANE ACADEMY</small></span></a><div class="settings"><button type="button" id="sound" aria-pressed="true">効果音 ON</button><label><input type="checkbox" id="reduced">動きを減らす</label></div></header>
+<a class="back" href="academy-preview.html">← 試験回廊へ</a>
+<main><div class="room-heading"><span class="room-number">III</span><p class="eyebrow">VENTUS · HIGH TOWER OBSERVATORY</p><p class="subject">風魔法学 ／ 高塔観測室</p><h1>風に綴じられた言葉</h1><p class="subtitle">創立記念帯の観測 · 研究試作</p></div>
+<div class="assignment-copy"><p class="eyebrow">実技試験課題 ／ 読み取り</p><p>創立記念帯の古い銘を台帳へ。<br>星は書き出し、羽先は読む向き。<br>留め結びまでを、織られたままに。</p></div>
+<nav class="room-nav" aria-label="室内の移動"><a href="#observatory">観測</a><a href="#journal">記録とメモ</a><a href="#ledger">台帳</a></nav>
+<section class="panel observatory" id="observatory" aria-labelledby="observationTitle"><div class="section-heading"><div><p class="eyebrow">THE FOUNDING BANNER</p><h2 id="observationTitle">銀糸の記念帯</h2></div><button type="button" id="enlarge">拡大して観測</button></div>
+<p class="instrument-help">風を送ると布がなびきます。操作後の姿はそのまま保たれ、窓の位置を変えて見直せます。</p>
+<div id="workbench" class="workbench"><div class="scene-wrap"><canvas id="scene" width="1100" height="730" role="img" aria-label="高塔に架かる銀縁の布と実技課題。拡大して細部を観測できます。"></canvas><span class="scene-caption" id="viewCaption">正面の窓 · 無風</span></div>
+<div class="control-dock"><div class="magic-grid" role="group" aria-label="使用する魔法"><button type="button" data-spell="fire" aria-pressed="false">🔥 炎</button><button type="button" data-spell="water" aria-pressed="false">💧 水</button><button type="button" data-spell="wind" aria-pressed="true">🌪️ 風</button><button type="button" data-spell="earth" aria-pressed="false">🪨 土</button></div>
+<div id="windControls" class="wind-controls" role="group" aria-label="布に風を送る"><button type="button" data-wind="left">左から送る</button><button type="button" data-wind="up">下から送る</button><button type="button" data-wind="right">右から送る</button><button type="button" data-wind="still" class="quiet">風をおさめる</button></div>
+<div id="otherControls" hidden><button type="button" id="otherMagic">魔法を使う</button></div>
+<div class="view-controls" role="group" aria-label="観測窓を選ぶ"><span>観測窓</span><button type="button" data-view="front" aria-pressed="true">正面</button><button type="button" data-view="left" aria-pressed="false">左窓</button><button type="button" data-view="right" aria-pressed="false">右窓</button><button type="button" data-view="low" aria-pressed="false">下窓</button></div>
+<div class="zoom-controls"><label>拡大 <input type="range" id="zoom" min="1" max="2.5" step="0.25" value="1"></label><button type="button" id="centerView">中央に戻す</button><button type="button" id="record">この姿を記録</button><small class="pan-hint">拡大中は図を指で動かせます</small></div></div></div>
+<p class="status" id="status" role="status" aria-live="polite">布や文字の重なりを、風と観測窓を変えて確かめてください。</p>
+<p class="small">拡大中は図を指で動かせます。文字は急いで追わず、風が落ち着いた姿で確認できます。</p>
+<details><summary>備品と観測の手引き</summary><p>柔らかな織布、銀糸、布を挟む二つの留め具。字は小さな両面織りで、同じ字をどちらからも読めます。課題の本文は手前側に印刷されています。</p><p>風は布を持ち上げるだけで、切断や接ぎ替えはしません。どの風向きにも正解の状態はありません。図はゆっくりした風を受けた形を表す模式図です。</p><p>動きを減らす設定では、同じ観測姿へ直接切り替わります。音を消しても、すべての情報を確認できます。</p></details>
+</section>
+<section class="panel" id="journal" aria-labelledby="journalTitle"><div class="section-heading"><div><p class="eyebrow">OBSERVATION JOURNAL</p><h2 id="journalTitle">観測記録と研究メモ</h2></div><span id="recordCount" class="small">0件</span></div><div class="journal-nav"><p class="small">記録は横に送れます。選ぶと、その姿を再現します。</p><div><button type="button" id="firstRecord">先頭</button><button type="button" id="lastRecord">末尾</button></div></div><div id="records" class="record-list" tabindex="0" aria-label="横に送れる観測記録"></div><label for="notes" class="notes-label">自分の研究メモ <span>採点には使いません</span></label><textarea id="notes" rows="4" maxlength="8000" placeholder="気づいたこと、確かめたいつながりなど"></textarea><p class="small" id="notesCount">0 / 8000</p></section>
+<section class="ledger" id="ledger" aria-labelledby="ledgerTitle"><p class="eyebrow">ACADEMY · INSCRIPTION REGISTER</p><h2 id="ledgerTitle">銘の台帳</h2><form id="answerForm"><label for="answer">創立記念帯に織られた、古い銘</label><input type="text" id="answer" maxlength="40" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" aria-describedby="answerHint"><p class="small" id="answerHint">ひらがなで記入してください。空白は採点に影響しません。</p><button class="primary" type="submit">銘を提出する</button><p id="answerStatus" role="status" aria-live="polite">書きかけの台帳も自動保存します。</p></form></section>
+<section id="pass" class="pass" hidden aria-labelledby="passTitle"><span class="pass-star" aria-hidden="true">✧</span><p>ARCANE ACADEMY</p><h2 id="passTitle">風魔法学 合格</h2><p>創立記念帯の銘が、台帳に戻りました。</p><div class="seal">学院認印<small>VENTUS</small></div><a href="academy-preview.html">試験回廊へ →</a></section>
+<footer><p id="saveStatus">この試作の記録を自動保存します。</p><button type="button" id="reset">この試験をリセット</button><p class="small">高塔観測室 · 風魔法学研究試作</p></footer>
+</main></div>
+<dialog id="zoomDialog" aria-labelledby="zoomTitle"><div class="dialog-heading"><h2 id="zoomTitle">高塔の観測窓</h2><button type="button" id="closeZoom">閉じる</button></div><div id="zoomHost"></div></dialog>
+<dialog id="resetDialog" aria-labelledby="resetTitle"><h2 id="resetTitle">この試作をリセットしますか？</h2><p>この試作の観測・解答・合格を初期化します。研究メモと設定は残ります。他の試験の記録には影響しません。</p><div class="action-row"><button type="button" id="cancelReset">戻る</button><button type="button" id="confirmReset">リセットする</button></div></dialog>
+<noscript><p class="noscript">観測と保存にはJavaScriptが必要です。</p></noscript>
+</body></html>

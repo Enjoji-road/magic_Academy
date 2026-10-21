@@ -7,11 +7,11 @@
 <meta name="description" content="魔法学校・水盤室の第2研究試作。封印瓶と計量鐘を観察し、実験前の水量を調べる。">
 <title>魔法学校｜水の届かない部屋・第2試作</title>
 <link rel="stylesheet" href="water-experiment.css?v=2">
-<link rel="stylesheet" href="water-insight-experiment.css?v=1">
+<link rel="stylesheet" href="water-insight-experiment.css?v=2">
 <link rel="stylesheet" href="academy-studio-sfx.css?v=1">
 <script src="academy-studio-sfx.js?v=1" defer></script>
 <script src="water-insight-model.js?v=1" defer></script>
-<script src="water-insight-app.js?v=1" defer></script>
+<script src="water-insight-app.js?v=2" defer></script>
 </head>
 <body class="water-insight">
 <a class="skip" href="#experiment">実験装置へ進む</a>
@@ -23,11 +23,11 @@
 <section class="assignment" aria-labelledby="assignmentTitle"><p class="eyebrow">実技試験課題</p><h2 id="assignmentTitle">封印瓶の、初めの水量を報告せよ。</h2><p>容量 <strong>5,000 mL</strong> の封印瓶には、実験前から水が入っています。瓶の中を直接見ることはできません。</p><p>初めから入っている水を抜かずに、その量を調べて台帳へ記録してください。水量は10 mL目盛りで報告します。</p></section>
 <nav class="room-nav" aria-label="水盤室内の移動"><a href="#experiment">実験</a><a href="#records">記録</a><a href="#ledger">台帳</a></nav>
 <section class="panel magic-panel" aria-labelledby="magicTitle"><div class="section-top"><h2 id="magicTitle">使用する魔法</h2><span class="small">四元素実技</span></div><div class="magic-grid"><button type="button" data-spell="fire" aria-pressed="false">🔥 炎</button><button type="button" data-spell="water" aria-pressed="true">💧 水</button><button type="button" data-spell="wind" aria-pressed="false">🌪️ 風</button><button type="button" data-spell="earth" aria-pressed="false">🪨 土</button></div><p class="small" id="spellDescription">水魔法：水を出し、流します。供水瓶や外の水盤へ水を注げます。</p></section>
-<section class="panel apparatus" id="experiment" aria-labelledby="experimentTitle"><div class="section-top"><div><p class="eyebrow">SEALED VESSEL · MEASURING BELL</p><h2 id="experimentTitle">封印瓶と計量鐘</h2></div><button type="button" id="enlarge">図を拡大</button></div><p class="diagram-note">正面模式図。図は左右に動かせます。読み取り値は図の下にも表示します。</p>
-<div class="scene-scroll" id="sceneScroll" tabindex="0" aria-label="実験装置図。狭い画面では左右に動かして確認できます"><div id="scene"></div></div>
-<div class="instrument-readings"><div><span>計量鐘に残る水</span><strong id="liveReading">3,430 <small>mL</small></strong></div><div><span>封印瓶の上限札</span><strong class="flag" id="fullFlag">未到達</strong></div></div>
-<div class="knob-row"><div><h3>連絡管のつまみ</h3><p class="small">手で開閉できます。注水とは別の操作です。</p></div><button type="button" id="valve" aria-pressed="false">閉 · 開く</button></div>
-<div id="waterActions"><div class="action-row"><button type="button" id="smallPour" class="primary">💧 供水瓶に少し注ぐ</button><button type="button" id="fullPour">💧 上限まで流す</button></div><button type="button" id="bathPour" class="subtle-action">外の水盤に水を注ぐ</button></div>
+<section class="panel apparatus" id="experiment" aria-labelledby="experimentTitle"><div class="section-top"><div><p class="eyebrow">SEALED VESSEL · MEASURING BELL</p><h2 id="experimentTitle">封印瓶と計量鐘</h2></div><button type="button" id="enlarge">図を拡大</button></div><div class="instrument-plaque" aria-hidden="true"><span>✦ &nbsp; ARCANE ACADEMY &nbsp; ✦</span><span>実技装置 · 第二水盤室</span></div><p class="diagram-note">封印瓶の内部は見えません。スマートフォンでは装置の全景を表示し、必要なら「図を拡大」で細部を確認できます。</p>
+<div class="scene-scroll" id="sceneScroll" tabindex="0" aria-label="封印瓶と計量鐘の実験装置。図を拡大して細部を確認できます"><div id="scene" class="desktop-scene"></div><div id="mobileScene" class="mobile-scene"></div></div>
+<div class="instrument-readings" aria-label="装置の現在の状態"><div class="instrument-reading reading-volume"><span>計量鐘に残る水</span><strong id="liveReading">3,430 <small>mL</small></strong><small class="reading-sub">MEASURING BELL</small></div><div class="instrument-reading reading-seal"><span>封印瓶の上限札</span><strong class="flag" id="fullFlag" data-full="false">未到達</strong><small class="reading-sub">SEALED VESSEL</small></div></div>
+<div class="knob-row"><div><span class="control-kicker">VALVE 01 / 連絡機構</span><h3>連絡管のつまみ</h3><p class="small">手で開閉できます。注水とは別の操作です。</p></div><button type="button" id="valve" aria-pressed="false">閉 · 開く</button></div>
+<div id="waterActions"><div class="feed-heading"><span class="control-kicker">WATER MAGIC / 給水操作</span><span>供水瓶・外の水盤</span></div><div class="action-row"><button type="button" id="smallPour" class="primary">💧 供水瓶に少し注ぐ</button><button type="button" id="fullPour">💧 上限まで流す</button></div><button type="button" id="bathPour" class="subtle-action">外の水盤に水を注ぐ</button></div>
 <button type="button" id="otherMagic" class="primary other-magic" hidden>魔法を使う</button>
 <p class="small">「上限まで」は、給水が止まるまで流す操作です。上限に届く前に止まる場合もあります。注水の時間や量そのものは測定していません。</p>
 <p class="status" id="status" role="status" aria-live="polite">実験前の読み取りを記録しました。水を注ぎ、変化を確かめてください。</p>

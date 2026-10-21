@@ -4,3 +4,92 @@
 @media(prefers-reduced-motion:reduce){.insight-diagram .bubble{opacity:1}.insight-diagram .magic-trace{opacity:.6}.insight-diagram *{animation:none!important;transition:none!important}}
 .water-insight .instrument-readings span,.water-insight .knob-row p,.water-insight .journal-label,.water-insight .entry-note{font-size:14px}
 .water-insight .record-navigation{flex-wrap:wrap}.water-insight .record-navigation button{font-size:13px;padding:6px 10px}
+
+/* 水盤室・第二期意匠：学院の計量装置を主役にした演出。モデル・謎の情報は変更しない。 */
+
+.water-insight{background:radial-gradient(ellipse at 51% -12%,#366b7773 0,transparent 47%),radial-gradient(ellipse at 95% 42%,#163d54 0,transparent 43%),linear-gradient(156deg,#0d1d29,#142d3b 46%,#0c1b27);position:relative}
+.water-insight::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:repeating-linear-gradient(90deg,transparent 0 117px,#a8d7de06 118px,#a8d7de06 119px,transparent 120px),repeating-linear-gradient(0deg,transparent 0 119px,#a8d7de04 120px,transparent 122px)}
+.water-insight .shell{position:relative;z-index:1}
+.water-insight .academy-bar{border-bottom:1px solid #b7a87988}
+.water-insight .room-heading{padding:26px 0 36px;border-bottom:1px solid #c7b67e66;background:radial-gradient(ellipse at 20% 40%,#65bac518,transparent 60%)}
+.water-insight .room-heading::after{content:"✧ ─────────────── ✧";display:block;color:#c0b383a8;font-size:14px;letter-spacing:.35em;margin-top:24px}
+.water-insight .room-heading h1{color:#fff6df;text-shadow:0 2px 26px #76b9c455}
+.water-insight .room-index{color:#d8e9e5}.water-insight .room-index span{color:#b3cbd0}
+.water-insight .assignment{background:linear-gradient(125deg,#eee6d6,#e1e9e2 55%,#d5e4df);box-shadow:0 10px 32px #06141d66,inset 0 1px 0 #ffffff77}
+.water-insight .assignment::after{content:"✧";position:absolute;top:12px;right:24px;color:#a79a70;font-size:22px;pointer-events:none}
+.water-insight .panel{border:1px solid #658a96;box-shadow:0 18px 40px #04131e66,inset 0 1px 0 #c0dee011;background:linear-gradient(145deg,#244451f0,#142d3cf2 80%)}
+.water-insight .apparatus{position:relative;border-color:#93b5b7;box-shadow:0 18px 45px #0006,0 0 0 1px #243d47,inset 0 0 70px #86c7db09}
+.water-insight .apparatus::before{content:"";position:absolute;inset:8px;border:1px solid #a6b59b2e;border-radius:6px;pointer-events:none}
+.water-insight .apparatus .section-top h2{color:#f0e4c5;font-size:clamp(22px,3vw,28px)}
+.water-insight .apparatus .section-top>button{border:1px solid #9fc4cd;background:#31586a;font-weight:600}
+.instrument-plaque{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:5px 18px;padding:10px 14px;margin:16px 0 12px;border-top:1px solid #9dbeaf77;border-bottom:1px solid #9dbeaf77;color:#dbd1a3;letter-spacing:.12em;font-size:12px}
+.instrument-plaque span:last-child{color:#c1d6d8;letter-spacing:.09em}
+.water-insight .diagram-note{margin:11px 0 14px}
+.water-insight .scene-scroll{position:relative;border:2px solid #608998;border-radius:9px;background:radial-gradient(ellipse at 50% 5%,#3a799441,transparent 68%),linear-gradient(#0b2432,#0c2633);box-shadow:inset 0 0 45px #0007,0 10px 18px #0002}
+.water-insight .scene-scroll::before{content:"";position:absolute;top:6px;left:6px;right:6px;height:1px;background:linear-gradient(90deg,transparent,#b8d5d7aa,transparent);pointer-events:none;z-index:1}
+.water-insight .scene-scroll .mobile-scene{display:none}
+.water-insight .instrument-readings{gap:12px;margin:16px 0 22px;grid-template-columns:1.45fr 1fr}
+.water-insight .instrument-reading{min-width:0;position:relative;overflow:hidden;border:1px solid #9bb9bb;border-radius:10px;background:linear-gradient(145deg,#1c4656,#122d3a);padding:16px 18px;box-shadow:inset 0 1px 1px #e9ffff20,0 7px 20px #0003}
+.water-insight .instrument-reading::before{content:"";position:absolute;inset:5px;border:1px solid #a5cbd327;border-radius:6px;pointer-events:none}
+.water-insight .instrument-reading::after{content:"✦";position:absolute;right:15px;top:14px;color:#adbdac70;font-size:15px;pointer-events:none}
+.water-insight .instrument-reading span{font-size:14px;letter-spacing:.04em;color:#c7dde1}
+.water-insight .instrument-reading strong{display:block;line-height:1.48;font-size:clamp(28px,4vw,39px);font-variant-numeric:tabular-nums;color:#fff6dc;text-shadow:0 1px 14px #8addeb47;overflow-wrap:anywhere}
+.water-insight .instrument-reading small.reading-sub{display:block;font:10px/1.8 var(--sans);color:#a9c6c8;letter-spacing:.15em}
+.water-insight .instrument-reading .flag{font-size:clamp(18px,2.6vw,24px);min-height:42px;line-height:2.3;white-space:nowrap;color:#cddde0}
+.water-insight .instrument-reading .flag::before{content:"";display:inline-block;vertical-align:middle;margin-right:9px;width:9px;height:9px;border-radius:100%;background:#708e9a;border:1px solid #a9bbc0}
+.water-insight .instrument-reading .flag[data-full="true"]{color:#f6dca2;text-shadow:0 0 17px #f4bb6273}
+.water-insight .instrument-reading .flag[data-full="true"]::before{background:#e9c17d;border-color:#f8e6be;box-shadow:0 0 10px #f0c26d}
+.water-insight .knob-row{border:1px solid #6a96a2;border-radius:11px;background:linear-gradient(115deg,#1b3c4b,#193442);padding:18px 20px;box-shadow:inset 0 1px 0 #afcfd526;gap:12px}
+.water-insight .control-kicker{display:block;font-size:10px;line-height:1.7;letter-spacing:.16em;color:#d8ca95;margin-bottom:5px}
+.water-insight .knob-row h3{font-size:20px;color:#e8e8d6}
+.water-insight .knob-row p{max-width:38em}
+.water-insight #valve{display:flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;border:1px solid #aac1c3;min-width:153px;padding:8px 12px;background:linear-gradient(#4b7383,#274653);border-radius:10px;box-shadow:inset 0 2px 1px #ddf2e733,0 5px 12px #0004;font-weight:600}
+.water-insight #valve::before{content:"";width:36px;height:36px;flex:none;border-radius:50%;border:3px double #d9d9c8;background:radial-gradient(circle at 30% 25%,#b8d0d2,#506876 65%,#203d4a);box-shadow:inset 0 0 4px #1a3b4f,0 2px 4px #0004;transition:transform .25s ease}
+.water-insight #valve[aria-pressed="true"]::before{transform:rotate(90deg);background:radial-gradient(circle at 30% 25%,#e9d7ad,#748e91 64%,#365866)}
+.water-insight #valve[aria-pressed="true"]{border-color:#d5c08d;background:linear-gradient(#516f73,#264655)}
+.water-insight .feed-heading{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin:26px 4px 4px;border-bottom:1px solid #82a0a247;padding-bottom:8px}
+.water-insight .feed-heading .control-kicker{margin:0}.water-insight .feed-heading>span:last-child{font-size:12px;color:#bdd3d5}
+.water-insight #waterActions .action-row{margin:15px 0 9px}
+.water-insight #waterActions .action-row button{flex:1;min-width:150px;border-radius:9px;padding:15px;font-weight:600}
+.water-insight #smallPour{background:linear-gradient(140deg,#467f90,#24596f);box-shadow:inset 0 1px 0 #e5ffff55,0 5px 12px #021c2640;border-color:#b0dbe0}
+.water-insight #fullPour{background:linear-gradient(140deg,#2c5366,#1b384b);border-color:#7ca6b5}
+.water-insight #bathPour{width:100%;border:1px dashed #6d8f99;border-radius:8px;text-align:center;background:#10293766;margin:2px 0 12px}
+.water-insight .status{border-left:3px solid #cfbe88;background:linear-gradient(90deg,#1c3946,#102b3a);border-radius:2px 8px 8px 2px;box-shadow:inset 0 0 12px #0001;color:#e3f0ec}
+.water-insight #records .section-top h2,.water-insight .ledger h2{color:#e9e2ca}
+.water-insight #records .journal{box-shadow:0 5px 14px #0006;background:linear-gradient(145deg,#f0eee0,#dae9e3);border-color:#b5caca}
+.water-insight .journal-reading strong{color:#21475a}
+.water-insight .ledger{background:linear-gradient(130deg,#f3e8d0,#dfe9df);border:1px solid #d4c8a4;box-shadow:0 14px 27px #04142077}
+.water-insight .ledger h2{color:#2d4c52}
+.water-insight .volume-answer input{border:2px solid #819b97;border-radius:9px;background:#fff9ea;font-size:35px;max-width:360px}
+.water-insight .submit{border-radius:7px;background:linear-gradient(110deg,#284c56,#346573);box-shadow:0 4px 11px #09232a40}
+.water-insight .magic-panel{border-color:#537c87}
+.water-insight .magic-grid button[aria-pressed="true"]{outline:1px solid #cfcaad;outline-offset:-4px}
+.water-insight .other-magic{border-radius:8px}
+@media(max-width:680px){
+ .water-insight .room-heading{padding-bottom:18px}
+ .water-insight .room-heading::after{margin-top:15px;font-size:11px;letter-spacing:.18em}
+ .water-insight .apparatus{padding:19px 14px}
+ .water-insight .instrument-plaque{padding:9px 5px;font-size:10px}
+ .water-insight .scene-scroll{overflow:hidden}
+ .water-insight .scene-scroll .desktop-scene{display:none}
+ .water-insight .scene-scroll .mobile-scene{display:block}
+ .water-insight .scene-scroll .mobile-scene svg{display:block;min-width:0;width:100%;max-width:100%;height:auto}
+ .water-insight .instrument-readings{gap:8px}
+ .water-insight .instrument-reading{padding:13px 10px}
+ .water-insight .instrument-reading span{font-size:12px}
+ .water-insight .instrument-reading strong{font-size:clamp(22px,6.3vw,31px);line-height:1.7}
+ .water-insight .instrument-reading .flag{font-size:clamp(15px,4vw,20px);min-height:38px}
+ .water-insight .instrument-reading small.reading-sub{font-size:9px;letter-spacing:.07em}
+ .water-insight .knob-row{flex-wrap:wrap;padding:14px;gap:11px}
+ .water-insight .knob-row h3{font-size:19px}
+ .water-insight #valve{min-width:150px;width:100%;min-height:55px;justify-content:flex-start;padding-left:13px}
+ .water-insight .feed-heading{margin-top:23px}
+ .water-insight #waterActions .action-row{display:grid;grid-template-columns:1fr;gap:9px}
+ .water-insight #waterActions .action-row button{width:100%;margin:0;min-height:53px}
+ .water-insight #records .record-navigation{align-items:flex-start}
+ .water-insight #records .record-navigation>div{width:100%;justify-content:space-between}
+ .water-insight #records .record-navigation button{flex:1;min-width:0}
+ .water-insight .ledger{padding:21px 17px}
+}
+@media(max-width:355px){.water-insight .instrument-readings{grid-template-columns:1fr}.water-insight .instrument-reading{padding:12px 14px}.water-insight .instrument-reading .flag{min-height:26px}}
+@media(prefers-reduced-motion:reduce){.water-insight #valve::before{transition:none!important}}

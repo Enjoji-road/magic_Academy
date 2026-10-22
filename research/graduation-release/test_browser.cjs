@@ -43,6 +43,20 @@ async function seedPassed(p){
  const wind=V.initial();wind.passed=true;
  await p.evaluate(seed=>{for(const[k,v]of Object.entries(seed))localStorage.setItem(k,JSON.stringify(v));},{[F.KEY]:fire,[W.KEY]:water,'magic-academy-wind-ribbon-v1':wind,'magic-academy-earth-v2':earthSolution});
 }
+async function inspectLights(p,label){
+ const before=await p.evaluate(()=>JSON.stringify(Object.entries(localStorage).sort()));
+ await p.locator('#inspectWelcomeLights').click();
+ const dialog=p.locator('#welcomeLightsDialog');
+ ok(await dialog.isVisible(),label+': the lights have a separate observation window');
+ ok(await dialog.locator('svg text').filter({hasText:'期'}).count()===3,label+': alumni lights and their period marks are visible');
+ ok(await p.locator('iframe').count()===0&&!await p.locator('.academy-observation-dialog').isVisible(),label+': inspecting lights never loads the final trial');
+ ok(await dialog.locator('iframe,[data-spell],#taskTitle,#castObject').count()===0,label+': the light window contains no trial or magic controls');
+ ok((await dialog.textContent()).includes('術者の手へ伸びる尾はありません')&&(await dialog.textContent()).includes('七夜ごとに'),label+': the original visible light and maintenance clues are preserved');
+ await p.locator('#closeWelcomeLights').click();
+ ok(await p.locator('#inspectWelcomeLights').evaluate(e=>e===document.activeElement),label+': closing returns focus to the inspection button');
+ assert.equal(await p.evaluate(()=>JSON.stringify(Object.entries(localStorage).sort())),before);
+ ok(true,label+': inspecting lights changes no saved data');
+}
 async function solve(p){
  await spell(p,'fire');await p.locator('#castObject').click();
  for(const [recipient,source]of [['water','fire'],['wind','water'],['earth','wind'],['fire','earth']]){await spell(p,recipient);await trace(p,source);}
@@ -74,13 +88,15 @@ async function placeStones(p){
   await p.locator('#hallGraduationReplay').dispatchEvent('click');
   ok(!await p.locator('.academy-observation-dialog').isVisible(),'An unearned replay click cannot open any observation or graduation screen');
   ok(await p.locator('.welcome-lantern:not([hidden])').count()===3,'Three alumni lights exist before any exam');
-  await p.locator('#inspectWelcomeLights').click();let f=frame(p);await f.locator('#castInstruction').filter({hasText:'魔法を選択中'}).waitFor();
-  ok(await f.locator('#castObject').isDisabled(),'Inspecting the entrance cannot bypass admission');
-  await f.locator('#inspect').click();ok((await f.locator('#inspectContent').textContent()).includes('期印'),'Early observation of alumni lights is allowed');await f.locator('[data-close="inspectDialog"]').click();await closeObservation(p);
+  await inspectLights(p,'Fresh entrance');
+  await p.locator('#inspectWelcomeLights').click();await screenshot(p,'hall-read-only-lights');await p.keyboard.press('Escape');
+  ok(!await p.locator('#welcomeLightsDialog').isVisible(),'Escape closes the read-only lights');
+  let f;
 
   // A genuine early revisit. No synthetic pass or visit flag is written.
   await p.goto(base+'/'+pages.water);const waterBefore=await p.evaluate(k=>JSON.parse(localStorage.getItem(k))?.physical||window.WaterInsight.physicalInitial(),W.KEY);
   f=await observe(p);await spell(f,'water');await f.locator('#castObject').click();
+  ok((await f.locator('#pageTitle').textContent()).includes('術の余韻')&&!(await f.locator('#pageTitle').textContent()).includes('手を離した'),'Early classroom observations use their classroom title');
   await spell(f,'wind');await trace(f,'water');await f.locator('#selectedSupport').click();
   ok(await active(f,'wind'),'An early cross-attribute observation remains after its own hand releases');
   await f.locator('#release').click();ok(!await active(f,'wind'),'An open chain fades without the donor hand');
@@ -137,6 +153,7 @@ async function placeStones(p){
   ok(u.origin==='https://x.com'&&u.pathname==='/intent/tweet','Sharing uses the official X post intent');
   ok(u.searchParams.get('url')==='https://enjoji-road.github.io/magic_Academy/','The shared URL is the official entrance');
   ok(u.searchParams.get('text').startsWith('🪄 魔法学校を卒業しました！🎓\n\n')&&!u.searchParams.get('text').includes('支え'),'The Japanese, emoji and newlines decode without a puzzle spoiler');
+  ok(u.searchParams.get('text').includes('#road謎'),'The X draft retains #road謎');
   await ctx.route('https://x.com/intent/tweet**',route=>route.fulfill({body:'Intent request checked; no post submitted.'}));
   const popupPromise=ctx.waitForEvent('page');await f.locator('#shareGraduation').click();const popup=await popupPromise;await popup.waitForLoadState();ok(popup.url()===intent,'X opens a separate posting window with the exact draft');await popup.close();
   await f.locator('#returnToStudy').click();ok(!await f.locator('#graduationScreen').isVisible(),'Returning reveals the completed spell state');
@@ -144,6 +161,7 @@ async function placeStones(p){
   await spell(f,'fire');await f.locator('#castObject').click();await f.locator('#release').click();ok((await saved(p)).graduated,'Rebuilding and breaking the current spell preserves graduation history');
   assert.deepEqual(await examSaves(p),beforeFinal);ok(true,'The entire final spell, celebration and sharing preserve all four exam saves');
   await closeObservation(p);await p.reload();ok(await p.locator('#hallGraduationReplay').isVisible(),'Graduation can be replayed from the entrance after reload');
+  const earnedGraduation=await saved(p);
   ok(await p.locator('.welcome-lantern:not([hidden])').count()===4,'The graduate adds a fourth welcoming light');
   ok(!await p.locator('.academy-observation-dialog').isVisible(),'Reloading the entrance does not force a celebration');
   await p.locator('#hallGraduationReplay').click();await frame(p).locator('#graduationScreen[data-phase="ready"]').waitFor();ok(true,'Saved graduation replays without reconstructing a spell');await frame(p).locator('#returnToStudy').click();await closeObservation(p);
@@ -161,10 +179,47 @@ async function placeStones(p){
   await p.goto(base+'/'+pages.fire);ok(await p.locator('#experimentNotes').inputValue()==='炎の実験メモ・保持','Normal fire notes survive the complete graduation');
   await ctx.close();
 
+  // Every pre-admission route must remain outside the final trial.
+  for(const passed of [0,1,2,3]){
+   const gate=await context();await seedPassed(gate.p);
+   await gate.p.evaluate(({keys,passed})=>keys.slice(passed).forEach(k=>localStorage.removeItem(k)),{keys:officialKeys,passed});
+   await gate.p.goto(base+'/index.html?admission='+passed);
+   ok(await gate.p.locator('#enterGraduation').isDisabled(),passed+' passes: final trial entry stays disabled');
+   await inspectLights(gate.p,passed+' passes');
+   await gate.p.locator('#enterGraduation').dispatchEvent('click');
+   ok(await gate.p.locator('iframe').count()===0,passed+' passes: synthetic entry clicks cannot open the trial');
+   await gate.p.goto(base+'/index.html?admission='+passed+'#afterglow');
+   ok(await gate.p.locator('iframe').count()===0,passed+' passes: the observation hash cannot open the final trial');
+   await gate.p.goto(base+'/index.html?exam-entry='+passed+'#graduation-exam');
+   ok(await gate.p.locator('iframe').count()===0,passed+' passes: the final-trial hash cannot bypass admission');
+   await gate.p.goto(base+'/graduation.html?room=hall&embedded=1');
+   await gate.p.waitForURL(base+'/index.html#graduation-exam');
+   ok(await gate.p.locator('iframe').count()===0&&!await gate.p.locator('#graduationContent').count(),passed+' passes: a direct trial URL returns to the corridor');
+   await gate.p.goto(base+'/index.html?legacy-entry='+passed);
+   await gate.p.evaluate(()=>{const f=document.createElement('iframe');f.src='graduation.html?room=hall&embedded=1';document.body.append(f);});
+   await gate.p.waitForURL(base+'/index.html#graduation-exam');
+   ok(await gate.p.locator('iframe').count()===0,passed+' passes: an obsolete embedded entry also returns the whole page to the corridor');
+   await gate.ctx.close();
+  }
+  const admitted=await context();await seedPassed(admitted.p);await admitted.p.reload();
+  await inspectLights(admitted.p,'Four passes');
+  await admitted.p.locator('#enterGraduation').click();await frame(admitted.p).locator('#castInstruction').filter({hasText:'魔法を選択中'}).waitFor();
+  ok(await frame(admitted.p).locator('#graduationContent').isVisible(),'Four passes: only the explicit final-trial entry opens the trial');
+  const other=await admitted.ctx.newPage();await other.goto(base+'/index.html');await other.evaluate(key=>localStorage.removeItem(key),F.KEY);
+  await admitted.p.waitForURL(base+'/index.html#graduation-exam');
+  ok(await admitted.p.locator('iframe').count()===0,'Removing a required pass in another tab closes an unearned final trial');
+  await admitted.ctx.close();
+  const historical=await context();await historical.p.evaluate(({key,value})=>localStorage.setItem(key,JSON.stringify(value)),{key:KEY,value:earnedGraduation});await historical.p.reload();
+  ok(await historical.p.locator('#hallGraduationReplay').isVisible()&&await historical.p.locator('#enterGraduation').isEnabled(),'An earned graduation stays accessible even if normal exam records were reset');
+  await historical.p.locator('#inspectWelcomeLights').click();
+  ok((await historical.p.locator('#welcomeLightsScene').textContent()).includes('あなたの灯り'),'The light window includes the graduate’s earned light');
+  await historical.p.locator('#closeWelcomeLights').click();await historical.p.locator('#hallGraduationReplay').click();await frame(historical.p).locator('#graduationScreen[data-phase="ready"]').waitFor();
+  ok(true,'Historical graduation still replays after normal exam reset');await historical.ctx.close();
+
   // A research save and a direct link grant no official exam credit.
   const edge=await context();await edge.p.evaluate(()=>localStorage.setItem('magic-academy-graduation-magic-v3-research-1',JSON.stringify({version:3,graduated:true})));
   await edge.p.reload();ok(!await edge.p.locator('#hallGraduationReplay').isVisible(),'A research graduation never enables the official replay button');
-  await edge.p.goto(base+'/graduation.html');ok(await edge.p.locator('#castObject').isDisabled(),'A saved research graduation cannot bypass the official four-exam gate');
+  await edge.p.goto(base+'/graduation.html');await edge.p.waitForURL(base+'/index.html#graduation-exam');ok(await edge.p.locator('iframe').count()===0,'A saved research graduation cannot bypass the official four-exam gate');
   await edge.p.goto(base+'/graduation.html?room=earth');await edge.p.waitForURL('**/earth-studio.html#afterglow');ok(true,'Direct classroom links return to the real classroom');
   await edge.p.goto(base+'/'+pages.wind+'#afterglow');const quietFrame=frame(edge.p);await quietFrame.locator('#castInstruction').filter({hasText:'魔法を選択中'}).waitFor();
   await quietFrame.locator('#sound').click();await quietFrame.locator('#academySoundToggle').click();await quietFrame.locator('#academySettingsClose').click();

@@ -8,6 +8,16 @@ const pages={fire:'fire-studio.html',water:'water-insight-experiment.html',wind:
 if(room!=='hall'&&bridge?.room!==room){location.replace(pages[room]+'#afterglow');return;}
 document.body.classList.toggle('embedded',params.get('embedded')==='1'&&Boolean(bridge));
 let state=Store.read();state.room=room;
+function requireAdmission(){
+ if(room!=='hall'||Store.admitted(state))return true;
+ $('graduationContent').hidden=true;
+ const hall=new URL('index.html#graduation-exam',location.href).href;
+ // A stale embedded entry must return the whole page to the corridor.
+ if(bridge?.room==='hall')window.parent.location.replace(hall);
+ else location.replace(hall);
+ return false;
+}
+if(!requireAdmission())return;
 let sourceSnapshot=null;
 function pullPhysical(){
  sourceSnapshot=bridge?.snapshot();
@@ -83,7 +93,8 @@ function renderTraces(){const c=M.circuit(state),a=live(),traces=$('traces');tra
  const lines=$('threads');lines.replaceChildren();const coords={fire:[160,74],water:[500,74],wind:[160,235],earth:[500,235]};for(const id of M.IDS){const n=c.nodes[id];if(!n.exists||!n.from)continue;const p=coords[n.from],q=coords[id];if(id===n.from){path(lines,`M${q[0]-45} ${q[1]}C${q[0]-110} ${q[1]-85} ${q[0]+110} ${q[1]-85} ${q[0]+45} ${q[1]}`,M.META[id].color,2,{class:'thread'});}else{const mid=[(p[0]+q[0])/2,(p[1]+q[1])/2+(p[1]===q[1]?p[1]<150?43:-43:0)];path(lines,`M${p[0]} ${p[1]}Q${mid[0]} ${mid[1]} ${q[0]} ${q[1]}`,M.META[id].color,2,{class:'thread'});}}
  const n=c.nodes[state.spell];$('selectedSupport').disabled=!n.exists;$('selectedSupport').textContent='選んだ術の支えを'+(n.manual?'離す':'戻す');const hands=M.IDS.filter(x=>c.nodes[x].manual).length;$('handState').textContent=hands?'手で支えている：'+hands:'手の支え：なし';
 }
-function render(){pullPhysical();window.GraduationPresentation.setAvailable(state.graduated);const room=M.ROOMS[state.room];document.querySelectorAll('[data-room]').forEach(b=>{if(b.dataset.room===state.room)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});document.querySelectorAll('[data-spell]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.spell===state.spell)));document.body.classList.toggle('reduced',state.reduced||media?.matches);$('sound').textContent='効果音・設定';$('reduced').checked=state.reduced;
+function render(){if(!requireAdmission())return;pullPhysical();window.GraduationPresentation.setAvailable(state.graduated);const room=M.ROOMS[state.room];document.querySelectorAll('[data-room]').forEach(b=>{if(b.dataset.room===state.room)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});document.querySelectorAll('[data-spell]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.spell===state.spell)));document.body.classList.toggle('reduced',state.reduced||media?.matches);$('sound').textContent='効果音・設定';$('reduced').checked=state.reduced;
+ $('pageKicker').textContent=room?'ARCANE ACADEMY · AFTERGLOW':'ARCANE ACADEMY · GRADUATION';$('pageTitle').textContent=room?room.name+' · 術の余韻':'手を離した、その先に';document.title='魔法学校｜'+(room?room.name+'・術の余韻':'卒業試験・手を離した、その先に');
  $('roomKicker').textContent=room?'再考察 · '+M.META[room.native].name+'魔法学':'最終卒業試験';$('taskTitle').textContent=room?room.question:'次に来る誰かのために';$('taskText').textContent=room?room.lead:'この回廊に、あなたが手を離しても灯る光を一つ残しなさい。';$('taskAside').textContent=room?'装置へ使うときと、目に見える術の働きへ触れるときを、比べてください。':'既にある灯りを消す必要はありません。灯座の魔力は院務員が七夜ごとに補給します。';$('sceneKicker').textContent=room?'REVISIT / '+M.META[state.room].name.toUpperCase():'ENTRANCE HALL';$('sceneTitle').textContent=room?room.title:'あなたを迎えた光';$('deviceCaption').textContent=room?room.result+'も、観測できます。':'先輩たちの灯りの下に、一つだけ空いた灯座がある。灯座の魔力：'+M.circuit(state).charge+' / 8 夜分。';$('castObject').textContent=(room?room.object:'空の灯座')+'へ使う';$('inspect').textContent=room?'装置の状態を確かめる':'灯りをよく見る';$('castInstruction').textContent=M.META[state.spell].name+'の魔法を選択中。装置、または現れている働きに触れられます。';controls();renderDevice();renderTraces();$('graduation').hidden=!state.graduated||state.room!=='hall';$('chargeReadout').textContent='回廊の灯座：'+state.circuits.hall.charge+' / 8 夜分。補給は炎の魔法で行い、同じ結び方を保ちます。';renderRecords();
  const allowed=state.room!=='hall'||Store.admitted(state);
  $('admissionNotice').hidden=allowed;
@@ -92,6 +103,7 @@ function render(){pullPhysical();window.GraduationPresentation.setAvailable(stat
  if(!allowed)document.querySelectorAll('[data-target]').forEach(b=>b.disabled=true);
  $('sourceNote').textContent=state.room==='hall'?'上の扉は、実際の四つの教室へ通じています。どの順番でも、観測を見直せます。':'装置への操作は、同じ教室の通常の装置に届きます。余韻へ触れても、試験の観測値と合格記録は変わりません。';
  if(!allowed)$('taskText').textContent='四つの教室で学び、修了したら最後の課題へ。';
+ $('graduationContent').hidden=false;
 }
 function snapshot(){const c=M.circuit(state),a=live();return(state.room==='hall'?'回廊':M.META[state.room].name+'室')+'：'+M.IDS.filter(id=>c.nodes[id].exists).map(id=>M.META[id].result+'['+(a[id]?'残る':'薄れる')+' / '+(c.nodes[id].manual?'手':c.nodes[id].from?M.META[c.nodes[id].from].result:'支えなし')+']').join('、');}
 function record(auto=false){const text=snapshot();if(state.records.at(-1)!==text)state.records.push(text);state.records=state.records.slice(-60);renderRecords();save();if(!auto)say('いま見えている状態を観測記録へ残しました。');}

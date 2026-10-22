@@ -26,13 +26,14 @@
   }
   function open({ replay = false } = {}) {
     if (replay && !replayAllowed()) { refresh(); return; }
+    if (room === 'hall' && !Store.admitted()) { refresh(); return; }
     if (dialog.open) return;
     returnFocus = document.activeElement;
     if (!frame) {
       frame = document.createElement('iframe');
       frame.title = title.textContent;
       const url = new URL('graduation.html', location.href);
-      url.search = new URLSearchParams({ room, embedded: '1', v: '2' });
+      url.search = new URLSearchParams({ room, embedded: '1', v: '3' });
       frame.src = url.href;
       frame.addEventListener('load', () => {
         if (replay) {
@@ -60,6 +61,34 @@
     returnFocus?.focus({ preventScroll: true });
     refresh();
   });
+
+  // Looking at the corridor lights never opens the exam or a spell workspace.
+  // This window only reads the earned-light record and has no game actions.
+  if (room === 'hall') {
+    const inspection = document.createElement('dialog');
+    inspection.id = 'welcomeLightsDialog';
+    inspection.className = 'welcome-light-inspection';
+    inspection.setAttribute('aria-labelledby', 'welcomeLightsTitle');
+    inspection.innerHTML = '<h2 id="welcomeLightsTitle">回廊の灯り</h2><div id="welcomeLightsScene"></div><p>薄い透明の封緘の内側に、灯・映・巡・形と同じ四つの色。術者の手へ伸びる尾はありません。灯座には、かつて学んだ生徒の期印が刻まれています。</p><details><summary>灯座の保守記録</summary><p>院務記録：灯座は七夜ごとに炎の魔力を補給。卒業生の術をほどかず、同じ形のまま光を保ちます。無限の燃料ではありません。</p></details><button type="button" id="closeWelcomeLights">回廊に戻る</button>';
+    document.body.append(inspection);
+    let inspectionFocus;
+    function lantern(x, y, scale, label, mine = false) {
+      const strands = M.IDS.map((id, i) => `<path d="M${-20+i*7} 20Q${-40+i*6} ${-55-i*10} ${12-i*5} ${-72+i*4}Q${46-i*6} ${-28+i*6} ${20-i*7} 20" stroke="${M.META[id].color}" fill="none" stroke-width="1.6"/>`).join('');
+      return `<g transform="translate(${x} ${y}) scale(${scale})"><ellipse cx="0" cy="-42" rx="72" ry="105" fill="url(#welcomeLightHalo)"/><path d="M-42 40V-60Q-42-113 0-138Q42-113 42-60V40Z" fill="#213b44" stroke="#bcac7b" stroke-width="2"/><path d="M-25 29V-51Q-25-90 0-109Q25-90 25-51V29" fill="#112b37" stroke="#758a8b"/>${strands}<ellipse cx="0" cy="-42" rx="10" ry="24" fill="${mine?'#fff1bd':'#e6d6ac'}"/><path d="M-34 41H34" stroke="#b5c5b4" stroke-width="8"/></g><text x="${x}" y="${y+scale*70}" text-anchor="middle" fill="#d5cfb7" font-size="17">${label}</text>`;
+    }
+    document.getElementById('inspectWelcomeLights')?.addEventListener('click', () => {
+      inspectionFocus = document.activeElement;
+      const mine = Store.read().graduated;
+      document.getElementById('welcomeLightsScene').innerHTML = '<svg viewBox="0 0 800 400" role="img" aria-label="期印のある回廊の灯り"><defs><radialGradient id="welcomeLightHalo"><stop stop-color="#e7d5a7" stop-opacity=".24"/><stop offset="1" stop-color="#e7d5a7" stop-opacity="0"/></radialGradient></defs><path d="M30 285V105Q30 35 130 5Q230 35 230 105V285M290 285V105Q290 20 400-20Q510 20 510 105V285M570 285V105Q570 35 670 5Q770 35 770 105V285" fill="none" stroke="#6b889046" stroke-width="3"/>' + lantern(130,240,1,'第百七十四期') + lantern(400,240,1.12,'第百七十五期') + lantern(670,240,1,'第百七十六期') + (mine?lantern(540,340,.5,'あなたの灯り',true):'') + '</svg>';
+      document.body.classList.add('academy-inspecting');
+      inspection.showModal();
+    });
+    document.getElementById('closeWelcomeLights').addEventListener('click', () => inspection.close());
+    inspection.addEventListener('close', () => {
+      document.body.classList.remove('academy-inspecting');
+      inspectionFocus?.focus({ preventScroll: true });
+    });
+  }
 
   function raw(key) { try { return localStorage.getItem(key); } catch { return null; } }
   function json(key) { try { return JSON.parse(raw(key)); } catch { return null; } }
@@ -176,7 +205,6 @@
   if (room === 'hall') {
     document.getElementById('enterGraduation')?.addEventListener('click', () => { if (Store.admitted()) open(); });
     document.getElementById('hallGraduationReplay')?.addEventListener('click', () => open({ replay: true }));
-    document.getElementById('inspectWelcomeLights')?.addEventListener('click', () => open());
   } else {
     const panel = document.createElement('section'); panel.className = 'academy-afterglow'; panel.id = 'afterglow';
     const kicker = document.createElement('p'); kicker.className = 'afterglow-kicker'; kicker.textContent = 'AFTERGLOW · 装置のそばに';

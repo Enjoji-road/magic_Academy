@@ -10,10 +10,11 @@
  <script defer src="academy-studio-sfx.js?v=1"></script><script defer src="academy-element-icons.js?v=1"></script>
  <script defer src="water-insight-model.js?v=1"></script><script defer src="academy-preview-progress.js?v=3"></script>
  <script defer src="graduation-magic-model.js?v=1"></script><script defer src="graduation-state.js?v=1"></script>
- <script defer src="graduation-screen.js?v=2"></script><script defer src="graduation-app.js?v=1"></script>
+ <script defer src="graduation-screen.js?v=2"></script><script defer src="graduation-app.js?v=2"></script>
 </head>
 <body>
- <header class="site-head"><div><span class="eyebrow">ARCANE ACADEMY · GRADUATION</span><h1>手を離した、その先に</h1></div><div class="settings"><button id="sound" type="button" data-settings>効果音・設定</button><button id="settings" type="button">設定</button></div></header>
+ <div id="graduationContent" hidden>
+ <header class="site-head"><div><span class="eyebrow" id="pageKicker">ARCANE ACADEMY · GRADUATION</span><h1 id="pageTitle">手を離した、その先に</h1></div><div class="settings"><button id="sound" type="button" data-settings>効果音・設定</button><button id="settings" type="button">設定</button></div></header>
  <p class="entry-link"><a href="index.html#graduation-exam" target="_top">← 試験回廊へ戻る</a></p>
  <nav class="rooms" aria-label="学びを振り返る"><a href="index.html#graduation-exam" target="_top" data-room="hall">試験回廊</a><a href="fire-studio.html#afterglow" target="_top" data-room="fire">炎の教室</a><a href="water-insight-experiment.html#afterglow" target="_top" data-room="water">水の教室</a><a href="wind-ribbon-experiment.html#afterglow" target="_top" data-room="wind">風の教室</a><a href="earth-studio.html#afterglow" target="_top" data-room="earth">土の教室</a></nav>
  <main>
@@ -70,5 +71,7 @@
   </div>
   <div class="graduation-curtain" aria-hidden="true"></div>
  </dialog>
+ </div>
+ <noscript><p>魔法の観測にはJavaScriptが必要です。<a href="index.html" target="_top">試験回廊へ戻る</a></p></noscript>
 </body>
 </html>

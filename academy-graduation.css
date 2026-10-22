@@ -16,6 +16,15 @@
 .academy-observation-dialog.is-celebrating .academy-observation-head{display:none}
 .academy-observation-dialog:not(.is-celebrating){padding-bottom:env(safe-area-inset-bottom)}
 body.academy-observing{overflow:hidden}
+body.academy-inspecting{overflow:hidden}
+.welcome-light-inspection{width:min(760px,calc(100vw - 24px));max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);padding:24px;background:#172f39;color:#f4ede0;border:1px solid #b5a673;border-radius:8px;overflow:auto}
+.welcome-light-inspection::backdrop{background:#061620d9}
+.welcome-light-inspection h2{font:500 23px/1.5 serif;margin:0 0 10px;color:#eadbb7}
+.welcome-light-inspection svg{display:block;width:100%;height:auto;max-height:50dvh}
+.welcome-light-inspection p{font-size:14px;line-height:1.9;color:#c5d3cf}
+.welcome-light-inspection summary{min-height:44px;line-height:1.6;padding:10px 0;color:#d5cfb7;cursor:pointer}
+.welcome-light-inspection button{display:block;min-height:44px;margin:18px auto 0;padding:10px 22px;background:#2a4349;border:1px solid #b5a673;border-radius:5px;color:#f4ede0;font:inherit;cursor:pointer}
+.welcome-light-inspection button:focus-visible,.welcome-light-inspection summary:focus-visible{outline:3px solid #e7c884;outline-offset:3px}
 .hall-welcome-lights{display:flex;align-items:center;justify-content:center;gap:clamp(28px,8vw,75px);margin:24px auto 0;color:#e2cea0;max-width:480px}
 .hall-welcome-lights .welcome-lantern{width:42px;height:83px;border:1px solid #b9a56f;border-radius:28px 28px 5px 5px;position:relative;background:#132d36;box-shadow:0 0 42px #e2ce9830}
 .welcome-lantern:before{content:"";position:absolute;width:8px;height:24px;left:16px;top:30px;border-radius:50%;background:#eee0b8;box-shadow:0 0 21px #f2deb7}

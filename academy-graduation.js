@@ -21,7 +21,11 @@
   dialog.append(header);
   document.body.append(dialog);
 
+  function replayAllowed() {
+    return room === 'hall' && Store.read().graduated === true;
+  }
   function open({ replay = false } = {}) {
+    if (replay && !replayAllowed()) { refresh(); return; }
     if (dialog.open) return;
     returnFocus = document.activeElement;
     if (!frame) {
@@ -31,7 +35,10 @@
       url.search = new URLSearchParams({ room, embedded: '1', v: '2' });
       frame.src = url.href;
       frame.addEventListener('load', () => {
-        if (replay) frame.contentWindow.GraduationPresentation?.replay();
+        if (replay) {
+          if (replayAllowed()) frame.contentWindow.GraduationPresentation?.replay();
+          else close();
+        }
       }, { once: true });
       dialog.append(frame);
     } else {
@@ -148,7 +155,9 @@
       const allowed = Store.admitted(s);
       if (enter) { enter.disabled = !allowed; enter.textContent = s.graduated ? '灯座をもう一度観測する' : '卒業試験を始める'; }
       const replay = document.getElementById('hallGraduationReplay');
-      if (replay) replay.hidden = !s.graduated;
+      if (replay) { replay.hidden = !s.graduated; replay.disabled = !s.graduated; }
+      const replayArea = document.getElementById('hallGraduationReplayArea');
+      if (replayArea) replayArea.hidden = !s.graduated;
       const mine = document.querySelector('.welcome-lantern.mine');
       if (mine) mine.hidden = !s.graduated;
       document.querySelector('.hall-welcome-lights')?.setAttribute('aria-label', s.graduated ? '回廊を照らす、先輩たちとあなたの四つの灯り' : '回廊を照らす三つの灯り');

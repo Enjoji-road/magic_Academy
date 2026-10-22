@@ -8,7 +8,9 @@
     '',
     '四つの魔法を学び、最後の卒業試験にも合格しました。',
     '',
-    'あなたも魔法学校に入学してみませんか？'
+    'あなたも魔法学校に入学してみませんか？',
+    '',
+    '#road謎'
   ].join('\n');
   const SHARE_URL = 'https://enjoji-road.github.io/magic_Academy/';
   const OBSERVE_MS = 900;

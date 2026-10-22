@@ -28,7 +28,7 @@
       frame = document.createElement('iframe');
       frame.title = title.textContent;
       const url = new URL('graduation.html', location.href);
-      url.search = new URLSearchParams({ room, embedded: '1' });
+      url.search = new URLSearchParams({ room, embedded: '1', v: '2' });
       frame.src = url.href;
       frame.addEventListener('load', () => {
         if (replay) frame.contentWindow.GraduationPresentation?.replay();

@@ -1,0 +1,305 @@
+{
+  "schema": 1,
+  "base_commit": "4e2a7c3f407679ce68bf5704ddafd7b3b99f8b0f",
+  "checks": [
+    "Spell rules, grade, state calculation, finite charge, and save format are byte-for-byte unchanged",
+    "An incorrect release never starts the celebration",
+    "Replay is unavailable before graduation",
+    "Success is tested while scrolled away from the top",
+    "Correct release immediately opens the modal observation stage",
+    "The observation stage shows the already-settled new light",
+    "The light is unobscured before fading starts",
+    "The existing graduation record is saved before the animation finishes",
+    "Escape cannot interrupt the transition",
+    "A second celebration cannot start while one is active",
+    "The settled light is shown for about 0.9 seconds before darkening",
+    "The fade-out lasts about 1.1 seconds",
+    "The requested two-line graduation message is displayed exactly",
+    "Desktop: full viewport dialog",
+    "Desktop: message and both actions visible without scrolling",
+    "X intent receives exact Japanese, emoji, newlines, and the official entrance URL",
+    "The share tab cannot access the research window",
+    "Closing the X tab keeps the graduation screen and saved state intact",
+    "Returning to the trial room does not alter the completed state or record",
+    "The completed light can be observed again after returning",
+    "Replay does not require recasting or alter saves",
+    "Reload preserves graduation without forced replay",
+    "Breaking the current spell does not erase historical graduation",
+    "A historical graduation can be replayed while the current light is absent",
+    "Resetting only the current room retains the graduation record",
+    "Notes remain unchanged through celebration, sharing, replay, and room reset",
+    "Desktop: official saves and unrelated keys unchanged",
+    "320px: an existing graduation does not auto-play",
+    "320px: full viewport dialog",
+    "320px: message and both actions visible without scrolling",
+    "320px: official saves and unrelated keys unchanged",
+    "390px: an existing graduation does not auto-play",
+    "390px: full viewport dialog",
+    "390px: message and both actions visible without scrolling",
+    "390px: official saves and unrelated keys unchanged",
+    "844px: an existing graduation does not auto-play",
+    "844px: full viewport dialog",
+    "844px: message and both actions visible without scrolling",
+    "844px: official saves and unrelated keys unchanged",
+    "OS reduced motion uses a static switch without fades",
+    "OS reduced motion: full viewport dialog",
+    "OS reduced motion: message and both actions visible without scrolling",
+    "Returning retains focused observation mode",
+    "Manual reduced motion uses a static switch without fades",
+    "Manual reduced motion: full viewport dialog",
+    "Manual reduced motion: message and both actions visible without scrolling",
+    "Returning retains focused observation mode",
+    "No JavaScript errors in any presentation scenario"
+  ],
+  "viewports": [
+    {
+      "width": 1280,
+      "height": 900,
+      "dialog": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 900
+      },
+      "items": {
+        "graduationTitle": {
+          "x": 380.796875,
+          "y": 479.203125,
+          "right": 899.203125,
+          "bottom": 543.203125
+        },
+        "graduationMessage": {
+          "x": 471,
+          "y": 557.203125,
+          "right": 809,
+          "bottom": 589.5
+        },
+        "shareGraduation": {
+          "x": 470,
+          "y": 617.5,
+          "right": 810,
+          "bottom": 665.890625
+        },
+        "returnToStudy": {
+          "x": 470,
+          "y": 676.890625,
+          "right": 810,
+          "bottom": 725.28125
+        }
+      },
+      "label": "Desktop"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "dialog": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 568
+      },
+      "items": {
+        "graduationTitle": {
+          "x": 22,
+          "y": 250.4375,
+          "right": 298,
+          "bottom": 320.03125
+        },
+        "graduationMessage": {
+          "x": 40.5,
+          "y": 326.03125,
+          "right": 279.5,
+          "bottom": 348.828125
+        },
+        "shareGraduation": {
+          "x": 22,
+          "y": 362.828125,
+          "right": 298,
+          "bottom": 406.828125
+        },
+        "returnToStudy": {
+          "x": 22,
+          "y": 414.828125,
+          "right": 298,
+          "bottom": 458.828125
+        }
+      },
+      "label": "320px"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "dialog": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "items": {
+        "graduationTitle": {
+          "x": 45.1875,
+          "y": 441.3125,
+          "right": 344.796875,
+          "bottom": 481.21875
+        },
+        "graduationMessage": {
+          "x": 65.5,
+          "y": 493.21875,
+          "right": 324.5,
+          "bottom": 517.90625
+        },
+        "shareGraduation": {
+          "x": 25,
+          "y": 539.90625,
+          "right": 365,
+          "bottom": 588.296875
+        },
+        "returnToStudy": {
+          "x": 25,
+          "y": 599.296875,
+          "right": 365,
+          "bottom": 647.6875
+        }
+      },
+      "label": "390px"
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "dialog": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 390
+      },
+      "items": {
+        "graduationTitle": {
+          "x": 266.46875,
+          "y": 176.203125,
+          "right": 577.515625,
+          "bottom": 211
+        },
+        "graduationMessage": {
+          "x": 302.5,
+          "y": 217,
+          "right": 541.5,
+          "bottom": 239.796875
+        },
+        "shareGraduation": {
+          "x": 122,
+          "y": 253.796875,
+          "right": 418,
+          "bottom": 297.796875
+        },
+        "returnToStudy": {
+          "x": 426,
+          "y": 253.796875,
+          "right": 722,
+          "bottom": 297.796875
+        }
+      },
+      "label": "844px"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "dialog": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "items": {
+        "graduationTitle": {
+          "x": 45.1875,
+          "y": 441.3125,
+          "right": 344.796875,
+          "bottom": 481.21875
+        },
+        "graduationMessage": {
+          "x": 65.5,
+          "y": 493.21875,
+          "right": 324.5,
+          "bottom": 517.90625
+        },
+        "shareGraduation": {
+          "x": 25,
+          "y": 539.90625,
+          "right": 365,
+          "bottom": 588.296875
+        },
+        "returnToStudy": {
+          "x": 25,
+          "y": 599.296875,
+          "right": 365,
+          "bottom": 647.6875
+        }
+      },
+      "label": "OS reduced motion"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "dialog": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "items": {
+        "graduationTitle": {
+          "x": 45.1875,
+          "y": 441.3125,
+          "right": 344.796875,
+          "bottom": 481.21875
+        },
+        "graduationMessage": {
+          "x": 65.5,
+          "y": 493.21875,
+          "right": 324.5,
+          "bottom": 517.90625
+        },
+        "shareGraduation": {
+          "x": 25,
+          "y": 539.90625,
+          "right": 365,
+          "bottom": 588.296875
+        },
+        "returnToStudy": {
+          "x": 25,
+          "y": 599.296875,
+          "right": 365,
+          "bottom": 647.6875
+        }
+      },
+      "label": "Manual reduced motion"
+    }
+  ],
+  "page_errors": [],
+  "share_verification": "Official intent URL, decoded draft, new tab, and retained game state. External X UI intercepted; no account access or actual post.",
+  "browser_version": "153.0.8010.0",
+  "normal_motion_phases": [
+    {
+      "phase": "observe",
+      "time": 1021
+    },
+    {
+      "phase": "fade-out",
+      "time": 1921.1000000005588
+    },
+    {
+      "phase": "fade-in",
+      "time": 3021.5
+    },
+    {
+      "phase": "revealing",
+      "time": 3034.4000000003725
+    },
+    {
+      "phase": "ready",
+      "time": 3585.100000000559
+    }
+  ],
+  "total_checks": 48,
+  "result": "pass"
+}

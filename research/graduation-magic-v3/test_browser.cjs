@@ -35,6 +35,7 @@ async function exists(p,id){return !await p.locator('[data-target="'+id+'"]').ev
 async function active(p,id){return p.locator('[data-target="'+id+'"]').evaluate(el=>!el.classList.contains('empty')&&!el.classList.contains('dormant'));}
 async function isSaved(p){return p.evaluate(k=>JSON.parse(localStorage.getItem(k)),key);}
 async function solve(p){await room(p,'hall');await spell(p,'fire');await p.locator('#castObject').click();for(const[r,s]of[['water','fire'],['wind','water'],['earth','wind'],['fire','earth']]){await spell(p,r);await target(p,s);}await p.locator('#release').click();}
+async function dismissGraduation(p){await p.locator('#graduationScreen[data-phase="ready"]').waitFor();await p.locator('#returnToStudy').click();await p.locator('#graduationScreen').waitFor({state:'hidden'});}
 async function preservation(p){const values=await p.evaluate(()=>Object.fromEntries(Object.entries(localStorage)));for(const[k,v]of Object.entries(official))assert.equal(values[k],v);ok(Object.keys(values).every(k=>k===key||Object.hasOwn(official,k)),'Only research key is created or changed');}
 (async()=>{
  await new Promise(r=>server.listen(0,'127.0.0.1',r));base='http://127.0.0.1:'+server.address().port;
@@ -64,7 +65,7 @@ async function preservation(p){const values=await p.evaluate(()=>Object.fromEntr
   }
  }
  await page.locator('#notes').fill('初見テスト用の自由メモ。灯りと手の関係。');await page.reload();await font(page);ok(await page.locator('#notes').inputValue()==='初見テスト用の自由メモ。灯りと手の関係。','Notes survive reload');
- await solve(page);ok((await isSaved(page)).graduated,'Regular UI sequence leaves the new light');ok(await page.locator('#graduation').isVisible(),'Graduation responds to actual settled state');
+ await solve(page);ok((await isSaved(page)).graduated,'Regular UI sequence leaves the new light');ok(await page.locator('#graduation').isVisible(),'Graduation responds to actual settled state');await dismissGraduation(page);
  await page.locator('#arrival').click();ok(await page.locator('#nextArrival').isVisible(),'Next student sees the additional light');await preservation(page);
  await page.reload();await font(page);ok((await isSaved(page)).graduated,'Graduation record survives reload');
  const d=page.locator('details').filter({has:page.locator('#night')});await d.locator('summary').click();for(let n=0;n<8;n++)await page.locator('#night').click();ok((await isSaved(page)).circuits.hall.charge===0,'Eight simulated nights consume the finite charge');

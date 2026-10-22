@@ -14,6 +14,16 @@
 
 新しい相互作用は**今回の提案**です。現在公開されている通常試験に、以前から実装されていたという意味ではありません。四教室は再考察に必要な部分を簡略化しています。
 
+## 卒業演出・共有の追加（2026-10-22）
+
+制作者の実プレイで現行の難易度が適切と評価されたため、今回の体験改修は作問を変えず、卒業の伝わり方と共有だけを改善しています。
+
+初回の成功時は、残った光を約0.9秒見せ、約1.1秒で暗転して全画面の卒業画面へ移ります。試験室へ戻って観測を続けられ、卒業画面は任意で再表示できます。再読込だけでは自動再生しません。動きを減らす設定ではフェードを省略します。
+
+X共有は公式入口URLを付けた下書きを別タブで開き、投稿は本人が確定します。共有文は `graduation-screen.js` の `SHARE_TEXT` と `SHARE_URL` で変更できます。
+
+変更一覧・確認結果は [GRADUATION_UI_UPDATE.md](GRADUATION_UI_UPDATE.md)、追加の実ブラウザ検証は [graduation-ui-verification.json](graduation-ui-verification.json) に記載しています。
+
 ## 確認した範囲
 
 - JavaScriptと独立したPythonの異なる計算法で、**14,641状態**の結果が一致。
@@ -54,8 +64,9 @@ node research/graduation-magic-v3/verify_preservation.cjs
 
 ```bash
 node research/graduation-magic-v3/test_browser.cjs
+node research/graduation-magic-v3/test_graduation_ui.cjs
 ```
 
 Chromiumを別途用意している場合は `BROWSER_EXECUTABLE` で実行ファイルを指定できます。`JAPANESE_FONT_DIR` は検証ホストだけに日本語フォントを追加する任意設定です。配信ゲームに外部フォント・実行時ライブラリは必要ありません。
 
-試作の依存は、このフォルダの三つの実行ファイルと、読み取り専用の `../../wind-ribbon-data.js`、`../../wind-ribbon-model.js` です。単一HTMLをダブルクリックする配布ではなく、リポジトリ全体をHTTP配信してください。
+試作の依存は、このフォルダの `style.css`、`magic-model.js`、`graduation-screen.js`、`app.js` と、読み取り専用の `../../wind-ribbon-data.js`、`../../wind-ribbon-model.js` です。単一HTMLをダブルクリックする配布ではなく、リポジトリ全体をHTTP配信してください。

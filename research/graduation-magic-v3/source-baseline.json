@@ -1,0 +1,769 @@
+{
+  "schema": 1,
+  "commit": "a943deb56bde45471c6cd13ecbd67f02ebc01498",
+  "tracked_file_count": 110,
+  "status": "",
+  "hashes": {
+    ".gitignore": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793",
+    "README.md": "f15085aee99b18c57d19ddb2d1aaf3aebf1dbf9fd2a75e53b9b33e5e53d1926e",
+    "academy-element-icons.css": "396132a229d4ce82d4c6a3aef4c2468b8ae058b64348f9822fb3a0a425f54946",
+    "academy-element-icons.js": "0ef7e14f6d56acfd65e2d25712a6535ae6b4b888855cd8024dc9ce0eada8dc8e",
+    "academy-magic-vfx.css": "b69d5ad34e08ed802ff8648e7a26f53d5183e5d3266227a87542718782dfe805",
+    "academy-magic-vfx.js": "d3764edd9740741b8e38d421efde516d9c9170644f84ead5b2163f1787f05f29",
+    "academy-preview-hall.css": "27ecf0e63660e171b06a918971aaa2525fcebb2fc15995c0482f2373e2ffccce",
+    "academy-preview-progress.js": "c81532495f03543c9d72ae5f574dcd41069444f88b72d0f6aa8fa8c19e4226c7",
+    "academy-preview.html": "bbb0cad95f47e62865f493a37ea1e45c309c477ea1695ede4c57d73c0bd5bcef",
+    "academy-sfx.css": "25d6b644426ce9ed174891adbb92349c139600e3710f4684d5a4e94622a09b14",
+    "academy-sfx.js": "7a388255af8271100b4f0a1e3f78b7837bffec8a29adc5a4a475feac3f127115",
+    "academy-studio-sfx.css": "9e40805345aa2bcb2f3a0d95025a6274531db1bc24e9e0b089457bd2d42ba31e",
+    "academy-studio-sfx.js": "24c46f21aae5a24d166ad4d4f76315b13223e625b726adffe3c44eb9856f4f9e",
+    "academy-studio.css": "88d89b0d87d41f0ca9b8cff00e1f509c7b36d4d67c34f357716574029f47f836",
+    "academy-water-insight-preview.html": "532cae87e3c6e9df73e8cdcf59e828a3046a987c7decb3f0347626f53b1106d0",
+    "academy-water-insight-progress.js": "420ba51028e155bba9958a34b2842bd7c31c7717ac3135bb60a462bd0579ea1b",
+    "academy-water-preview.html": "f90c4856a42041baec95125b0e45a55d21f329e45386e013ca219d20f0a7cbd9",
+    "academy-water-progress.js": "6aed5ab0d3b0af95db575d9d20f34471ef41f8e5c9fbaef8abbc65ed599a204a",
+    "app.js": "006974e8ecc11d8f80214435a6fac481eab10e803994f97b1fc54493bd4b5e2a",
+    "assets/studio-sfx/cover.mp3": "11d846069076e33b756f647508439cba2898889f2663f4c7d947160f14b8a961",
+    "assets/studio-sfx/friction.mp3": "b96e0bd8b97f0d2d129ed2b77d148a3ea5196594f83f0c23bfa7cad45325ff22",
+    "assets/studio-sfx/ignite.mp3": "761b86b4fcfcea99722519010db1b915cde503af1dc3c2fd682761934489eb22",
+    "assets/studio-sfx/measurements.json": "6932fd3ad47adc1d35f0ec5988a9711d2456391e1884b23d9eb494282025c2f5",
+    "assets/studio-sfx/paper.mp3": "1eb0ff515094173fb8abefaf0adf00338afb402fb9f0edb03890686d87026f6a",
+    "assets/studio-sfx/pass.mp3": "f944064b6bd00dff3053fc02ed840d6a6bbb176d2e236265e431dd4fda9fa86f",
+    "assets/studio-sfx/stone.mp3": "43c6a352c5a5bd01ec965f0ca7f3c6a508a3397a36405089a7f0e54ca5363cb3",
+    "assets/studio-sfx/water.mp3": "9d597f68130b6a11941633266ceaebfb39c5d8db0d7ac73e53d22fa5176852a8",
+    "assets/studio-sfx/wind.mp3": "85c800ff4310901cfa76e9a6522f10accb2ee7fe5c893dd7f8d05b9b9f9ca243",
+    "docs/DESIGN_GUIDE_v1.md": "3fb358a7b908f6002a1d82d17438c7bd0bce9df20ed41949a581ace10133ad1f",
+    "docs/RESEARCH_SFX_CANDIDATES.md": "49214a41561a6cd713798b196a9c8cd7b2809484768c516dae43a258a68459eb",
+    "docs/SFX_STUDIO_REPORT.md": "9fb799ad1d5058776031afdb7ef9281e42684508f74e12b9a378b19393a14212",
+    "docs/UI_STUDIO_NOTES.md": "7f6e4b55baed71577c3019d57adb1916e0713b776fce605cce9de4cfd99025f3",
+    "earth-studio.html": "e94a68680ef8d7eb98750fc10daf15383de677b2740e2d9046a4469cc372912a",
+    "earth-studio.js": "1d6ab74f0e72f495d4234a59300eb4262d1fe59f94ab23e370e14930311c0fb7",
+    "earth.html": "bfea980da7d1acceaf05e34616584e2bab623e347add3feae43e34447a469411",
+    "engine.js": "31f8a7a82215d8bd4ecb262204dca302e1dc4a602bf083b8c7016cbe58262c55",
+    "fire-app.js": "86ba4f0eca656d54c557901e671a0568aa04d8e9ad36b41930f0a4ee9412c745",
+    "fire-experiment-app.js": "539d0b19f896489fdc34ed5fd195c0691a15d54acf3a09a52c1006584097ff02",
+    "fire-experiment-model.js": "bc95b2a0914663472a61a48371d272806ae8833c0ef24863dfae5b2b889cadd4",
+    "fire-experiment.css": "83b3c4e500a7b0639bc609d9d74db54580b9801cfb4f05d13ce173232e9512dc",
+    "fire-experiment.html": "425e43abf2b4af095487ad00cde0772e6330c907fb49f6b8c340b746864ab7da",
+    "fire-model.js": "5d9be304a6f5552042aa592a8cd61df29972fdc7e344503a2cca5661575de804",
+    "fire-prototype-01.html": "350ee08a1b8670b2649c5cdd7f8bc8b291574678b72ead1c7d27dde6e131de1c",
+    "fire-studio.html": "0996614e1ba678abe6cf44a4b95780d616847d88907eb096c1a4168f2591360c",
+    "fire-studio.js": "d231f3b273ef94dde119f9cd3b048f4f04c23d1429efd621b6c0b4b86c5c6ae9",
+    "fire.css": "d53012ffa65ac8b52568b2eab7d000ab9158958e7c7416937c22373572dd9df9",
+    "fire.html": "04b938f04163f304455f4867890ed0345d5e5798fc47b3989a006679614a5210",
+    "index.html": "7d1bcdd1850bafc64ede3ea27c15aed6e81b7b19b640fb81250f7caaae5950e8",
+    "prototype-01-4x4.html": "1f2bffcdfe777c9ce296938a48b3a81b62302d90ef6d954918ee6d48b8ce352e",
+    "research/alternative-verification.json": "c02b9ea3914ba2fec9f8daa27730b46735d86b4b60b950f57e17aa2bce942da6",
+    "research/design.json": "0d2e8ece3587c737828a3919059e9f5b10868ddbb2b2dea043ba6bc2e2913d7a",
+    "research/fire-v4/README.md": "01c446efaba065bda8a366cde845267b74375ec08e15fa77143de154bdca2782",
+    "research/fire-v4/RESEARCH_SPOILERS.md": "35f462245afa8125f4707c32a4565adbed8e26f1c975ef097b809c6653497919",
+    "research/fire-v4/SOLUTION_SPOILERS.md": "729572081a8f8e0a5c185dd4492bd4fcb7a1b4272d0fdb7b13ea235bbc2a6c6b",
+    "research/fire-v4/test_interaction.cjs": "1e38020bcdf1b9f1795b2656b4bea5fcdf851aadbd891739a8d53d6eb77ec7f2",
+    "research/fire-v4/test_model.cjs": "ca101c360adc570ffbdd4100305acc534754c6c129762959f7ef96d142840c6a",
+    "research/fire-v4/verification.json": "8e57bdb9b035e55d9e999e55f32534caf37e9618a37a3ffec0c0767b331cbb0e",
+    "research/fire-v4/verify.py": "6560141e0ec407a4f036e3f4babb3f95ce49de1f9c8c051e4ce8e04f83978674",
+    "research/fire/README.md": "4f4fd4e7d03542953a6285a12418c07443b85aeb54760346dc37b22565752585",
+    "research/fire/projection-verification.json": "a58919874252c5b004cb2569d598020302f040f15433c14b25dfd0f1cf51df85",
+    "research/fire/test_interaction.cjs": "5cf73c009b5957ad2911c7751d24dccf92d4cb0fa292915f5d9207bb072faee0",
+    "research/fire/test_model.cjs": "98328d2075d261a0dac1c3b4fa89c593b8cc9784e12e6ccaf43e29e8511e21a3",
+    "research/fire/verify_projection.py": "06d5cee867c7aa5faeee193c0cc9836611fbec220e2ee6b732d7ee00c514ad19",
+    "research/rejected-verification.json": "5414c252e90015489a285c207bfcb6c987ec667758e77c98acaae9cff60f5a6d",
+    "research/solver.py": "c2d84ea08ed6ef15e3d889fbf9b4ed5994a4745bbe19a73b32206e015a3a4d96",
+    "research/studio/prepare_sfx.cjs": "ccbe2b9d037bdecf98be02107a96d9cd42a2522a259ff99be4481993029ef7e3",
+    "research/studio/test_preview.cjs": "bcd4cb7da7c907203fd7203a17464febed869ddea7c4b7ae9db80b783e3d04e0",
+    "research/test_engine.cjs": "16958aae223d646a0bf6adab8a4b7271511fd0a3437a0d634188e4ea242cafd5",
+    "research/test_interaction.cjs": "46ca2dce997b1afdeb1b401cae8364e40c3767ad851f6f549ecc36f332c0e344",
+    "research/verification.json": "9c9372ef5a03464bab9eee547fe8248fa89c6195faad8b7327e4279d12225e39",
+    "research/verify_alternative.py": "a3a2412471e833a60176fdbe2ca1179f5695a743d5d2344ef5879fd765e23dab",
+    "research/verify_design.py": "dbae2c671b777d1101908b30d228ec18fb4f77358140838f3fbd95d2a846f081",
+    "research/verify_rejected.py": "808f487134f4061f5056be488e13db268a9cf4e693aad3961554a78fb1c6f1e2",
+    "research/water-insight/README.md": "e110b1ff985bf0d8acbeb28543e653c695c7a55f9e04754c529b4b495cde64a4",
+    "research/water-insight/RESEARCH_SPOILERS.md": "adf8dff8cbcf1cac25febf173942baf743c4034c81a94a2557db6181e7aa273a",
+    "research/water-insight/VALIDATION.md": "6feac21791d668e8eeff60027f7a2b9d6c66612553059898861fbe47961d6744",
+    "research/water-insight/test_insight.cjs": "1ee2ea764bb5f41838f7a0c8a4f0f12e32bcaf5f8b96e69f5f3d882563dc0746",
+    "research/water-insight/verification.json": "1c2fab43f69aa51162fcb56f80d846378b134700f88ae51f5e6b972026b10ede",
+    "research/water-insight/verify.py": "2938e4e648568be79c89ecf0f6fd23b0432e110d9881184a452044eea0c6b964",
+    "research/water/README.md": "6a2e4b23d5631d2acfac59ee4d4ac7fe181667788caf8bc5f12de003881f927d",
+    "research/water/RESEARCH_SPOILERS.md": "1e746141cbf73b1d01f7a26d12c39cfc913eafabb62d456811ec571e8f6c729d",
+    "research/water/VALIDATION.md": "939830149e946a3d82da25206dcd9e99b293d954c679f7b26f884fbff98e9aa7",
+    "research/water/test_water.cjs": "0a0d1eb5d39622f27b5e311bc224f67e9db5acdf332f33f280fc5cbe6a3149da",
+    "research/water/verification.json": "989559ffafea96e1705532c116d2bec63a9a6fe8b4bf3de856d1344729bc2869",
+    "research/water/verify.py": "b8571b390f67e8e03be6076ad02e1bbef255d8dd115e505cbd8ed48d0bca5933",
+    "research/wind-ribbon/README.md": "22a76d8e8266273f8161eb146f764e9fcb6484bebcc614a7f1491fe2c6712d85",
+    "research/wind-ribbon/RESEARCH_SPOILERS.md": "c6840b177422a4fbef4e20c5bfc0a3108e3bbdf41bd6a693ef1c6e5fed85a821",
+    "research/wind-ribbon/browser-verification.json": "98b0459fd211205a25ece470a64b91d085f1caea0fc8f493c66647961b34c646",
+    "research/wind-ribbon/independent-geometry-samples.json": "b665e692ecaec7fd642e5cbe6f6c2cdf0c9a939c8c229c3e1c244fc9b324284f",
+    "research/wind-ribbon/make_diagrams.py": "947cd3b77a923779da139fe0d0f83d39de113144523fa1efab44d5eeb1519809",
+    "research/wind-ribbon/material-layout-SPOILERS.svg": "2d526a5c106299de6d3a14be8916fa777fbc6594be2c5a82632c859d45c5ca29",
+    "research/wind-ribbon/preservation-verification.json": "36935bde0ad65151b24f82fc699048fdbb9e0da2c99522a82b4669a618907283",
+    "research/wind-ribbon/test_model_and_ui.cjs": "9e050d30417d49909d823c6487e3eb204ec49781303b62826e4f59cc81adea97",
+    "research/wind-ribbon/ui-verification.json": "cfbd60c0573a39bbac3faab948cab5cadf0d6ab117d2a4998cbc9d827a2a441d",
+    "research/wind-ribbon/verification.json": "45caabe271ab9e430b744a8e77effb77495aa7ec47348abd5007ce13b26e14ad",
+    "research/wind-ribbon/verify.py": "d238024233ef65568a5b83859c671c8b53b0090cea38b10e395dd76fd2918e6f",
+    "style.css": "565a90c14d7fa400a2392e19c0cd858dcd260fdc4c40a0c79c1fd3c3a515b7f7",
+    "water-app.js": "a220b33a6fc58a388403af413abe068188aef0632cd27d284f63448882a92183",
+    "water-experiment.css": "97af705a543ab31378e22f1d05337c2381d20e4ef44763c8376c0b62859fee5e",
+    "water-experiment.html": "455ccc5c1e4de7ab6c4222cd6a62f65255a33091a143c869f349ac7e548ac03d",
+    "water-insight-app.js": "2f151125a7942692ca0cc9b1f9570fbd1c6c40fdabb78613f2bb02c62f2f52f5",
+    "water-insight-experiment.css": "fb9fa61023098ea2fd3c2ead2e610ecab12f1e40952b76180d0ae79e2d28c713",
+    "water-insight-experiment.html": "d3e5ed8c1f9406727643016035d945f4341109c029b6efa6f68e15396377961f",
+    "water-insight-model.js": "579e5fafbe00eefa874db0f5374719ea6d4ab5477747a9bc47b73dbf3f0074db",
+    "water-model.js": "00078d687256bb6544bd100222314d261de9026a89d2c1600498f9769532c231",
+    "wind-ribbon-app.js": "74498e8344d57224f8dc6b0cc52d8987cb9e4bf2eada484ff511ccb78d353523",
+    "wind-ribbon-data.js": "0f52dd677df7fe7f91072ce3a706deb486a796cacecf1a42f4638cc308bc49ef",
+    "wind-ribbon-experiment.css": "167a988e3b356d200143578aa60cfb21fa8ca8c46d4dc977e44a4e7b4240a97d",
+    "wind-ribbon-experiment.html": "ce55e1a17f4ab735945a08cc5d8286805e5d0e2126328dfe80ee213aa99738d2",
+    "wind-ribbon-model.js": "8af86aa046b87edb5d6526b2f3234747b71420d4b8a6c3a5264a1c856802534d"
+  },
+  "normal_grades": {
+    "fire": true,
+    "water": true,
+    "wind": true,
+    "earth": true
+  },
+  "fire": {
+    "key": "magic-academy-fire-experiment-v4",
+    "puzzle": "fire-archive-six-leaves-20261020",
+    "plates": [
+      {
+        "id": "A",
+        "a": -1,
+        "b": 1,
+        "digit": 9,
+        "x": -0.5,
+        "y": 6,
+        "z": 3,
+        "width": 0.39,
+        "height": 0.66
+      },
+      {
+        "id": "B",
+        "a": 0,
+        "b": 1,
+        "digit": 8,
+        "x": 0,
+        "y": 6,
+        "z": 3,
+        "width": 0.39,
+        "height": 0.66
+      },
+      {
+        "id": "C",
+        "a": 1,
+        "b": 1,
+        "digit": 9,
+        "x": 0.5,
+        "y": 6,
+        "z": 3,
+        "width": 0.39,
+        "height": 0.66
+      },
+      {
+        "id": "D",
+        "a": -1,
+        "b": 2,
+        "digit": 1,
+        "x": -0.3333333333333333,
+        "y": 4,
+        "z": 2,
+        "width": 0.26,
+        "height": 0.44
+      },
+      {
+        "id": "E",
+        "a": 0,
+        "b": 2,
+        "digit": 6,
+        "x": 0,
+        "y": 4,
+        "z": 2,
+        "width": 0.26,
+        "height": 0.44
+      },
+      {
+        "id": "F",
+        "a": 1,
+        "b": 2,
+        "digit": 1,
+        "x": 0.3333333333333333,
+        "y": 4,
+        "z": 2,
+        "width": 0.26,
+        "height": 0.44
+      }
+    ],
+    "masks": [
+      63,
+      6,
+      91,
+      79,
+      102,
+      109,
+      125,
+      7,
+      127,
+      111
+    ],
+    "observations": {
+      "first": [
+        {
+          "x": -1,
+          "z": 6,
+          "owners": [
+            "A",
+            "D"
+          ],
+          "mask": 6,
+          "digit": 1
+        },
+        {
+          "x": 0,
+          "z": 6,
+          "owners": [
+            "B",
+            "E"
+          ],
+          "mask": 125,
+          "digit": 6
+        },
+        {
+          "x": 1,
+          "z": 6,
+          "owners": [
+            "C",
+            "F"
+          ],
+          "mask": 6,
+          "digit": 1
+        }
+      ],
+      "second": [
+        {
+          "x": -3,
+          "z": 6,
+          "owners": [
+            "D"
+          ],
+          "mask": 6,
+          "digit": 1
+        },
+        {
+          "x": -2,
+          "z": 6,
+          "owners": [
+            "A",
+            "E"
+          ],
+          "mask": 109,
+          "digit": 5
+        },
+        {
+          "x": -1,
+          "z": 6,
+          "owners": [
+            "B",
+            "F"
+          ],
+          "mask": 6,
+          "digit": 1
+        },
+        {
+          "x": 0,
+          "z": 6,
+          "owners": [
+            "C"
+          ],
+          "mask": 111,
+          "digit": 9
+        }
+      ]
+    }
+  },
+  "water": {
+    "key": "magic-academy-water-insight-v1",
+    "puzzle": "water-insight-displacement-20261021",
+    "constants": {
+      "tank": 5000,
+      "bell": 5000,
+      "bellWaterBefore": 3430,
+      "original": 2730,
+      "dead": 20,
+      "p0": 101325,
+      "rho": 998,
+      "g": 9.81,
+      "area": 0.01,
+      "head": 0.8,
+      "smallDose": 600,
+      "resolution": 10
+    },
+    "before": {
+      "bellWater": 3430,
+      "displayWater": 3430,
+      "full": false,
+      "open": false,
+      "pressure": 101325,
+      "clear": true
+    },
+    "after": {
+      "bellWater": 1160,
+      "displayWater": 1160,
+      "full": true,
+      "open": true,
+      "pressure": 101325,
+      "clear": true
+    },
+    "physical_after": {
+      "water": 5000,
+      "air": 20,
+      "bell": 3840,
+      "lost": 0,
+      "open": true
+    }
+  },
+  "wind": {
+    "key": "magic-academy-wind-ribbon-v1",
+    "data": {
+      "version": 1,
+      "stations": 1000,
+      "geometry": {
+        "straight": 600,
+        "radius": 180,
+        "halfWidth": 70,
+        "taskY": -170,
+        "shear": -0.86,
+        "twistStart": 0.29,
+        "twistEnd": 0.5
+      },
+      "supports": [
+        {
+          "min": [
+            -525,
+            -315,
+            45
+          ],
+          "max": [
+            -280,
+            65,
+            95
+          ]
+        },
+        {
+          "min": [
+            280,
+            -315,
+            45
+          ],
+          "max": [
+            525,
+            65,
+            95
+          ]
+        }
+      ],
+      "task": {
+        "from": 20,
+        "to": 235,
+        "lines": [
+          "創立記念帯の古い銘を台帳へ。",
+          "星は書き出し、羽先は読む向き。",
+          "留め結びまでを、織られたままに。"
+        ]
+      },
+      "start": {
+        "station": 560,
+        "edge": 1,
+        "direction": 1
+      },
+      "stop": {
+        "station": 490,
+        "edge": 1
+      },
+      "glyphs": [
+        {
+          "id": "g0",
+          "station": 660,
+          "edge": 1,
+          "text": "よ"
+        },
+        {
+          "id": "g1",
+          "station": 80,
+          "edge": -1,
+          "text": "あ"
+        },
+        {
+          "id": "g2",
+          "station": 190,
+          "edge": -1,
+          "text": "け"
+        },
+        {
+          "id": "g3",
+          "station": 355,
+          "edge": -1,
+          "text": "を"
+        },
+        {
+          "id": "g4",
+          "station": 690,
+          "edge": -1,
+          "text": "つ"
+        },
+        {
+          "id": "g5",
+          "station": 80,
+          "edge": 1,
+          "text": "ぐ"
+        },
+        {
+          "id": "g6",
+          "station": 190,
+          "edge": 1,
+          "text": "い"
+        },
+        {
+          "id": "g7",
+          "station": 430,
+          "edge": 1,
+          "text": "と"
+        }
+      ],
+      "answerAliases": [
+        "夜明けを継ぐ糸"
+      ],
+      "views": {
+        "front": [
+          0,
+          0.12
+        ],
+        "left": [
+          -0.64,
+          0.2
+        ],
+        "right": [
+          0.64,
+          0.2
+        ],
+        "low": [
+          0.12,
+          -0.68
+        ]
+      },
+      "winds": {
+        "still": [
+          0,
+          0,
+          0
+        ],
+        "left": [
+          -0.34,
+          0.28,
+          12
+        ],
+        "right": [
+          0.34,
+          -0.3,
+          -12
+        ],
+        "up": [
+          0.12,
+          0.52,
+          6
+        ]
+      }
+    },
+    "text": "よあけをつぐいと",
+    "omit_task": "よ??をつ??と",
+    "ordinary_ring": "よぐいと"
+  },
+  "earth": {
+    "key": "magic-academy-earth-v2",
+    "base": {
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "B": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "C": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "D": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "E": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "F": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "G": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "H": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "I": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    "targets": [
+      {
+        "id": "G",
+        "glyph": "◆",
+        "at": [
+          4,
+          4
+        ]
+      },
+      {
+        "id": "H",
+        "glyph": "◇",
+        "at": [
+          2,
+          1
+        ]
+      }
+    ],
+    "state": {
+      "pieces": {
+        "A": {
+          "rot": 2,
+          "flip": true,
+          "at": [
+            3,
+            0
+          ]
+        },
+        "B": {
+          "rot": 2,
+          "flip": true,
+          "at": [
+            0,
+            5
+          ]
+        },
+        "C": {
+          "rot": 3,
+          "flip": true,
+          "at": [
+            0,
+            3
+          ]
+        },
+        "D": {
+          "rot": 1,
+          "flip": true,
+          "at": [
+            3,
+            4
+          ]
+        },
+        "E": {
+          "rot": 3,
+          "flip": true,
+          "at": [
+            2,
+            2
+          ]
+        },
+        "F": {
+          "rot": 3,
+          "flip": true,
+          "at": [
+            4,
+            0
+          ]
+        },
+        "G": {
+          "rot": 2,
+          "flip": false,
+          "at": [
+            4,
+            2
+          ]
+        },
+        "H": {
+          "rot": 2,
+          "flip": true,
+          "at": [
+            1,
+            1
+          ]
+        },
+        "I": {
+          "rot": 2,
+          "flip": true,
+          "at": [
+            0,
+            0
+          ]
+        }
+      },
+      "passed": true,
+      "discovered": false,
+      "moves": 0
+    },
+    "evaluation": {
+      "ok": true,
+      "code": "pass",
+      "filled": 36
+    },
+    "initial_water_cells": 32,
+    "full_board_water_cells": 0,
+    "lifted_C_water": [
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    "passed_after_lift": true
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "schema": 3,
+  "new_fictional_laws": true,
+  "independent_semantics": {
+    "states": 14641,
+    "fingerprint_sha256": "a53fad1839064b39edacda1239ad2dfa9fce61ec7d652fd4f452d007d392f433",
+    "js_matches_python": true,
+    "clear_states_at_charge_8": 1
+  },
+  "support_table": {
+    "fire<-fire": false,
+    "fire<-water": false,
+    "fire<-wind": false,
+    "fire<-earth": true,
+    "water<-fire": true,
+    "water<-water": false,
+    "water<-wind": false,
+    "water<-earth": false,
+    "wind<-fire": false,
+    "wind<-water": true,
+    "wind<-wind": false,
+    "wind<-earth": false,
+    "earth<-fire": false,
+    "earth<-water": false,
+    "earth<-wind": true,
+    "earth<-earth": false
+  },
+  "final_connections": {
+    "tested": 625,
+    "solutions": [
+      [
+        "earth",
+        "fire",
+        "water",
+        "wind"
+      ]
+    ],
+    "unique_within_defined_model": true
+  },
+  "missing_attribute_successes": {
+    "fire": 0,
+    "water": 0,
+    "wind": 0,
+    "earth": 0
+  },
+  "construction_orders_pass": 24,
+  "recoverable_states": 14641,
+  "simple_object_sweep_success": 0,
+  "js_actual_action_recoveries": 14641,
+  "js_restore_observable_equivalence": 14641,
+  "all_effects_nested_sweeps": {
+    "tested": 1152,
+    "successes": 0
+  },
+  "brute_force_limitation": {
+    "four_effects_loop_topologies": 6,
+    "winning_loops": 1,
+    "interpretation": "Six trials suffice once the loop idea is known. Not brute-force-proof."
+  },
+  "hypothesis_identification": {
+    "all_16_binary_relations_considered": 65536,
+    "all_16_observations_remaining": 1,
+    "only_four_positive_observations_remaining": 4096,
+    "remove_one_receiver_row_remaining": {
+      "fire": 16,
+      "water": 16,
+      "wind": 16,
+      "earth": 16
+    },
+    "assumptions": [
+      "context-independent deterministic pair effects",
+      "no ternary-only rules",
+      "one fixed rule set throughout"
+    ]
+  },
+  "missing_room_given_three_exclusive_rows_and_one_loop_goal": {
+    "fire": 1,
+    "water": 1,
+    "wind": 1,
+    "earth": 1
+  },
+  "independent_four_room_necessity": false,
+  "night_states": [
+    {
+      "night": 0,
+      "charge": 8,
+      "lit": true
+    },
+    {
+      "night": 1,
+      "charge": 7,
+      "lit": true
+    },
+    {
+      "night": 2,
+      "charge": 6,
+      "lit": true
+    },
+    {
+      "night": 3,
+      "charge": 5,
+      "lit": true
+    },
+    {
+      "night": 4,
+      "charge": 4,
+      "lit": true
+    },
+    {
+      "night": 5,
+      "charge": 3,
+      "lit": true
+    },
+    {
+      "night": 6,
+      "charge": 2,
+      "lit": true
+    },
+    {
+      "night": 7,
+      "charge": 1,
+      "lit": true
+    },
+    {
+      "night": 8,
+      "charge": 0,
+      "lit": false
+    }
+  ],
+  "band_boundary": {
+    "vertices": 2000,
+    "components": 1,
+    "center_lap_flips_edge": true,
+    "task_region_vertices": 432
+  },
+  "not_proven": [
+    "human discovery and enjoyment",
+    "all four rooms individually indispensable",
+    "resistance to six-loop guessing after the main insight",
+    "physical realism (the new law is explicitly fictional)",
+    "future integrated regressions before integration"
+  ]
+}

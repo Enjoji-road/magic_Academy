@@ -1,0 +1,114 @@
+{
+  "schema": 3,
+  "engine": "Chromium",
+  "checks": [
+    "Four spells on the ordinary seat do not graduate",
+    "UI pair fire <- fire matches the positive/negative law",
+    "UI pair water <- fire matches the positive/negative law",
+    "UI pair wind <- fire matches the positive/negative law",
+    "UI pair earth <- fire matches the positive/negative law",
+    "UI pair fire <- water matches the positive/negative law",
+    "UI pair water <- water matches the positive/negative law",
+    "UI pair wind <- water matches the positive/negative law",
+    "UI pair earth <- water matches the positive/negative law",
+    "UI pair fire <- wind matches the positive/negative law",
+    "UI pair water <- wind matches the positive/negative law",
+    "UI pair wind <- wind matches the positive/negative law",
+    "UI pair earth <- wind matches the positive/negative law",
+    "UI pair fire <- earth matches the positive/negative law",
+    "UI pair water <- earth matches the positive/negative law",
+    "UI pair wind <- earth matches the positive/negative law",
+    "UI pair earth <- earth matches the positive/negative law",
+    "fire: primary spell creates visible result",
+    "fire: cross-attribute result remains when only recipient hand releases",
+    "fire: open chain fades when donor hand releases",
+    "water: primary spell creates visible result",
+    "water: cross-attribute result remains when only recipient hand releases",
+    "water: open chain fades when donor hand releases",
+    "wind: primary spell creates visible result",
+    "wind: cross-attribute result remains when only recipient hand releases",
+    "wind: open chain fades when donor hand releases",
+    "Wind: center lap swaps the boundary side",
+    "Wind: two center laps return",
+    "earth: primary spell creates visible result",
+    "earth: cross-attribute result remains when only recipient hand releases",
+    "earth: open chain fades when donor hand releases",
+    "Notes survive reload",
+    "Regular UI sequence leaves the new light",
+    "Graduation responds to actual settled state",
+    "Next student sees the additional light",
+    "Only research key is created or changed",
+    "Graduation record survives reload",
+    "Eight simulated nights consume the finite charge",
+    "Fire replenishment preserves the same structure",
+    "Wrong self-support fades by the same law",
+    "390px viewport has no document overflow",
+    "390px focus mode keeps apparatus, target effects, and release control visible together",
+    "Reverse construction and zero room visits also work",
+    "Only research key is created or changed",
+    "320px viewport has no horizontal overflow",
+    "320px observes persistent cross-attribute change with reduced motion",
+    "Reduced-motion setting disables animation at 320px",
+    "375px viewport has no horizontal overflow",
+    "375px observes persistent cross-attribute change with reduced motion",
+    "Reduced-motion setting disables animation at 375px",
+    "768px viewport has no horizontal overflow",
+    "768px observes persistent cross-attribute change with reduced motion",
+    "Reduced-motion setting disables animation at 768px",
+    "No JavaScript page errors"
+  ],
+  "viewports": [
+    {
+      "width": 390,
+      "height": 844,
+      "bounds": {
+        "height": 844,
+        "width": 390,
+        "docWidth": 390,
+        "items": {
+          "apparatus": {
+            "top": 71,
+            "bottom": 256.671875,
+            "width": 368
+          },
+          "traces": {
+            "top": 404.171875,
+            "bottom": 581.40625,
+            "width": 342
+          },
+          "release": {
+            "top": 590.40625,
+            "bottom": 636.40625,
+            "width": 113.140625
+          }
+        }
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "inner": 320,
+      "doc": 320,
+      "focus": 300
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "inner": 375,
+      "doc": 375,
+      "focus": 355
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "inner": 768,
+      "doc": 768,
+      "focus": 748
+    }
+  ],
+  "browser_version": "153.0.8010.0",
+  "total_checks": 54,
+  "page_errors": [],
+  "result": "pass",
+  "screenshots": "Captured locally by EVIDENCE_DIR; not required by the game or committed as binary assets."
+}

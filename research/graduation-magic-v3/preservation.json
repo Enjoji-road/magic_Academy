@@ -1,0 +1,21 @@
+{
+  "schema": 3,
+  "base_commit": "a943deb56bde45471c6cd13ecbd67f02ebc01498",
+  "existing_files_checked": 110,
+  "changed_existing_files": [],
+  "tracked_diff_paths_restricted_to_research": true,
+  "normal_grades": {
+    "fire": true,
+    "water": true,
+    "wind": true,
+    "earth": true
+  },
+  "normal_model_results_unchanged": true,
+  "official_storage_keys_in_runtime": false,
+  "research_storage_key": "magic-academy-graduation-magic-v3-research-1",
+  "dependencies_read_only": [
+    "wind-ribbon-data.js",
+    "wind-ribbon-model.js"
+  ],
+  "scope": "Unmodified canonical files and independent prototype only; future integration still needs regression tests."
+}

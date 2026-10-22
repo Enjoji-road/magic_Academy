@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="690" viewBox="0 0 860 690" role="img" aria-labelledby="t d">
+<title id="t">支え手の継承：四つの働きと手の支え</title><desc id="d">炎の灯から水の映へ、水から風の巡へ、風から土の形へ、土から炎へ。四つの関係が閉じると、有限魔力のある灯座では手を離しても灯る。</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#e7c884"/></marker></defs>
+<rect width="860" height="690" rx="15" fill="#14242c"/><g font-family="sans-serif" fill="#f4ede0"><text x="45" y="45" font-size="13" fill="#e7c884" letter-spacing="3">RESEARCH III · SPOILERS</text><text x="45" y="86" font-size="28">四つの術が、互いの支えになる</text><text x="45" y="121" font-size="15" fill="#bbc9c6">矢印は出力を渡す向き。属性を唱える時間順ではない。</text>
+<g fill="none" stroke="#e7c884" stroke-width="3" marker-end="url(#a)"><path d="M285 232H574"/><path d="M666 292V407"/><path d="M574 467H285"/><path d="M194 407V292"/></g>
+<g text-anchor="middle"><rect x="94" y="174" width="200" height="116" rx="8" fill="#3e342e" stroke="#efb37b"/><text x="194" y="218" font-size="21" fill="#efb37b">炎 · 灯</text><text x="194" y="254" font-size="14">形を灯として現す</text>
+<rect x="566" y="174" width="200" height="116" rx="8" fill="#23424e" stroke="#9ddae5"/><text x="666" y="218" font-size="21" fill="#9ddae5">水 · 映</text><text x="666" y="254" font-size="14">灯を映りにする</text>
+<rect x="566" y="408" width="200" height="116" rx="8" fill="#30494f" stroke="#d6e9e6"/><text x="666" y="452" font-size="21" fill="#d6e9e6">風 · 巡</text><text x="666" y="488" font-size="14">映りを巡らせる</text>
+<rect x="94" y="408" width="200" height="116" rx="8" fill="#334337" stroke="#c3d5a8"/><text x="194" y="452" font-size="21" fill="#c3d5a8">土 · 形</text><text x="194" y="488" font-size="14">巡りの形を留める</text>
+<text x="430" y="322" font-size="23" fill="#e7c884">手を離しても</text><text x="430" y="361" font-size="23" fill="#e7c884">一つの灯が残る</text></g>
+<path d="M45 560H815" stroke="#47616a"/><text x="45" y="595" font-size="16">光の維持：初めの魔力8夜分 → 一夜ごとに消費 → 七夜ごとに学院が補給</text><text x="45" y="627" font-size="14" fill="#bbc9c6">閉じた術が保存するのは働き方。無限の燃料を生む法則ではない。</text><text x="45" y="657" font-size="13" fill="#e7c884">未解決：環の発想後は六候補。四室の独立必須性は成立しない。</text></g></svg>

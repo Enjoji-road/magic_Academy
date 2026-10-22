@@ -1,0 +1,53 @@
+{
+  "schema": 3,
+  "title": "支え手の継承",
+  "status": "research prototype; production adoption on hold",
+  "new_proposal_not_existing_canon": true,
+  "base_commit": "a943deb56bde45471c6cd13ecbd67f02ebc01498",
+  "normal_exam_models_unchanged": true,
+  "target_domains": {
+    "ordinary_material": "現行の炎・水・風・土の基本作用。今回の相互作用へ物理状態を逆流させない。",
+    "exposed_spell_result": "今回追加する、接触可能な術の余韻。普通の光や水そのものとは別。",
+    "sealed_alumni_spell": "透明封緘の内側。観測できるが裸の支え端へ触れられない。光は先輩から奪わない。"
+  },
+  "results": {"fire":"灯", "water":"映", "wind":"巡", "earth":"形"},
+  "takes_from": {"fire":"earth", "water":"fire", "wind":"water", "earth":"wind"},
+  "state_fields": {
+    "exists": "起こした余韻がある",
+    "manual": "術者が直接支えている",
+    "from": "触れている余韻の出所。none/fire/water/wind/earth。",
+    "charge": "灯座の魔力。0..8夜分。"
+  },
+  "transition_rules": [
+    "cast creates or reactivates the selected result, sets manual=true, and binds to the chosen existing result or none",
+    "fire cast deposits up to 8 night units in that lamp seat",
+    "release only changes manual support; physical water, stone and fuel-lamp states are not rewound",
+    "a result remains iff it exists and is manually supported, or receives its accepted live result",
+    "use the greatest fixed point for already-created results; positive charge is separately required for illumination",
+    "wrong type, self reference, absent donor, or ordinary object supplies no support after release",
+    "one illuminated simulated night consumes one unit; at zero the form remains but the lamp does not illuminate"
+  ],
+  "persistence": {
+    "spell_pattern": "closed support loop",
+    "fuel": "finite 8-night charge",
+    "school_maintenance": "replenish on every seventh night, keeping the graduate's pattern",
+    "eternal_light_claim": false,
+    "prototype_time": "discrete optional research action, not a gameplay wait"
+  },
+  "observations": {
+    "fire": {"revisit":"water", "target":"exposed fire result, not lamp fixture", "positive":"water remains when its own hand releases and fire is held", "negative":"water fades when fire support is also removed"},
+    "water": {"revisit":"wind", "target":"water's magical image, not sealed gas or liquid volume", "positive":"wind carries image while the physical water stays", "negative":"wind on exterior cloth does not obtain this support"},
+    "wind": {"revisit":"earth", "target":"one continuous circulation along the existing band boundary", "positive":"earth retains the whole boundary shape, including the task region", "negative":"moving the windowsill itself is not that support relation", "topology":"2000 boundary nodes; 1000 center-lap steps flip edge; 2000 return"},
+    "earth": {"revisit":"fire", "target":"earth magic's contour, not ordinary rock", "positive":"fire lights the contour without burning the stone", "negative":"warming ordinary rock is not receiving the earth result"}
+  },
+  "reproducibility": "same current state gives same effect; no visit counts, spell history requirements, randomness or cooldown",
+  "graduation_condition": "at the new hall seat, all four results exist and remain with no manual support and charge > 0",
+  "known_limits": [
+    "after discovering a four-attribute loop, six cyclic orders can be tried",
+    "three exclusive conversion rules plus the loop goal predict the fourth",
+    "players may learn the same laws through hall experiments instead of revisiting rooms",
+    "four local positive observations do not rule out all extra-compatible laws",
+    "shape contents are simplified by scene; no general cross-scene shape-data simulation",
+    "human insight and enjoyment have not been tested"
+  ]
+}

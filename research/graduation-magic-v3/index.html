@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="theme-color" content="#14242c"><meta name="robots" content="noindex">
+ <title>手を離した、その先に — 魔法学校・卒業試験 研究試作 III</title>
+ <link rel="stylesheet" href="style.css">
+ <script defer src="../../wind-ribbon-data.js"></script><script defer src="../../wind-ribbon-model.js"></script>
+ <script defer src="magic-model.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+ <header class="site-head"><div><span class="eyebrow">ARCANE ACADEMY · RESEARCH III</span><h1>手を離した、その先に</h1></div><div class="settings"><button id="sound" type="button" aria-pressed="false">効果音 OFF</button><button id="settings" type="button">設定</button></div></header>
+ <p class="research-note">卒業試験の独立研究試作。四科目は修了した想定で、自由に行き来できます。ここで起こる相互作用は新規提案です。</p>
+ <nav class="rooms" aria-label="研究する場所"><button data-room="hall" aria-current="page">試験回廊</button><button data-room="fire">炎の教室</button><button data-room="water">水の教室</button><button data-room="wind">風の教室</button><button data-room="earth">土の教室</button></nav>
+ <main>
+  <section class="assignment" aria-labelledby="taskTitle"><span class="eyebrow" id="roomKicker">最終卒業試験</span><h2 id="taskTitle">次に来る誰かのために</h2><p id="taskText">この回廊に、あなたが手を離しても灯る光を一つ残しなさい。</p><p class="small" id="taskAside">既にある灯りを消す必要はありません。灯座の魔力は院務員が七夜ごとに補給します。</p></section>
+  <div class="play-layout">
+   <section class="workbench" aria-label="魔法の観測台">
+    <div class="scene-head"><div><span class="eyebrow" id="sceneKicker">ENTRANCE HALL</span><h3 id="sceneTitle">あなたを迎えた光</h3></div><div class="scene-tools"><button id="focusBench" type="button" aria-pressed="false">観測に集中</button><button id="zoom" type="button">拡大</button></div></div>
+    <div id="apparatus" class="apparatus"></div>
+    <div id="deviceControls" class="device-controls"></div>
+    <p id="deviceCaption" class="device-caption"></p>
+    <div class="spell-dock" role="group" aria-label="魔法選択">
+     <button data-spell="fire" aria-pressed="true"><span class="sigil">焔</span>炎</button><button data-spell="water" aria-pressed="false"><span class="sigil">滴</span>水</button><button data-spell="wind" aria-pressed="false"><span class="sigil">羽</span>風</button><button data-spell="earth" aria-pressed="false"><span class="sigil">石</span>土</button>
+    </div>
+    <p id="castInstruction" class="cast-instruction">魔法を選び、触れたいものをタップしてください。</p>
+    <div class="target-actions"><button id="castObject" type="button">灯座へ魔法を使う</button><button id="inspect" type="button">灯りをよく見る</button></div>
+    <div class="trace-workspace"><div class="trace-title"><span>目の前に残る、術の余韻</span><span id="handState">手の支え</span></div><div id="traceBoard" class="trace-board"><svg id="threads" viewBox="0 0 660 310" preserveAspectRatio="none" aria-hidden="true"></svg><div id="traces" class="traces"></div></div></div>
+    <div class="hand-controls"><button id="selectedSupport" type="button">選んだ術の支えを離す</button><button id="release" type="button" class="major">すべて手を離す</button><button id="hold" type="button">もう一度支える</button></div>
+    <p id="status" role="status" aria-live="polite" class="status">まずは装置や灯りを眺めてください。教室にも戻れます。</p>
+    <div class="bench-foot"><button id="record" type="button">今の観測を記録</button><button id="resetRoom" type="button">この場所を最初に戻す</button></div>
+   </section>
+   <aside class="journal"><span class="eyebrow">FIELD NOTES</span><h2>観測と余白</h2><p class="small">記録や訪問の有無は合格条件に含みません。</p><details id="help"><summary>操作の手引き</summary><p>魔法を選んで、装置や目に見える働きをタップします。自分が支えている術には「手」の印が付きます。ひとつだけ支えを離し、どの変化が残るか比べることもできます。</p><p>淡い四角は、まだその魔法を使っていない場所です。時間の経過を待つ必要はありません。「観測に集中」で操作台を画面内にまとめられます。</p></details><details><summary>考えるきっかけ</summary><button data-hint="1">手がかり 1</button><button data-hint="2">手がかり 2</button><button data-hint="3">手がかり 3</button><p id="hintText"></p></details><label for="notes">自由メモ</label><textarea id="notes" rows="7" maxlength="8000" placeholder="見たこと、比べたいことを書き留める…"></textarea><p id="saveStatus" class="small">この試作だけに自動保存します。</p><details><summary>観測記録 <span id="recordCount">0</span></summary><ol id="records"></ol></details><details><summary>研究用：灯座の保守を確認</summary><p>閉じた術にも燃料の限りがあります。八夜分を蓄え、学院は七夜ごとに補給します。これは時間待ちの仕掛けではありません。</p><button id="night">一夜後の灯座を観測</button><p id="chargeReadout">回廊の灯座を選ぶと確認できます。</p></details><p class="small source-note">四教室の装置は再考察用の簡略図です。通常試験の解法を再現する画面ではありません。</p></aside>
+  </div>
+  <section id="graduation" class="graduation" hidden><span class="eyebrow">ONE MORE LIGHT</span><h2>あなたが手を離しても。</h2><p>今、あなたの光が、回廊に加わりました。</p><div class="new-light-row"><span>これまでの灯り</span><i></i><i></i><i></i><i class="mine"></i><span>あなたの灯り</span></div><p class="small">訪問履歴ではなく、いま残っている魔法の状態で成立しました。先輩の灯りは、そのままです。</p><button id="arrival" type="button">次の生徒の目で、入口を見る</button><div id="nextArrival" hidden><p class="arrival-line">「入学おめでとう。ようこそ、魔法学校へ。」</p><p>入口から見上げると、四つの光があなたを迎えています。</p></div></section>
+ </main>
+ <footer><a href="README.md">研究の入口・検証範囲</a><a href="../../index.html">正式な試験回廊へ</a><span>研究試作 III · 2026.10.22</span></footer>
+ <dialog id="settingsDialog"><h2>この試作の設定</h2><label><input type="checkbox" id="reduced"> 動きを減らす</label><p>動きを止めても、観測後の形と文章は残ります。</p><button id="resetAll">この試作の記録をすべて消す</button><button data-close="settingsDialog">閉じる</button></dialog>
+ <dialog id="inspectDialog"><h2 id="inspectTitle">灯りの内側</h2><div id="inspectContent"></div><button data-close="inspectDialog">閉じる</button></dialog>
+ <dialog id="zoomDialog" class="zoom-dialog"><h2 id="zoomTitle">装置・拡大</h2><div id="zoomContent"></div><button data-close="zoomDialog">閉じる</button></dialog>
+</body>
+</html>

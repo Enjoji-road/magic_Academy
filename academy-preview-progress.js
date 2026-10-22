@@ -61,7 +61,7 @@ function render(document,progress){
  }
  const summary=document.getElementById('academy-progress');if(summary)summary.textContent='合格 '+progress.passed+' / 4 科目';
  const graduate=document.getElementById('graduation-note');if(graduate)graduate.textContent=progress.passed===4?
-  '四科目の合格を確認しました。卒業試験は現在準備中です。':
+  '四科目の修了を確認しました。最後の課題へ進めます。':
   '四つの試験室に入室できます。合格記録は各教室を出ても保持されます。';
  const note=document.getElementById('hall-save-note');if(note)note.textContent=progress.storageAvailable?
   '途中経過と合格記録は、この端末のブラウザに保存されます。':

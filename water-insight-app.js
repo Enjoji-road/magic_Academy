@@ -7,7 +7,7 @@ try{const raw=localStorage.getItem(M.KEY);if(raw){const saved=M.restore(raw);if(
 const format=n=>Math.round(n).toLocaleString('ja-JP'),reduced=()=>Boolean(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
 const names={before:'実験前',restart:'再実験前',small:'少し注水',fill:'止まるまで給水',open:'つまみを開く',close:'つまみを閉じる',bath:'外の水盤へ注水'};
 function say(s){$('status').textContent=s;}
-function saveLabel(){$('saveStatus').textContent=!canSave?'このブラウザでは保存できません。ページを閉じる前に記録を控えてください。':invalid?'保存形式を読み取れず、初期状態で開きました。既存の試験の記録はそのままです。':'第2試作の観測・台帳・メモを、この端末へ自動保存します。';}
+function saveLabel(){$('saveStatus').textContent=!canSave?'このブラウザでは保存できません。ページを閉じる前に記録を控えてください。':invalid?'保存形式を読み取れず、初期状態で開きました。既存の試験の記録はそのままです。':'水魔法学の観測・台帳・メモを、この端末へ自動保存します。';}
 function save(){try{localStorage.setItem(M.KEY,JSON.stringify(state));canSave=true;invalid=false;}catch{canSave=false;}saveLabel();}
 function node(tag,attrs={},value){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(attrs))e.setAttribute(k,String(v));if(value!==undefined)e.textContent=value;return e;}
 function add(parent,tag,attrs,value){const e=node(tag,attrs,value);parent.append(e);return e;}
@@ -206,6 +206,6 @@ $('answer').value=state.answer;$('answer').addEventListener('input',()=>{state.a
 function renderPass(fresh=false){$('pass').hidden=!state.passed;$('pass').classList.toggle('just-passed',fresh);}
 $('answerForm').addEventListener('submit',e=>{e.preventDefault();const was=state.passed,ok=M.grade(state,$('answer').value);save();if(!ok){$('answerStatus').textContent='提出された検量結果は、記録と一致していません。観測を確認して改めて提出してください。';return;}$('answerStatus').textContent='検量結果が受理されました。';if(!was)window.AcademySFX?.play('pass');renderPass(!was);if(!was)$('pass').scrollIntoView?.({behavior:reduced()?'instant':'smooth',block:'nearest'});});
 $('restart').addEventListener('click',()=>{state.physical=M.physicalInitial();state.records.push({action:'restart',physical:M.clone(state.physical)});save();showScene();renderRecords(true);say('実験を初期状態に戻しました。これまでの記録・台帳・合格とメモは残っています。');});
-$('reset').addEventListener('click',()=>openDialog($('resetDialog')));$('cancelReset').addEventListener('click',()=>closeDialog($('resetDialog')));$('confirmReset').addEventListener('click',()=>{const notes=state.notes;state=M.initial();state.notes=notes;$('answer').value='';$('answerStatus').textContent='記入途中の台帳も保存します。';save();showScene();renderRecords();renderPass();say('第2試作の試験をリセットしました。研究メモと他の試験の記録は残っています。');closeDialog($('resetDialog'));});
+$('reset').addEventListener('click',()=>openDialog($('resetDialog')));$('cancelReset').addEventListener('click',()=>closeDialog($('resetDialog')));$('confirmReset').addEventListener('click',()=>{const notes=state.notes;state=M.initial();state.notes=notes;$('answer').value='';$('answerStatus').textContent='記入途中の台帳も保存します。';save();showScene();renderRecords();renderPass();say('水魔法学の試験をリセットしました。研究メモと他の試験の記録は残っています。');closeDialog($('resetDialog'));});
 showScene();renderRecords();renderPass();noteCount();saveLabel();
 })();

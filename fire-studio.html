@@ -11,14 +11,17 @@
 <link rel="stylesheet" href="academy-studio-sfx.css?v=1">
 <script src="academy-studio-sfx.js?v=1" defer></script>
 <script src="fire-experiment-model.js?v=4" defer></script>
-<script src="fire-experiment-app.js?v=4" defer></script>
+<script src="fire-experiment-app.js?v=5" defer></script>
 <script src="fire-studio.js?v=1" defer></script>
 <link rel="stylesheet" href="academy-magic-vfx.css?v=2">
 <script src="academy-magic-vfx.js?v=3" defer></script>
 <link rel="stylesheet" href="academy-element-icons.css?v=1">
 <script src="academy-element-icons.js?v=1" defer></script>
+<link rel="stylesheet" href="academy-graduation.css?v=1">
+<script src="academy-preview-progress.js?v=3" defer></script>
+<script src="graduation-magic-model.js?v=1" defer></script><script src="graduation-state.js?v=1" defer></script><script src="academy-graduation.js?v=1" defer></script>
 </head>
-<body class="studio-fire">
+<body class="studio-fire" data-academy-room="fire">
 <div class="academy-topbar"><a class="academy-brand" href="index.html"><span aria-hidden="true">✦</span><span>魔法学校<small>ARCANE ACADEMY</small></span></a><button type="button" class="settings-button" data-settings>⚙ 設定</button></div>
 <main>
 <a class="back" href="index.html">← 試験回廊へ戻る</a>
@@ -67,7 +70,7 @@
 <section id="pass" class="pass" hidden><div class="ritual-lights" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="academy-pass-stamp" role="img" aria-label="学院の合格印"><span>ARCANE ACADEMY</span><b>合格</b><small>IGNIS</small></div><h3>炎魔法学　合格</h3><p>台帳の登録番号が照合されました。</p><svg id="restoredSeal" viewBox="0 0 600 560" role="img" aria-label="復元された原校章"></svg><p class="small">合格の記録を残したまま、観測を続けられます。</p><a href="index.html">試験回廊に戻る →</a></section>
 <div class="answer-bottom"><button type="button" class="secondary" id="reset">この試験を最初から</button></div></aside>
 </div>
-<footer><span>魔法学校 · 灯火観測室 / UI試作品</span><span id="saveStatus">観測と記入内容を自動保存します。</span></footer>
+<footer><span>魔法学校 · 灯火観測室 / 実技試験</span><span id="saveStatus">観測と記入内容を自動保存します。</span></footer>
 </main>
 <dialog id="zoomDialog"><div class="topline"><h2 id="zoomTitle">配置図</h2><button type="button" class="secondary" id="closeZoom">閉じる</button></div><div class="zoom-scroll" id="zoomContent"></div><p class="small">横に収まらない図はスクロールできます。Escキーでも閉じられます。</p></dialog>
 <noscript>この試験にはJavaScriptが必要です。</noscript>

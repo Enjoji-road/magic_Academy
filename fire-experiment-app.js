@@ -7,7 +7,7 @@ try{state=M.restore(localStorage.getItem(M.KEY))||state;}catch{storageOK=false;}
 const num=x=>Number(x.toFixed(7));
 function path(poly,X,Z){return'M'+poly.map(([x,z])=>`${num(X(x))},${num(Z(z))}`).join('L')+'Z';}
 function glyph(mask,cx,cz,scale,X,Z){let d=path(M.OUTER.map(([x,z])=>[cx+x*scale,cz+z*scale]),X,Z);for(const[k,poly]of Object.entries(M.HOLES))if(mask&(1<<(k.charCodeAt(0)-97)))d+=' '+path(poly.map(([x,z])=>[cx+x*scale,cz+z*scale]),X,Z);return d;}
-function save(){try{localStorage.setItem(M.KEY,JSON.stringify(state));}catch{storageOK=false;}$('saveStatus').textContent=storageOK?'観測・記入内容・この試作の合格を自動保存しています。':'このブラウザでは途中保存を利用できません。';}
+function save(){try{localStorage.setItem(M.KEY,JSON.stringify(state));}catch{storageOK=false;}$('saveStatus').textContent=storageOK?'観測・記入内容・この試験の合格を自動保存しています。':'このブラウザでは途中保存を利用できません。';}
 function say(text){$('status').textContent=text;}
 function wall(side,seen){const lo=side==='first'?-2.6:-4.6,hi=side==='first'?2.6:.9,s=600/(hi-lo),X=x=>50+(x-lo)*s,Z=z=>135-(z-6)*s;
  let out='<rect x="16" y="12" width="668" height="250" rx="6" fill="'+(seen?'#dfd0b1':'#283f45')+'" stroke="#bca57b" stroke-width="2"/><path d="M29 45V25H58 M642 25H671V45 M29 229V249H58 M642 249H671V229" fill="none" stroke="'+(seen?'#aa8e5f':'#61786e')+'" stroke-width="1.5"/>';
@@ -50,7 +50,7 @@ $('cover').addEventListener('click',()=>{M.cover(state);save();render();if(windo
 $('enlargeRoom').addEventListener('click',()=>openZoom('room'));$('compare').addEventListener('click',()=>openZoom('compare'));document.querySelectorAll('[data-zoom]').forEach(b=>b.addEventListener('click',()=>openZoom(b.dataset.zoom)));$('closeZoom').addEventListener('click',()=>$('zoomDialog').close());$('zoomDialog').addEventListener('close',()=>{zoom='';});
 $('answer').value=state.answer;$('answer').addEventListener('input',()=>{state.answer=$('answer').value.slice(0,40);save();});
 $('answerForm').addEventListener('submit',e=>{e.preventDefault();const result=M.submit(state,$('answer').value);if(window.AcademySFX)window.AcademySFX.play(result==='pass'?'pass':'fail');$('feedback').textContent={format:'登録番号は数字6桁で記入してください。',incorrect:'台帳の登録番号と一致しません。',pass:'登録番号が照合されました。炎魔法学、合格。'}[result];$('feedback').classList.toggle('error',result!=='pass');save();render();if(result==='pass')say('原校章の登録番号が照合されました。');});
-$('reset').addEventListener('click',()=>{if(!window.confirm('この試作の観測・記入内容・合格記録を最初からやり直しますか？'))return;state=M.initial();clearTimeout(effectTimer);effect=null;$('answer').value='';$('feedback').textContent='登録番号を記入し、台帳を提出してください。';$('feedback').classList.remove('error');save();render();say('炎魔法を選び、燭台に触れてください。');});
+$('reset').addEventListener('click',()=>{if(!window.confirm('この試験の観測・記入内容・合格記録を最初からやり直しますか？'))return;state=M.initial();clearTimeout(effectTimer);effect=null;$('answer').value='';$('feedback').textContent='登録番号を記入し、台帳を提出してください。';$('feedback').classList.remove('error');save();render();say('炎魔法を選び、燭台に触れてください。');});
 window.addEventListener('pagehide',save);window.addEventListener('pageshow',e=>{if(e.persisted){try{state=M.restore(localStorage.getItem(M.KEY))||state;}catch{storageOK=false;}$('answer').value=state.answer;render();}});
-$('archiveDiagram').innerHTML=seal(false);$('fontSamples').innerHTML=fonts();render();save();if(state.passed)say('この試作の合格記録を読み込みました。');else if(state.seen.first||state.seen.second)say('前回の観測記録を読み込みました。続きから受験できます。');
+$('archiveDiagram').innerHTML=seal(false);$('fontSamples').innerHTML=fonts();render();save();if(state.passed)say('この試験の合格記録を読み込みました。');else if(state.seen.first||state.seen.second)say('前回の観測記録を読み込みました。続きから受験できます。');
 })();

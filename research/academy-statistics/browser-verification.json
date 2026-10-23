@@ -1,0 +1,64 @@
+{
+  "result": "passed",
+  "checks": [
+    "First entrance records one anonymous browser",
+    "Reload preserves the anonymous browser identifier",
+    "Reload sends no duplicate acknowledged event",
+    "Four consecutive activations keep the ledger hidden",
+    "Five taps open the live operations ledger",
+    "The ledger reuses the academy elemental emblems",
+    "Zero denominators display as 0.0%",
+    "The ledger fits a phone viewport",
+    "Opening statistics changes no exam or graduation save",
+    "Another setting action resets the consecutive-tap command",
+    "Five new consecutive taps still open the ledger",
+    "Opening a classroom records its first challenge",
+    "A newly saved pass records one successful student",
+    "Re-clear and reload do not duplicate a subject pass",
+    "A second browser counts as a second entrant",
+    "Offline progress never blocks play or invents a server result",
+    "Returning online reconciles graduation and its prerequisite passes once",
+    "Entering the final trial records one challenge",
+    "Replaying the graduation screen never duplicates graduation",
+    "Replay remains safe even if the client reconciles its acknowledged event set",
+    "Four consecutive activations keep the ledger hidden",
+    "Keyboard activation also opens the hidden ledger",
+    "Four consecutive activations keep the ledger hidden",
+    "A failed read shows no fabricated statistics",
+    "Record requests contain only event names and an anonymous browser identifier",
+    "No page JavaScript errors occur"
+  ],
+  "requests": 9,
+  "final_summary": {
+    "ok": true,
+    "started_at": "2026-10-23T00:00:00Z",
+    "entrants": 2,
+    "fire": {
+      "attempted": 2,
+      "passed": 2
+    },
+    "water": {
+      "attempted": 1,
+      "passed": 1
+    },
+    "wind": {
+      "attempted": 1,
+      "passed": 1
+    },
+    "earth": {
+      "attempted": 1,
+      "passed": 1
+    },
+    "graduation": {
+      "attempted": 1,
+      "passed": 1
+    }
+  },
+  "viewports": [
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "evidence": "/tmp/magic-academy-statistics-evidence"
+}

@@ -1,0 +1,38 @@
+{
+  "result": "passed",
+  "date": "2026-10-23",
+  "project_ref": "jyxdjhrcowdijwzgqtyl",
+  "edge_function": {
+    "name": "academy-statistics",
+    "version": 2,
+    "verify_jwt": false,
+    "origin_allowlist": [
+      "https://enjoji-road.github.io",
+      "localhost and 127.0.0.1 for local verification"
+    ]
+  },
+  "database": {
+    "transaction_rolled_back": true,
+    "duplicate_event_inserted_rows": 0,
+    "pass_implies_attempt": true,
+    "graduation_implies_prerequisites": true,
+    "new_visitors_per_ip_hour_limit": 25,
+    "requests_per_ip_five_minutes_limit": 120,
+    "rls_enabled_tables": 3,
+    "anonymous_table_dml_privileges": false,
+    "authenticated_table_dml_privileges": false,
+    "callable_roles": [
+      "postgres",
+      "service_role"
+    ]
+  },
+  "production_counts_after_verification": {
+    "entrants": 0,
+    "fire": { "attempted": 0, "passed": 0 },
+    "water": { "attempted": 0, "passed": 0 },
+    "wind": { "attempted": 0, "passed": 0 },
+    "earth": { "attempted": 0, "passed": 0 },
+    "graduation": { "attempted": 0, "passed": 0 }
+  },
+  "live_write_test": "not performed: synthetic production records were rejected by automatic safety review; database behavior was verified inside a rolled-back transaction and browser behavior against an in-memory server"
+}

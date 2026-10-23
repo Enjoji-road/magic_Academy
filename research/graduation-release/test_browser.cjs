@@ -22,6 +22,7 @@ let browser,base;
 function ok(value,label){assert.ok(value,label);results.checks.push(label);}
 async function context(viewport={width:390,height:844},reducedMotion='reduce'){
  const ctx=await browser.newContext({viewport,reducedMotion});const p=await ctx.newPage();
+ await ctx.route('**/functions/v1/academy-statistics**',route=>route.fulfill({contentType:'application/json',body:JSON.stringify(route.request().method()==='GET'?{ok:true,entrants:0,started_at:null,fire:{attempted:0,passed:0},water:{attempted:0,passed:0},wind:{attempted:0,passed:0},earth:{attempted:0,passed:0},graduation:{attempted:0,passed:0}}:{ok:true})}));
  p.on('pageerror',e=>results.errors.push(e.message));p.on('dialog',d=>d.accept());
  await p.goto(base+'/');return {p,ctx};
 }
@@ -206,7 +207,7 @@ async function placeStones(p){
   await admitted.p.locator('#enterGraduation').click();await frame(admitted.p).locator('#castInstruction').filter({hasText:'魔法を選択中'}).waitFor();
   ok(await frame(admitted.p).locator('#graduationContent').isVisible(),'Four passes: only the explicit final-trial entry opens the trial');
   const other=await admitted.ctx.newPage();await other.goto(base+'/index.html');await other.evaluate(key=>localStorage.removeItem(key),F.KEY);
-  await admitted.p.waitForURL(base+'/index.html#graduation-exam');
+  await admitted.p.waitForFunction(expected=>location.href===expected,base+'/index.html#graduation-exam');
   ok(await admitted.p.locator('iframe').count()===0,'Removing a required pass in another tab closes an unearned final trial');
   await admitted.ctx.close();
   const historical=await context();await historical.p.evaluate(({key,value})=>localStorage.setItem(key,JSON.stringify(value)),{key:KEY,value:earnedGraduation});await historical.p.reload();
@@ -242,6 +243,7 @@ async function placeStones(p){
    if(viewport.width===320||viewport.width===1280)await screenshot(mobile.p,'graduation-'+viewport.width);
    results.viewports.push(viewport);await mobile.ctx.close();
   }
+  if(results.errors.length)console.error('Page errors:',JSON.stringify(results.errors));
   ok(results.errors.length===0,'No page JavaScript exceptions in the complete playthrough');
   results.result='passed';results.check_count=results.checks.length;
   fs.writeFileSync(path.join(__dirname,'browser-verification.json'),JSON.stringify(results,null,2)+'\n');
